@@ -7,8 +7,10 @@ package View;
 import Control.ControllerMahasiswa;
 import Model.Keuangan;
 import Model.Mahasiswa;
+import Model.Nilai;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -1156,37 +1158,37 @@ public class Percobaan extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tampilTabel() {
+    private void tampilNilai() {
         ControllerMahasiswa crl = new ControllerMahasiswa(152021169);
-        Mahasiswa mhs = crl.getMhs();
+        List<Nilai> listn = crl.getNilai();
         DefaultTableModel model = (DefaultTableModel) tableDark1.getModel();
         model.setRowCount(0);
 
-        model.addColumn("NIM");
-        model.addColumn("Nama");
-        model.addColumn("Status");
-        model.addColumn("Dosen Wali");
-        model.addColumn("Semester Aktif");
-        model.addColumn("Batas Studi");
-        model.addColumn("Email");
-        model.addColumn("Nomor");
-        model.addColumn("Prodi");
+        model.addColumn("ID");
+        model.addColumn("Kode");
+        model.addColumn("Mata Kuliah");
+        model.addColumn("SKS");
+        model.addColumn("Semester");
+        model.addColumn("Nilai");
+        model.addColumn("Bobot");
+        model.addColumn("NxK");
 
-        model.addRow(new Object[]{
-            mhs.getNim(),
-            mhs.getNama(),
-            mhs.getStatus(),
-            mhs.getDosen_wali(),
-            mhs.getSemester_aktif(),
-            mhs.getBatas_studi(),
-            mhs.getEmail(),
-            mhs.getNomor(),
-            mhs.getProdi()
-        });
+        for (Nilai n : listn) {
+            model.addRow(new Object[]{
+                n.getId(),
+                n.getKode(),
+                n.getMataKuliah(),
+                n.getSks(),
+                n.getSemester(),
+                n.getNilai(),
+                n.getBobot(),
+                n.getNk()
+            });
+        }
 
     }
-    
-    private void tampilDataMahasiswa(){
+
+    private void tampilDataMahasiswa() {
         ControllerMahasiswa crl = new ControllerMahasiswa(152021169);
         Mahasiswa mhs = crl.getMhs();
         jLabel23.setText(Integer.toString(mhs.getNim()));
@@ -1199,13 +1201,19 @@ public class Percobaan extends javax.swing.JFrame {
         jLabel30.setText(mhs.getNomor());
         jLabel31.setText(mhs.getProdi());
     }
-    
-    private void tampilKeuangan(){
+
+    private void tampilKeuangan() {
         ControllerMahasiswa crl = new ControllerMahasiswa(152021169);
         Keuangan ku = crl.getKeuangan();
         dpp_wajib.setText(Double.toString(ku.getDpp_wajib()));
         ukt.setText(Double.toString(ku.getUkt()));
         ukv.setText(Double.toString(ku.getUkv()));
+    }
+
+    private double tampilIpk() {
+        ControllerMahasiswa crl = new ControllerMahasiswa(152021169);
+        double hasil = crl.getIpk();
+        return hasil;
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1231,7 +1239,7 @@ public class Percobaan extends javax.swing.JFrame {
         keuanganKuliah.setVisible(false);
         dashboard.setVisible(false);
         nilaiMahasiswa.setVisible(true);
-        tampilTabel();
+        tampilNilai();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

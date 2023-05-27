@@ -8,10 +8,13 @@ package Control;
 import Model.ConnectionManager;
 import Model.Keuangan;
 import Model.Mahasiswa;
+import Model.Nilai;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -53,6 +56,37 @@ public class ControllerMahasiswa {
         return mhs;
     }
 
+    public List<Nilai> getNilai() {
+        String query = "SELECT * FROM nilai_mhs WHERE nim='" + nim + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        List<Nilai> listn = new ArrayList<>();
+
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+
+            while (rs.next()) {
+                Nilai n = new Nilai(); // Memindahkan inisialisasi objek Nilai ke dalam perulangan while
+                n.setId(rs.getInt("id"));
+                n.setKode(rs.getString("kode"));
+                n.setMataKuliah(rs.getString("matakuliah"));
+                n.setSks(rs.getString("sks"));
+                n.setSemester(rs.getString("semester"));
+                n.setNilai(rs.getString("nilai"));
+                n.setBobot(rs.getString("bobot"));
+                n.setNk(rs.getString("nk"));
+                listn.add(n);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerMahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        conMan.logOff();
+        return listn;
+
+    }
+
     public Keuangan getKeuangan() {
         String query = "SELECT * FROM keuangan_mhs WHERE nim='" + nim + "'";
         ConnectionManager conMan = new ConnectionManager();
@@ -71,6 +105,31 @@ public class ControllerMahasiswa {
         }
         conMan.logOff();
         return ku;
+    }
+
+    public double getIpk() {
+        double ipk = 0.0;
+        int totalSks = 0;
+        double totalNilaiSks = 0.0;
+        String query = "SELECT * FROM nilai_mhs WHERE nim='" + nim + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                double bobot = rs.getDouble("bobot");
+                double sks = rs.getInt("sks");
+                totalNilaiSks += bobot * sks;
+                totalSks += sks;
+            }
+            if (totalSks > 0) {
+                ipk = totalNilaiSks / totalSks;
+            }
+        } catch (Exception e) {
+        }
+        System.out.println(ipk);
+        return ipk;
     }
 
 }
