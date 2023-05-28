@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Akun;
 import Model.ConnectionManager;
 import Model.Keuangan;
 import Model.Mahasiswa;
@@ -13,8 +14,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,14 +28,38 @@ import java.util.logging.Logger;
  */
 public class ControllerMahasiswa {
 
-    private int nim;
+    private Akun acc;
 
-    public ControllerMahasiswa(int nim) {
-        this.nim = nim;
+    public ControllerMahasiswa() {
+    }
+
+    public ControllerMahasiswa(Akun acc) {
+        this.acc = acc;
+    }
+
+    public Akun checkLogin(String username, String password) {
+        String query = "SELECT * FROM login_mhs WHERE username='" + username + "' AND password='" + password + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        Akun acc = null; // Inisialisasi dengan null
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            if (rs.next()) {
+                acc = new Akun();
+                acc.setNim(rs.getInt("nim"));
+                acc.setUsername(rs.getString("username"));
+                acc.setPassword(rs.getString("password"));
+            }
+        } catch (SQLException ex) {
+            // Tangani kesalahan
+        }
+        conMan.logOff();
+        return acc;
     }
 
     public Mahasiswa getMhs() {
-        String query = "SELECT * FROM mahasiswa WHERE nim='" + nim + "'";
+        String query = "SELECT * FROM mahasiswa WHERE nim='" + acc.getNim() + "'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         Mahasiswa mhs = new Mahasiswa();
@@ -50,14 +78,13 @@ public class ControllerMahasiswa {
                 mhs.setProdi(rs.getString("prodi"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerMahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return mhs;
     }
 
     public List<Nilai> getNilai() {
-        String query = "SELECT * FROM nilai_mhs WHERE nim='" + nim + "'";
+        String query = "SELECT * FROM nilai_mhs WHERE nim='" + acc.getNim() + "'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         List<Nilai> listn = new ArrayList<>();
@@ -79,7 +106,6 @@ public class ControllerMahasiswa {
                 listn.add(n);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerMahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         conMan.logOff();
@@ -88,7 +114,7 @@ public class ControllerMahasiswa {
     }
 
     public Keuangan getKeuangan() {
-        String query = "SELECT * FROM keuangan_mhs WHERE nim='" + nim + "'";
+        String query = "SELECT * FROM keuangan_mhs WHERE nim='" + acc.getNim() + "'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         Keuangan ku = new Keuangan();
@@ -99,19 +125,45 @@ public class ControllerMahasiswa {
                 ku.setDpp_wajib(rs.getInt("dpp_wajib"));
                 ku.setUkt(rs.getInt("ukt"));
                 ku.setUkv(rs.getInt("ukv"));
+                ku.setTanggalJatuhTempoPembayaran(rs.getTimestamp("tanggal_jatuh_tempo_pembayaran"));
+                ku.setTanggalJatuhTempoPerwalian(rs.getTimestamp("tanggal_jatuh_tempo_perwalian"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerMahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
+
+// Menghitung denda pembayaran jika terlambat
+        LocalDate currentDate = LocalDate.now();
+        LocalDate jatuhTempoPembayaran = ku.getTanggalJatuhTempoPembayaran().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int dendaPembayaran = 0;
+        if (currentDate.isAfter(jatuhTempoPembayaran)) {
+            dendaPembayaran = (int) Math.round((ku.getDpp_wajib() + ku.getUkt() + ku.getUkv()) * 0.05);
+        }
+
+// Menghitung denda perwalian jika terlambat
+        LocalDate jatuhTempoPerwalian = ku.getTanggalJatuhTempoPerwalian().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int dendaPerwalian = 0;
+        if (currentDate.isAfter(jatuhTempoPerwalian)) {
+            dendaPerwalian = (int) Math.round((ku.getDpp_wajib() + ku.getUkt() + ku.getUkv()) * 0.05);
+        }
+
+// Menghitung total denda jika terlambat pembayaran dan perwalian
+        int totalDenda = dendaPembayaran + dendaPerwalian;
+
+// Set nilai telat_perwalian dan telat_pembayaran berdasarkan kondisi
+        ku.setTelat_perwalian(dendaPerwalian);
+        ku.setTelat_pembayaran(dendaPembayaran);
+        ku.setTotalDenda(totalDenda);
+
         return ku;
+
     }
 
     public double getIpk() {
         double ipk = 0.0;
         int totalSks = 0;
         double totalNilaiSks = 0.0;
-        String query = "SELECT * FROM nilai_mhs WHERE nim='" + nim + "'";
+        String query = "SELECT * FROM nilai_mhs WHERE nim='" + acc.getNim() + "'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         try {
@@ -128,8 +180,46 @@ public class ControllerMahasiswa {
             }
         } catch (Exception e) {
         }
-        System.out.println(ipk);
         return ipk;
+    }
+
+    public double getSks() {
+        double ipk = 0.0;
+        int totalSks = 0;
+        double totalNilaiSks = 0.0;
+        String query = "SELECT * FROM nilai_mhs WHERE nim='" + acc.getNim() + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                double sks = rs.getInt("sks");
+                totalSks += sks;
+            }
+        } catch (Exception e) {
+        }
+        return totalSks;
+    }
+
+    public double getNk() {
+        double ipk = 0.0;
+        int totalSks = 0;
+        double totalNilaiSks = 0.0;
+        String query = "SELECT * FROM nilai_mhs WHERE nim='" + acc.getNim() + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                double bobot = rs.getDouble("bobot");
+                double sks = rs.getInt("sks");
+                totalNilaiSks += bobot * sks;
+            }
+        } catch (Exception e) {
+        }
+        return totalNilaiSks;
     }
 
 }

@@ -1,4 +1,4 @@
-package View;
+package View.Table;
 
 import java.awt.Color;
 import java.awt.Dimension;

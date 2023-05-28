@@ -5,6 +5,7 @@
 package View;
 
 import Control.ControllerMahasiswa;
+import Model.Akun;
 import Model.Keuangan;
 import Model.Mahasiswa;
 import Model.Nilai;
@@ -12,29 +13,36 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
 import javax.swing.event.MouseInputListener;
 import javax.swing.plaf.basic.BasicButtonUI;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 /**
  *
  * @author kingt
  */
-public class Percobaan extends javax.swing.JFrame {
+public class Index extends javax.swing.JFrame {
 
     /**
      * Creates new form Percobaan
      */
-    public Percobaan() {
+    private Akun acc;
+
+    public Index(Akun acc) {
+        this.acc = acc;
+        
         initComponents();
+        tampilKeuangan();
+        tampilNilai();
+        tampilDataMahasiswa();
+        tampilIpk();
+        setupButtonUI();
+    }
+
+    // Metode untuk mengatur tampilan dan perilaku tombol
+    private void setupButtonUI() {
         tableDark1.fixTable(jScrollPane1);
-        dashboard.setVisible(true);
-        dataMahasiswa.setVisible(false);
-        nilaiMahasiswa.setVisible(false);
-        keuanganKuliah.setVisible(false);
+        tableDark2.fixTable(jScrollPane2);
         JButton[] btns = {jButton1, jButton2, jButton3, jButton4, jButton6};
         for (JButton btn : btns) {
             btn.setBackground(new Color(33, 32, 36));
@@ -93,15 +101,6 @@ public class Percobaan extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         PanelContent = new javax.swing.JPanel();
-        nilaiMahasiswa = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableDark1 = new View.TableDark();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         dataMahasiswa = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -143,6 +142,17 @@ public class Percobaan extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
+        nilaiMahasiswa = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableDark1 = new View.Table.TableDark();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableDark2 = new View.Table.TableDark();
         keuanganKuliah = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
@@ -249,86 +259,6 @@ public class Percobaan extends javax.swing.JFrame {
 
         PanelContent.setMinimumSize(new java.awt.Dimension(0, 0));
         PanelContent.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        nilaiMahasiswa.setBackground(new java.awt.Color(23, 23, 26));
-        nilaiMahasiswa.setPreferredSize(new java.awt.Dimension(1000, 500));
-
-        jLabel1.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel1.setText("Nilai Mahasiswa");
-        jLabel1.setIconTextGap(0);
-
-        jLabel2.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel2.setText("Sistem Informasi Akademik");
-
-        tableDark1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(tableDark1);
-
-        jLabel6.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel6.setText("jLabel6");
-
-        jLabel11.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel11.setText("N.I.M : ");
-
-        jLabel8.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel8.setText("jLabel8");
-
-        jLabel7.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel7.setText("Wali Dosen : ");
-
-        javax.swing.GroupLayout nilaiMahasiswaLayout = new javax.swing.GroupLayout(nilaiMahasiswa);
-        nilaiMahasiswa.setLayout(nilaiMahasiswaLayout);
-        nilaiMahasiswaLayout.setHorizontalGroup(
-            nilaiMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(nilaiMahasiswaLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(nilaiMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(nilaiMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(nilaiMahasiswaLayout.createSequentialGroup()
-                            .addComponent(jLabel11)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6))
-                        .addGroup(nilaiMahasiswaLayout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(5, 5, 5)
-                            .addComponent(jLabel8))))
-                .addContainerGap(240, Short.MAX_VALUE))
-        );
-        nilaiMahasiswaLayout.setVerticalGroup(
-            nilaiMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(nilaiMahasiswaLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(nilaiMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel6))
-                .addGap(4, 4, 4)
-                .addGroup(nilaiMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
-        );
-
-        PanelContent.add(nilaiMahasiswa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
-        nilaiMahasiswa.getAccessibleContext().setAccessibleName("");
 
         dataMahasiswa.setBackground(new java.awt.Color(23, 23, 26));
         dataMahasiswa.setPreferredSize(new java.awt.Dimension(900, 500));
@@ -843,6 +773,109 @@ public class Percobaan extends javax.swing.JFrame {
         PanelContent.add(dataMahasiswa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
         dataMahasiswa.getAccessibleContext().setAccessibleName("");
 
+        nilaiMahasiswa.setBackground(new java.awt.Color(23, 23, 26));
+        nilaiMahasiswa.setPreferredSize(new java.awt.Dimension(1000, 500));
+
+        jLabel1.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel1.setText("Nilai Mahasiswa");
+        jLabel1.setIconTextGap(0);
+
+        jLabel2.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel2.setText("Sistem Informasi Akademik");
+
+        tableDark1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tableDark1);
+
+        jLabel6.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel6.setText("jLabel6");
+
+        jLabel11.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel11.setText("N.I.M : ");
+
+        jLabel8.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel8.setText("jLabel8");
+
+        jLabel7.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel7.setText("Wali Dosen : ");
+
+        jScrollPane2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane2MouseClicked(evt);
+            }
+        });
+
+        tableDark2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tableDark2);
+
+        javax.swing.GroupLayout nilaiMahasiswaLayout = new javax.swing.GroupLayout(nilaiMahasiswa);
+        nilaiMahasiswa.setLayout(nilaiMahasiswaLayout);
+        nilaiMahasiswaLayout.setHorizontalGroup(
+            nilaiMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(nilaiMahasiswaLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(nilaiMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(nilaiMahasiswaLayout.createSequentialGroup()
+                        .addGroup(nilaiMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel7))
+                        .addGap(21, 21, 21)
+                        .addGroup(nilaiMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel6)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(240, Short.MAX_VALUE))
+        );
+        nilaiMahasiswaLayout.setVerticalGroup(
+            nilaiMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(nilaiMahasiswaLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(nilaiMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel6))
+                .addGap(4, 4, 4)
+                .addGroup(nilaiMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(327, 327, 327))
+        );
+
+        PanelContent.add(nilaiMahasiswa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
+        nilaiMahasiswa.getAccessibleContext().setAccessibleName("");
+
         keuanganKuliah.setBackground(new java.awt.Color(23, 23, 26));
         keuanganKuliah.setPreferredSize(new java.awt.Dimension(1000, 500));
 
@@ -1159,7 +1192,7 @@ public class Percobaan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tampilNilai() {
-        ControllerMahasiswa crl = new ControllerMahasiswa(152021169);
+        ControllerMahasiswa crl = new ControllerMahasiswa(acc);
         List<Nilai> listn = crl.getNilai();
         DefaultTableModel model = (DefaultTableModel) tableDark1.getModel();
         model.setRowCount(0);
@@ -1185,11 +1218,10 @@ public class Percobaan extends javax.swing.JFrame {
                 n.getNk()
             });
         }
-
     }
 
     private void tampilDataMahasiswa() {
-        ControllerMahasiswa crl = new ControllerMahasiswa(152021169);
+        ControllerMahasiswa crl = new ControllerMahasiswa(acc);
         Mahasiswa mhs = crl.getMhs();
         jLabel23.setText(Integer.toString(mhs.getNim()));
         jLabel24.setText(mhs.getNama());
@@ -1200,20 +1232,42 @@ public class Percobaan extends javax.swing.JFrame {
         jLabel29.setText(mhs.getEmail());
         jLabel30.setText(mhs.getNomor());
         jLabel31.setText(mhs.getProdi());
+        //untuk form nilai
+        jLabel6.setText(mhs.getNama());
+        jLabel8.setText(mhs.getDosen_wali());
     }
 
     private void tampilKeuangan() {
-        ControllerMahasiswa crl = new ControllerMahasiswa(152021169);
+        ControllerMahasiswa crl = new ControllerMahasiswa(acc);
         Keuangan ku = crl.getKeuangan();
         dpp_wajib.setText(Double.toString(ku.getDpp_wajib()));
         ukt.setText(Double.toString(ku.getUkt()));
         ukv.setText(Double.toString(ku.getUkv()));
+        telat_pembayaran.setText(Integer.toString(ku.getTelat_pembayaran()));
+        telat_perwalian.setText(Integer.toString(ku.getTelat_perwalian()));
     }
 
-    private double tampilIpk() {
-        ControllerMahasiswa crl = new ControllerMahasiswa(152021169);
-        double hasil = crl.getIpk();
-        return hasil;
+    private void tampilIpk() {
+        ControllerMahasiswa crl = new ControllerMahasiswa(acc);
+        DefaultTableModel model = (DefaultTableModel) tableDark2.getModel();
+        Mahasiswa mhs = crl.getMhs();
+        model.setRowCount(0);
+
+        model.addColumn("Semester Aktif");
+        model.addColumn("Status");
+        model.addColumn("Batas Studi");
+        model.addColumn("IPK");
+        model.addColumn("SKS");
+        model.addColumn("NxK");
+
+        model.addRow(new Object[]{
+            mhs.getSemester_aktif(),
+            mhs.getStatus(),
+            mhs.getBatas_studi(),
+            crl.getIpk(),
+            crl.getSks(),
+            crl.getNk()
+        });
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1222,7 +1276,6 @@ public class Percobaan extends javax.swing.JFrame {
         nilaiMahasiswa.setVisible(false);
         keuanganKuliah.setVisible(false);
         dataMahasiswa.setVisible(true);
-        tampilDataMahasiswa();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -1239,7 +1292,6 @@ public class Percobaan extends javax.swing.JFrame {
         keuanganKuliah.setVisible(false);
         dashboard.setVisible(false);
         nilaiMahasiswa.setVisible(true);
-        tampilNilai();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -1248,8 +1300,11 @@ public class Percobaan extends javax.swing.JFrame {
         dashboard.setVisible(false);
         nilaiMahasiswa.setVisible(false);
         keuanganKuliah.setVisible(true);
-        tampilKeuangan();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jScrollPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jScrollPane2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1268,20 +1323,21 @@ public class Percobaan extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Percobaan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Index.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Percobaan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Index.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Percobaan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Index.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Percobaan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Index.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Percobaan().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }
@@ -1370,10 +1426,12 @@ public class Percobaan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel keuanganKuliah;
     private javax.swing.JPanel nilaiMahasiswa;
     private javax.swing.JPanel sidePanel;
-    private View.TableDark tableDark1;
+    private View.Table.TableDark tableDark1;
+    private View.Table.TableDark tableDark2;
     private javax.swing.JLabel telat_pembayaran;
     private javax.swing.JLabel telat_perwalian;
     private javax.swing.JLabel ukt;
@@ -1381,4 +1439,8 @@ public class Percobaan extends javax.swing.JFrame {
     private javax.swing.JLabel ukv;
     private javax.swing.JPanel ukv1;
     // End of variables declaration//GEN-END:variables
+
+    public void setAcc(Akun acc) {
+        this.acc = acc;
+    }
 }
