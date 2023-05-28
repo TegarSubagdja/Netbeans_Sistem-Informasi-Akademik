@@ -45,7 +45,6 @@ public class TableDark extends JTable {
     }
 
     public void fixTable(JScrollPane scroll) {
-        scroll.setVerticalScrollBar(new ScrollBarCustom());
         JPanel panel = new JPanel();
         panel.setBackground(new Color(30, 30, 30));
         scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, panel);

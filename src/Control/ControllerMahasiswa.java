@@ -132,7 +132,7 @@ public class ControllerMahasiswa {
         }
         conMan.logOff();
 
-// Menghitung denda pembayaran jika terlambat
+        // Menghitung denda pembayaran jika terlambat
         LocalDate currentDate = LocalDate.now();
         LocalDate jatuhTempoPembayaran = ku.getTanggalJatuhTempoPembayaran().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         int dendaPembayaran = 0;
@@ -140,17 +140,17 @@ public class ControllerMahasiswa {
             dendaPembayaran = (int) Math.round((ku.getDpp_wajib() + ku.getUkt() + ku.getUkv()) * 0.05);
         }
 
-// Menghitung denda perwalian jika terlambat
+        // Menghitung denda perwalian jika terlambat
         LocalDate jatuhTempoPerwalian = ku.getTanggalJatuhTempoPerwalian().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         int dendaPerwalian = 0;
         if (currentDate.isAfter(jatuhTempoPerwalian)) {
             dendaPerwalian = (int) Math.round((ku.getDpp_wajib() + ku.getUkt() + ku.getUkv()) * 0.05);
         }
 
-// Menghitung total denda jika terlambat pembayaran dan perwalian
+        // Menghitung total denda jika terlambat pembayaran dan perwalian
         int totalDenda = dendaPembayaran + dendaPerwalian;
 
-// Set nilai telat_perwalian dan telat_pembayaran berdasarkan kondisi
+        // Set nilai telat_perwalian dan telat_pembayaran berdasarkan kondisi
         ku.setTelat_perwalian(dendaPerwalian);
         ku.setTelat_pembayaran(dendaPembayaran);
         ku.setTotalDenda(totalDenda);
