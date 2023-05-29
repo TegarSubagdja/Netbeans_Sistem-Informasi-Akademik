@@ -18,12 +18,13 @@ public class Keuangan {
     private Date TanggalJatuhTempoPerwalian;
     private int Telat_pembayaran;
     private int Telat_perwalian;
+    private boolean lunas;
     private int totalDenda;
 
     public Keuangan() {
     }
 
-    public Keuangan(double dpp_wajib, double ukt, double ukv, Date TanggalJatuhTempoPembayaran, Date TanggalJatuhTempoPerwalian, int Telat_pembayaran, int Telat_perwalian, int totalDenda) {
+    public Keuangan(double dpp_wajib, double ukt, double ukv, Date TanggalJatuhTempoPembayaran, Date TanggalJatuhTempoPerwalian, int Telat_pembayaran, int Telat_perwalian, boolean lunas, int totalDenda) {
         this.dpp_wajib = dpp_wajib;
         this.ukt = ukt;
         this.ukv = ukv;
@@ -31,6 +32,7 @@ public class Keuangan {
         this.TanggalJatuhTempoPerwalian = TanggalJatuhTempoPerwalian;
         this.Telat_pembayaran = Telat_pembayaran;
         this.Telat_perwalian = Telat_perwalian;
+        this.lunas = lunas;
         this.totalDenda = totalDenda;
     }
 
@@ -88,6 +90,14 @@ public class Keuangan {
 
     public void setTelat_perwalian(int Telat_perwalian) {
         this.Telat_perwalian = Telat_perwalian;
+    }
+
+    public boolean isLunas() {
+        return lunas;
+    }
+
+    public void setLunas(boolean lunas) {
+        this.lunas = lunas;
     }
 
     public int getTotalDenda() {

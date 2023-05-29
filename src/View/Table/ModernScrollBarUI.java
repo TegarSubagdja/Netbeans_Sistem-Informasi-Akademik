@@ -81,7 +81,7 @@ public class ModernScrollBarUI extends BasicScrollBarUI {
         if (scrollbar.getOrientation() == JScrollBar.VERTICAL) {
             y += 8;
             height -= 16;
-        } else {
+        } else if (scrollbar.getOrientation() == JScrollBar.HORIZONTAL) { // Tambahkan kondisi untuk orientasi horizontal
             x += 8;
             width -= 16;
         }

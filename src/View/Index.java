@@ -9,7 +9,6 @@ import Model.Akun;
 import Model.Keuangan;
 import Model.Mahasiswa;
 import Model.Nilai;
-import View.PopUp.Edit;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -40,6 +39,9 @@ public class Index extends javax.swing.JFrame {
         dataMahasiswa.setVisible(false);
         nilaiMahasiswa.setVisible(false);
         keuanganKuliah.setVisible(false);
+        tableDark1.fixTable(jScrollPane1);
+        tableDark1.fixTable(jScrollPane2);
+        tableDark1.fixTable1(jScrollPane3);
     }
 
     // Metode untuk mengatur tampilan dan perilaku tombol
@@ -160,6 +162,11 @@ public class Index extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableDark2 = new View.Table.TableDark();
+        JadwakMahasiswa = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jLabel13 = new javax.swing.JLabel();
         keuanganKuliah = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
@@ -243,6 +250,16 @@ public class Index extends javax.swing.JFrame {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icons8_event_accepted_tentatively_20px.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setPreferredSize(new java.awt.Dimension(40, 40));
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton3KeyPressed(evt);
+            }
+        });
         sidePanel.add(jButton3);
 
         jButton4.setBackground(new java.awt.Color(33, 32, 36));
@@ -345,7 +362,7 @@ public class Index extends javax.swing.JFrame {
                         .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(296, Short.MAX_VALUE))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
 
         PanelContent.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
@@ -960,7 +977,7 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(57, 57, 57)
                 .addGroup(nilaiMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(jLabel6))
@@ -968,15 +985,59 @@ public class Index extends javax.swing.JFrame {
                 .addGroup(nilaiMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(327, 327, 327))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(331, 331, 331))
         );
 
         PanelContent.add(nilaiMahasiswa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
         nilaiMahasiswa.getAccessibleContext().setAccessibleName("");
+
+        JadwakMahasiswa.setBackground(new java.awt.Color(23, 23, 26));
+        JadwakMahasiswa.setPreferredSize(new java.awt.Dimension(1000, 500));
+
+        jLabel5.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel5.setText("Jadwal Perkuliahan");
+        jLabel5.setIconTextGap(0);
+
+        jLabel12.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel12.setText("Sistem Informasi Akademik");
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/w801.png"))); // NOI18N
+        jLabel13.setText("jLabel13");
+        jScrollPane3.setViewportView(jLabel13);
+
+        javax.swing.GroupLayout JadwakMahasiswaLayout = new javax.swing.GroupLayout(JadwakMahasiswa);
+        JadwakMahasiswa.setLayout(JadwakMahasiswaLayout);
+        JadwakMahasiswaLayout.setHorizontalGroup(
+            JadwakMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JadwakMahasiswaLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(JadwakMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addGroup(JadwakMahasiswaLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(JadwakMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))))
+                .addContainerGap(178, Short.MAX_VALUE))
+        );
+        JadwakMahasiswaLayout.setVerticalGroup(
+            JadwakMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JadwakMahasiswaLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+        );
+
+        PanelContent.add(JadwakMahasiswa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
         keuanganKuliah.setBackground(new java.awt.Color(23, 23, 26));
         keuanganKuliah.setPreferredSize(new java.awt.Dimension(1000, 500));
@@ -1293,6 +1354,7 @@ public class Index extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         nilaiMahasiswa.setVisible(false);
+        JadwakMahasiswa.setVisible(false);
         keuanganKuliah.setVisible(false);
         dataMahasiswa.setVisible(false);
         dashboard.setVisible(true);
@@ -1301,6 +1363,7 @@ public class Index extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         dataMahasiswa.setVisible(false);
+        JadwakMahasiswa.setVisible(false);
         keuanganKuliah.setVisible(false);
         dashboard.setVisible(false);
         nilaiMahasiswa.setVisible(true);
@@ -1309,6 +1372,7 @@ public class Index extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         dataMahasiswa.setVisible(false);
+        JadwakMahasiswa.setVisible(false);
         dashboard.setVisible(false);
         nilaiMahasiswa.setVisible(false);
         keuanganKuliah.setVisible(true);
@@ -1329,6 +1393,19 @@ public class Index extends javax.swing.JFrame {
     private void tableDark2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDark2MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_tableDark2MouseEntered
+
+    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3KeyPressed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        dataMahasiswa.setVisible(false);
+        dashboard.setVisible(false);
+        nilaiMahasiswa.setVisible(false);
+        keuanganKuliah.setVisible(false);
+        JadwakMahasiswa.setVisible(true);
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1367,6 +1444,7 @@ public class Index extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JadwakMahasiswa;
     private javax.swing.JPanel PanelContent;
     private javax.swing.JPanel dashboard;
     private javax.swing.JPanel dataMahasiswa;
@@ -1380,6 +1458,8 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -1410,6 +1490,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel6;
@@ -1451,6 +1532,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel keuanganKuliah;
     private javax.swing.JPanel nilaiMahasiswa;
     private javax.swing.JPanel sidePanel;

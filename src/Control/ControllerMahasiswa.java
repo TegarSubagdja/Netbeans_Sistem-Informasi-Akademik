@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -127,24 +128,30 @@ public class ControllerMahasiswa {
                 ku.setUkv(rs.getInt("ukv"));
                 ku.setTanggalJatuhTempoPembayaran(rs.getTimestamp("tanggal_jatuh_tempo_pembayaran"));
                 ku.setTanggalJatuhTempoPerwalian(rs.getTimestamp("tanggal_jatuh_tempo_perwalian"));
+                ku.setLunas(rs.getBoolean("lunas")); // Tambahkan field untuk status pembayaran (lunas)
             }
         } catch (SQLException ex) {
         }
         conMan.logOff();
 
         // Menghitung denda pembayaran jika terlambat
-        LocalDate currentDate = LocalDate.now();
-        LocalDate jatuhTempoPembayaran = ku.getTanggalJatuhTempoPembayaran().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         int dendaPembayaran = 0;
-        if (currentDate.isAfter(jatuhTempoPembayaran)) {
-            dendaPembayaran = (int) Math.round((ku.getDpp_wajib() + ku.getUkt() + ku.getUkv()) * 0.05);
+        if (!ku.isLunas()) { // Memeriksa apakah belum lunas sebelum mengenakan denda
+            LocalDate currentDate = LocalDate.now();
+            LocalDate jatuhTempoPembayaran = ku.getTanggalJatuhTempoPembayaran().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            if (currentDate.isAfter(jatuhTempoPembayaran)) {
+                dendaPembayaran = (int) Math.round((ku.getDpp_wajib() + ku.getUkt() + ku.getUkv()) * 0.05);
+            }
         }
 
         // Menghitung denda perwalian jika terlambat
-        LocalDate jatuhTempoPerwalian = ku.getTanggalJatuhTempoPerwalian().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         int dendaPerwalian = 0;
-        if (currentDate.isAfter(jatuhTempoPerwalian)) {
-            dendaPerwalian = (int) Math.round((ku.getDpp_wajib() + ku.getUkt() + ku.getUkv()) * 0.05);
+        if (!ku.isLunas()) { // Memeriksa apakah belum lunas sebelum mengenakan denda
+            LocalDate currentDate = LocalDate.now();
+            LocalDate jatuhTempoPerwalian = ku.getTanggalJatuhTempoPerwalian().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            if (currentDate.isAfter(jatuhTempoPerwalian)) {
+                dendaPerwalian = (int) Math.round((ku.getDpp_wajib() + ku.getUkt() + ku.getUkv()) * 0.05);
+            }
         }
 
         // Menghitung total denda jika terlambat pembayaran dan perwalian
@@ -156,7 +163,6 @@ public class ControllerMahasiswa {
         ku.setTotalDenda(totalDenda);
 
         return ku;
-
     }
 
     public double getIpk() {
@@ -177,10 +183,15 @@ public class ControllerMahasiswa {
             }
             if (totalSks > 0) {
                 ipk = totalNilaiSks / totalSks;
+                ipk = Math.ceil(ipk * 100) / 100; // Bulatkan IPK ke dua angka setelah koma (bulat atas)
             }
         } catch (Exception e) {
         }
-        return ipk;
+
+        DecimalFormat df = new DecimalFormat("#0.00");
+        String formattedIpk = df.format(ipk);
+
+        return Double.parseDouble(formattedIpk);
     }
 
     public double getSks() {

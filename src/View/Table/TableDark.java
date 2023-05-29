@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
@@ -46,6 +47,17 @@ public class TableDark extends JTable {
 
     public void fixTable(JScrollPane scroll) {
         JPanel panel = new JPanel();
+        scroll.setVerticalScrollBar(new ScrollBarCustom(JScrollBar.VERTICAL));
+        panel.setBackground(new Color(30, 30, 30));
+        scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, panel);
+        scroll.getViewport().setBackground(new Color(30, 30, 30));
+        scroll.setBorder(BorderFactory.createLineBorder(new Color(60, 60, 60), 2));
+    }
+
+    public void fixTable1(JScrollPane scroll) {
+        JPanel panel = new JPanel();
+        scroll.setVerticalScrollBar(new ScrollBarCustom(JScrollBar.VERTICAL));
+        scroll.setHorizontalScrollBar(new ScrollBarCustom(JScrollBar.HORIZONTAL)); 
         panel.setBackground(new Color(30, 30, 30));
         scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, panel);
         scroll.getViewport().setBackground(new Color(30, 30, 30));

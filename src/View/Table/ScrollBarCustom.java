@@ -6,10 +6,12 @@ import javax.swing.JScrollBar;
 
 public class ScrollBarCustom extends JScrollBar {
 
-    public ScrollBarCustom() {
+    public ScrollBarCustom(int orientation) {
+        setOrientation(orientation); // Mengatur orientasi scrollbar
         setUI(new ModernScrollBarUI());
         setPreferredSize(new Dimension(8, 8));
-        setForeground(new Color(48, 144, 216));
+        setForeground(new Color(91, 88, 99));
         setBackground(new Color(30, 30, 30));
     }
+
 }
