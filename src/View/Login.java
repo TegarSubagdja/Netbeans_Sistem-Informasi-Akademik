@@ -17,7 +17,7 @@ public class Login extends javax.swing.JFrame {
     }
     
     private void setupButtonUI() {
-        JButton[] btns = {jButton1, jButton2};
+        JButton[] btns = {jButton1};
         for (JButton btn : btns) {
             btn.setBackground(new Color(51,51,51));
             btn.setUI(new BasicButtonUI());
