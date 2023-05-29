@@ -134,9 +134,8 @@ public class ControllerMahasiswa {
         }
         conMan.logOff();
 
-        // Menghitung denda pembayaran jika terlambat
         int dendaPembayaran = 0;
-        if (!ku.isLunas()) { // Memeriksa apakah belum lunas sebelum mengenakan denda
+        if (!ku.isLunas()) {
             LocalDate currentDate = LocalDate.now();
             LocalDate jatuhTempoPembayaran = ku.getTanggalJatuhTempoPembayaran().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             if (currentDate.isAfter(jatuhTempoPembayaran)) {
@@ -144,9 +143,8 @@ public class ControllerMahasiswa {
             }
         }
 
-        // Menghitung denda perwalian jika terlambat
         int dendaPerwalian = 0;
-        if (!ku.isLunas()) { // Memeriksa apakah belum lunas sebelum mengenakan denda
+        if (!ku.isLunas()) {
             LocalDate currentDate = LocalDate.now();
             LocalDate jatuhTempoPerwalian = ku.getTanggalJatuhTempoPerwalian().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             if (currentDate.isAfter(jatuhTempoPerwalian)) {
@@ -154,10 +152,8 @@ public class ControllerMahasiswa {
             }
         }
 
-        // Menghitung total denda jika terlambat pembayaran dan perwalian
         int totalDenda = dendaPembayaran + dendaPerwalian;
 
-        // Set nilai telat_perwalian dan telat_pembayaran berdasarkan kondisi
         ku.setTelat_perwalian(dendaPerwalian);
         ku.setTelat_pembayaran(dendaPembayaran);
         ku.setTotalDenda(totalDenda);
@@ -233,4 +229,19 @@ public class ControllerMahasiswa {
         return totalNilaiSks;
     }
 
+    public int updateDataMahasiswa(String field, String value) {
+        int hasil = 0;
+        String query = "UPDATE Mahasiswa SET " + field + " = '" + value + "' WHERE nim = '" + acc.getNim() + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        Statement stm = null;
+        try {
+            stm = conn.createStatement();
+            hasil = stm.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        conMan.logOff();
+        return hasil;
+    }
 }
