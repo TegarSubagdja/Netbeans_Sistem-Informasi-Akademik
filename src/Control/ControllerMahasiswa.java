@@ -9,7 +9,9 @@ import Model.Akun;
 import Model.ConnectionManager;
 import Model.Keuangan;
 import Model.Mahasiswa;
+import Model.Matakuliah;
 import Model.Nilai;
+import Model.Perwalian;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -111,7 +113,34 @@ public class ControllerMahasiswa {
 
         conMan.logOff();
         return listn;
+    }
 
+    public List<Matakuliah> getMatakuliah() {
+        String query = "SELECT * FROM Matakuliah";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        List<Matakuliah> listMk = new ArrayList<>();
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                Matakuliah n = new Matakuliah(); // Memindahkan inisialisasi objek Nilai ke dalam perulangan while
+                n.setMatakuliah(rs.getString("matakuliah"));
+                n.setSks(rs.getInt("sks"));
+                n.setKelas(rs.getString("kelas"));
+                n.setJenis(rs.getString("jenis"));
+                n.setSisa(rs.getString("sisa"));
+                n.setStatus_awal(rs.getString("status_awal"));
+                n.setBdatm(rs.getString("bdatm"));
+                n.setApprove_wali(rs.getString("Approve_wali"));
+                n.setHari(rs.getString("hari"));
+                n.setJam(rs.getString("jam"));
+                listMk.add(n);
+            }
+        } catch (SQLException ex) {
+        }
+        conMan.logOff();
+        return listMk;
     }
 
     public Keuangan getKeuangan() {
@@ -190,6 +219,35 @@ public class ControllerMahasiswa {
         return Double.parseDouble(formattedIpk);
     }
 
+    public double maxSks() {
+        double ipk = 0.0;
+        int totalSks = 0;
+        double totalNilaiSks = 0.0;
+        String query = "SELECT * FROM nilai_mhs WHERE nim='" + acc.getNim() + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                double bobot = rs.getDouble("bobot");
+                double sks = rs.getInt("sks");
+                totalNilaiSks += bobot * sks;
+                totalSks += sks;
+            }
+            if (totalSks > 0) {
+                ipk = totalNilaiSks / totalSks;
+                ipk = Math.ceil(ipk * 100) / 100; // Bulatkan IPK ke dua angka setelah koma (bulat atas)
+            }
+        } catch (Exception e) {
+        }
+        if (ipk <= 3.0) {
+            return 20.0;
+        } else {
+            return 24.0;
+        }
+    }
+
     public double getSks() {
         double ipk = 0.0;
         int totalSks = 0;
@@ -242,6 +300,38 @@ public class ControllerMahasiswa {
             e.printStackTrace();
         }
         conMan.logOff();
+        return hasil;
+    }
+
+    public Perwalian totalSks() {
+        int sksAmbil = 0;
+        String query = "SELECT * FROM perwalian_mhs WHERE nim='" + acc.getNim() + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        Perwalian pw = new Perwalian();
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                pw.setSks(rs.getInt("sks"));
+                pw.setMk(rs.getInt("mk"));
+                pw.setApprove_wali(rs.getDate("approve_wali"));
+            }
+        } catch (Exception e) {
+        }
+        return pw;
+    }
+
+    public int tambahSks(int sks) {
+        int hasil = 0;
+        String query = "UPDATE perwalian_mhs SET sks='" + sks + "'" + " WHERE nim='" + acc.getNim() + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            hasil = stm.executeUpdate(query);
+        } catch (Exception e) {
+        }
         return hasil;
     }
 }
