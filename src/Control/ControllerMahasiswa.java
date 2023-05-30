@@ -142,6 +142,12 @@ public class ControllerMahasiswa {
         conMan.logOff();
         return listMk;
     }
+    
+    public void updateKeuangan() {
+        String query = "SELECT * FROM keuangan_mhs WHERE nim='" + acc.getNim() + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+    }
 
     public Keuangan getKeuangan() {
         String query = "SELECT * FROM keuangan_mhs WHERE nim='" + acc.getNim() + "'";
@@ -303,8 +309,7 @@ public class ControllerMahasiswa {
         return hasil;
     }
 
-    public Perwalian totalSks() {
-        int sksAmbil = 0;
+    public Perwalian getPerwalian() {
         String query = "SELECT * FROM perwalian_mhs WHERE nim='" + acc.getNim() + "'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
@@ -324,7 +329,7 @@ public class ControllerMahasiswa {
 
     public int tambahSks(int sks) {
         int hasil = 0;
-        String query = "UPDATE perwalian_mhs SET sks='" + sks + "'" + " WHERE nim='" + acc.getNim() + "'";
+        String query = "UPDATE perwalian_mhs SET sks='" + sks + "', mk=(mk+1) WHERE nim=" + acc.getNim();
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         try {
@@ -332,6 +337,7 @@ public class ControllerMahasiswa {
             hasil = stm.executeUpdate(query);
         } catch (Exception e) {
         }
+        updateKeuangan();
         return hasil;
     }
 }

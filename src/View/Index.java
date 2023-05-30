@@ -117,17 +117,6 @@ public class Index extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         PanelContent = new javax.swing.JPanel();
-        Perwalian = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tableDark3 = new View.Table.TableDark();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tableDark4 = new View.Table.TableDark();
         dashboard = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -192,6 +181,17 @@ public class Index extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jLabel13 = new javax.swing.JLabel();
+        Perwalian = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tableDark3 = new View.Table.TableDark();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tableDark4 = new View.Table.TableDark();
         keuanganKuliah = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
@@ -339,121 +339,6 @@ public class Index extends javax.swing.JFrame {
 
         PanelContent.setMinimumSize(new java.awt.Dimension(0, 0));
         PanelContent.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Perwalian.setBackground(new java.awt.Color(23, 23, 26));
-        Perwalian.setPreferredSize(new java.awt.Dimension(1000, 500));
-
-        jLabel14.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 36)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel14.setText("Perwalian");
-        jLabel14.setIconTextGap(0);
-
-        jLabel15.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel15.setText("Sistem Informasi Akademik");
-
-        tableDark3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        tableDark3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableDark3MouseClicked(evt);
-            }
-        });
-        jScrollPane4.setViewportView(tableDark3);
-
-        jLabel32.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel32.setText("jLabel6");
-
-        jLabel33.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel33.setText("N.I.M : ");
-
-        jLabel34.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel34.setText("jLabel8");
-
-        jLabel45.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jLabel45.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel45.setText("Wali Dosen : ");
-
-        jScrollPane5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jScrollPane5MouseClicked(evt);
-            }
-        });
-
-        tableDark4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        tableDark4.getTableHeader().setReorderingAllowed(false);
-        tableDark4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableDark4MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tableDark4MouseEntered(evt);
-            }
-        });
-        jScrollPane5.setViewportView(tableDark4);
-
-        javax.swing.GroupLayout PerwalianLayout = new javax.swing.GroupLayout(Perwalian);
-        Perwalian.setLayout(PerwalianLayout);
-        PerwalianLayout.setHorizontalGroup(
-            PerwalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PerwalianLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(PerwalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel14)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PerwalianLayout.createSequentialGroup()
-                        .addGroup(PerwalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel33)
-                            .addComponent(jLabel45))
-                        .addGap(21, 21, 21)
-                        .addGroup(PerwalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel34)
-                            .addComponent(jLabel32)))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(240, Short.MAX_VALUE))
-        );
-        PerwalianLayout.setVerticalGroup(
-            PerwalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PerwalianLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addGroup(PerwalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel33)
-                    .addComponent(jLabel32))
-                .addGap(4, 4, 4)
-                .addGroup(PerwalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel45)
-                    .addComponent(jLabel34))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(331, 331, 331))
-        );
-
-        PanelContent.add(Perwalian, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
         dashboard.setBackground(new java.awt.Color(23, 23, 26));
         dashboard.setPreferredSize(new java.awt.Dimension(1000, 500));
@@ -1261,6 +1146,121 @@ public class Index extends javax.swing.JFrame {
 
         PanelContent.add(JadwakMahasiswa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
+        Perwalian.setBackground(new java.awt.Color(23, 23, 26));
+        Perwalian.setPreferredSize(new java.awt.Dimension(1000, 500));
+
+        jLabel14.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 36)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel14.setText("Perwalian");
+        jLabel14.setIconTextGap(0);
+
+        jLabel15.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel15.setText("Sistem Informasi Akademik");
+
+        tableDark3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tableDark3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableDark3MouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tableDark3);
+
+        jLabel32.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel32.setText("jLabel6");
+
+        jLabel33.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel33.setText("N.I.M : ");
+
+        jLabel34.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel34.setText("jLabel8");
+
+        jLabel45.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel45.setText("Wali Dosen : ");
+
+        jScrollPane5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane5MouseClicked(evt);
+            }
+        });
+
+        tableDark4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableDark4.getTableHeader().setReorderingAllowed(false);
+        tableDark4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableDark4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tableDark4MouseEntered(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tableDark4);
+
+        javax.swing.GroupLayout PerwalianLayout = new javax.swing.GroupLayout(Perwalian);
+        Perwalian.setLayout(PerwalianLayout);
+        PerwalianLayout.setHorizontalGroup(
+            PerwalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PerwalianLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(PerwalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel14)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PerwalianLayout.createSequentialGroup()
+                        .addGroup(PerwalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel33)
+                            .addComponent(jLabel45))
+                        .addGap(21, 21, 21)
+                        .addGroup(PerwalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel34)
+                            .addComponent(jLabel32)))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(240, Short.MAX_VALUE))
+        );
+        PerwalianLayout.setVerticalGroup(
+            PerwalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PerwalianLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addGroup(PerwalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel33)
+                    .addComponent(jLabel32))
+                .addGap(4, 4, 4)
+                .addGroup(PerwalianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel45)
+                    .addComponent(jLabel34))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(331, 331, 331))
+        );
+
+        PanelContent.add(Perwalian, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
+
         keuanganKuliah.setBackground(new java.awt.Color(23, 23, 26));
         keuanganKuliah.setPreferredSize(new java.awt.Dimension(1000, 500));
 
@@ -1618,29 +1618,43 @@ public class Index extends javax.swing.JFrame {
         });
     }
 
-    private void tambahSks(int sks) {
+    private void tambahMk(int sks) {
         ControllerMahasiswa crl = new ControllerMahasiswa(acc);
-        Perwalian pw = crl.totalSks();
+        Perwalian pw = crl.getPerwalian();
+        double maxSks = crl.maxSks();
         int current_sks = pw.getSks();
         int totSks = current_sks + sks;
-        crl.tambahSks(totSks);
+        if (totSks >= maxSks) {
+            JOptionPane.showMessageDialog(null, "SKS Melebihi Batas Boleh Ambil!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+        } else {
+            crl.tambahSks(totSks);
+        }
     }
 
-//    private int tambahMk(){
-//        ControllerMahasiswa crl = new ControllerMahasiswa(acc);
-//        int mk = crl.getSP();
-//        return ; 
-//    }
     private void tampilSksAmbil() {
         ControllerMahasiswa crl = new ControllerMahasiswa(acc);
         DefaultTableModel model = (DefaultTableModel) tableDark4.getModel();
-        Perwalian pw = crl.totalSks();
+        Perwalian pw = crl.getPerwalian();
         model.setRowCount(0);
 
         model.addColumn("Maksimal SKS");
         model.addColumn("SKS Diambil");
         model.addColumn("Jumlah Mata Kuliah");
         model.addColumn("Diajukan Tanggal");
+
+        model.addRow(new Object[]{
+            crl.maxSks(),
+            pw.getSks(),
+            pw.getMk(),
+            pw.getApprove_wali()
+        });
+    }
+
+    private void tampilSksAmbilUpdate() {
+        ControllerMahasiswa crl = new ControllerMahasiswa(acc);
+        DefaultTableModel model = (DefaultTableModel) tableDark4.getModel();
+        Perwalian pw = crl.getPerwalian();
+        model.setRowCount(0);
 
         model.addRow(new Object[]{
             crl.maxSks(),
@@ -1820,19 +1834,12 @@ public class Index extends javax.swing.JFrame {
         int sks = (int) tableDark3.getValueAt(baris, 1);
 
         if (confirmed) {
-            tambahSks(sks);
-            ControllerMahasiswa crl = new ControllerMahasiswa(acc);
-            tampilDataMahasiswa();
+            tambahMk(sks);
             JOptionPane.showMessageDialog(null, "Mata Kuliah berhasil ditambahkan!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "Mata Kuliah gagal ditambahkan.", "Info", JOptionPane.INFORMATION_MESSAGE);
         }
-//        String mk = tableDark3.getValueAt(baris, 0).toString();
-//        String sks = tableDark3.getValueAt(baris, 1).toString();
-//        String kelas = tableDark3.getValueAt(baris, 2).toString();
-//        String hari = tableDark3.getValueAt(baris, 8).toString();
-//        String jam = tableDark3.getValueAt(baris, 9).toString();
-//        System.out.println(sks + " - " + mk + " " + kelas + " " + hari + " " + jam);
+        tampilSksAmbilUpdate();
     }//GEN-LAST:event_tableDark3MouseClicked
 
     /**
