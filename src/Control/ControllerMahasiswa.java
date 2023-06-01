@@ -12,6 +12,7 @@ import Model.Mahasiswa;
 import Model.Matakuliah;
 import Model.Nilai;
 import Model.Perwalian;
+import View.Index;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -91,14 +92,11 @@ public class ControllerMahasiswa {
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         List<Nilai> listn = new ArrayList<>();
-
         try {
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(query);
-
             while (rs.next()) {
-                Nilai n = new Nilai(); // Memindahkan inisialisasi objek Nilai ke dalam perulangan while
-                n.setId(rs.getInt("id"));
+                Nilai n = new Nilai();
                 n.setKode(rs.getString("kode"));
                 n.setMataKuliah(rs.getString("matakuliah"));
                 n.setSks(rs.getString("sks"));
@@ -108,10 +106,11 @@ public class ControllerMahasiswa {
                 n.setNk(rs.getString("nk"));
                 listn.add(n);
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         conMan.logOff();
+        System.out.println(acc.getNim());
         return listn;
     }
 
@@ -142,7 +141,37 @@ public class ControllerMahasiswa {
         conMan.logOff();
         return listMk;
     }
-    
+
+    public List<Matakuliah> getMatakuliah(String status) {
+        String query = "SELECT * FROM Matakuliah WHERE status_awal='" + status + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        List<Matakuliah> listMk = new ArrayList<>();
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                Matakuliah n = new Matakuliah();
+                n.setKode(rs.getString("kode"));
+                n.setMatakuliah(rs.getString("matakuliah"));
+                n.setSks(rs.getInt("sks"));
+                n.setKelas(rs.getString("kelas"));
+                n.setJenis(rs.getString("jenis"));
+                n.setSisa(rs.getString("sisa"));
+                n.setStatus_awal(rs.getString("status_awal"));
+                n.setBdatm(rs.getString("bdatm"));
+                n.setApprove_wali(rs.getString("Approve_wali"));
+                n.setHari(rs.getString("hari"));
+                n.setJam(rs.getString("jam"));
+                listMk.add(n);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        conMan.logOff();
+        return listMk;
+    }
+
     public void updateKeuangan() {
         String query = "SELECT * FROM keuangan_mhs WHERE nim='" + acc.getNim() + "'";
         ConnectionManager conMan = new ConnectionManager();
@@ -339,5 +368,19 @@ public class ControllerMahasiswa {
         }
         updateKeuangan();
         return hasil;
+    }
+
+    public int tambahMk(String kode) {
+        String query = "UPDATE perwalian_mhs SET status='Ambil' WHERE kode='" + kode + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        List<Matakuliah> listMk = new ArrayList<>();
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+        } catch (SQLException ex) {
+        }
+        conMan.logOff();
+        return 0;
     }
 }

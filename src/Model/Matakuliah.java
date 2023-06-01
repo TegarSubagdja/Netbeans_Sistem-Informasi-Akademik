@@ -10,6 +10,7 @@ package Model;
  */
 public class Matakuliah {
     
+    private String kode;
     private String matakuliah;
     private int sks;
     private String kelas;
@@ -24,7 +25,8 @@ public class Matakuliah {
     public Matakuliah() {
     }
 
-    public Matakuliah(String matakuliah, int sks, String kelas, String jenis, String sisa, String status_awal, String bdatm, String Approve_wali, String hari, String jam) {
+    public Matakuliah(String kode, String matakuliah, int sks, String kelas, String jenis, String sisa, String status_awal, String bdatm, String Approve_wali, String hari, String jam) {
+        this.kode = kode;
         this.matakuliah = matakuliah;
         this.sks = sks;
         this.kelas = kelas;
@@ -35,6 +37,14 @@ public class Matakuliah {
         this.Approve_wali = Approve_wali;
         this.hari = hari;
         this.jam = jam;
+    }
+
+    public String getKode() {
+        return kode;
+    }
+
+    public void setKode(String kode) {
+        this.kode = kode;
     }
 
     public String getMatakuliah() {
@@ -116,5 +126,4 @@ public class Matakuliah {
     public void setJam(String jam) {
         this.jam = jam;
     }
-    
 }
