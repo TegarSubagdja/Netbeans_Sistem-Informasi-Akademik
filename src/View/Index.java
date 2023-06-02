@@ -38,6 +38,7 @@ public class Index extends javax.swing.JFrame {
     public Index(Akun acc) {
         this.acc = acc;
         initComponents();
+        hitungKeuangan();
         tampilKeuangan();
         tampilNilai();
         tampilSksAmbil();
@@ -1720,6 +1721,14 @@ public class Index extends javax.swing.JFrame {
         telat_perwalian.setText(Integer.toString(ku.getTelat_perwalian()));
     }
 
+    public void hitungKeuangan() {
+        ControllerMahasiswa crl = new ControllerMahasiswa(acc);
+        Perwalian pw = crl.getPerwalian();
+        int totSks = pw.getSks();
+        double ukt = totSks * 240000.0;
+        crl.updateKeuangan(ukt);
+    }
+
     private void tampilIpk() {
         ControllerMahasiswa crl = new ControllerMahasiswa(acc);
         DefaultTableModel model = (DefaultTableModel) tableDark2.getModel();
@@ -1977,6 +1986,8 @@ public class Index extends javax.swing.JFrame {
             tambahMk(sks, kode);
             tampilMatakuliah();
             tampilSksAmbil();
+            hitungKeuangan();
+            tampilKeuangan();
         }
     }//GEN-LAST:event_tableDark3MouseClicked
 
@@ -1991,6 +2002,8 @@ public class Index extends javax.swing.JFrame {
             tampilMatakuliah();
             tampilSksAmbil();
             tampilHasilPerwalian();
+            hitungKeuangan();
+            tampilKeuangan();
         }
     }//GEN-LAST:event_tableDark5MouseClicked
 

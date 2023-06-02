@@ -174,10 +174,17 @@ public class ControllerMahasiswa {
         return listMk;
     }
 
-    public void updateKeuangan() {
-        String query = "SELECT * FROM keuangan_mhs WHERE nim='" + acc.getNim() + "'";
+    public void updateKeuangan(double ukt) {
+        String query = "UPDATE keuangan_mhs SET ukt='" + ukt + "' WHERE nim='" + acc.getNim() + "'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate(query);
+        } catch (Exception ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        conMan.logOff();
     }
 
     public Keuangan getKeuangan() {
@@ -197,7 +204,7 @@ public class ControllerMahasiswa {
                 ku.setLunas(rs.getBoolean("lunas")); // Tambahkan field untuk status pembayaran (lunas)
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         conMan.logOff();
 
