@@ -372,7 +372,20 @@ public class ControllerMahasiswa {
         } catch (Exception ex) {
             Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
-        updateKeuangan();
+        return hasil;
+    }
+    
+    public int kurangSks(int sks) {
+        int hasil = 0;
+        String query = "UPDATE perwalian_mhs SET sks='" + sks + "', mk=(mk-1), tanggal_update=NOW() WHERE nim=" + acc.getNim();
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            hasil = stm.executeUpdate(query);
+        } catch (Exception ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return hasil;
     }
 
@@ -386,6 +399,25 @@ public class ControllerMahasiswa {
             hasil = stm.executeUpdate(query);
             if (hasil > 0) {
                 hasil = 1; // Set hasil menjadi 1 jika berhasil melakukan pengurangan
+            }
+            stm.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        conMan.logOff();
+        return hasil;
+    }
+    
+    public int kurangMk(String kode) {
+        int hasil = 0;
+        String query = "UPDATE matakuliah SET status_awal='Batal', sisa=(sisa+1) WHERE kode='" + kode + "' AND sisa > 0";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            hasil = stm.executeUpdate(query);
+            if (hasil > 0) {
+                hasil = 1; 
             }
             stm.close();
         } catch (SQLException ex) {

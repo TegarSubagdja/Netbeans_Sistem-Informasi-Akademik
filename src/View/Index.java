@@ -1764,12 +1764,21 @@ public class Index extends javax.swing.JFrame {
         }
     }
 
+    private void kurangMk(int sks, String kode) {
+        ControllerMahasiswa crl = new ControllerMahasiswa(acc);
+        Perwalian pw = crl.getPerwalian();
+        int totSks = pw.getSks() - sks;
+        crl.kurangMk(kode);
+        crl.kurangSks(totSks);
+        JOptionPane.showMessageDialog(null, "Mata Kuliah Berhasil Dibatalkan!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     private void tampilSksAmbil() {
         ControllerMahasiswa crl = new ControllerMahasiswa(acc);
         DefaultTableModel model = (DefaultTableModel) tableDark4.getModel();
         Perwalian pw = crl.getPerwalian();
         model.setRowCount(0);
-        
+
         jLabel50.setText(Double.toString(crl.maxSks()));
         jLabel52.setText(Integer.toString(pw.getSks()));
         jLabel56.setText(Integer.toString(pw.getMk()));
@@ -1973,6 +1982,16 @@ public class Index extends javax.swing.JFrame {
 
     private void tableDark5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDark5MouseClicked
         // TODO add your handling code here:
+        int baris = tableDark5.rowAtPoint(evt.getPoint());
+        boolean confirmed = DarkAlert.showConfirmation("Batal Ambil Matakuliah?", (String) tableDark5.getValueAt(baris, 0));
+        int sks = (int) tableDark5.getValueAt(baris, 2);
+        String kode = (String) tableDark5.getValueAt(baris, 0);
+        if (confirmed) {
+            kurangMk(sks, kode);
+            tampilMatakuliah();
+            tampilSksAmbil();
+            tampilHasilPerwalian();
+        }
     }//GEN-LAST:event_tableDark5MouseClicked
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
