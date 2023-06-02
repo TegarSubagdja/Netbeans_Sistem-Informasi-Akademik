@@ -353,7 +353,7 @@ public class ControllerMahasiswa {
             while (rs.next()) {
                 pw.setSks(rs.getInt("sks"));
                 pw.setMk(rs.getInt("mk"));
-                pw.setApprove_wali(rs.getDate("approve_wali"));
+                pw.tanggal_update(rs.getDate("tanggal_update"));
             }
         } catch (Exception ex) {
             Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
@@ -363,7 +363,7 @@ public class ControllerMahasiswa {
 
     public int tambahSks(int sks) {
         int hasil = 0;
-        String query = "UPDATE perwalian_mhs SET sks='" + sks + "', mk=(mk+1) WHERE nim=" + acc.getNim();
+        String query = "UPDATE perwalian_mhs SET sks='" + sks + "', mk=(mk+1), tanggal_update=NOW() WHERE nim=" + acc.getNim();
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         try {
@@ -378,17 +378,62 @@ public class ControllerMahasiswa {
 
     public int tambahMk(String kode) {
         int hasil = 0;
-        String query = "UPDATE matakuliah SET status_awal='Ambil' WHERE kode='" + kode + "'";
+        String query = "UPDATE matakuliah SET status_awal='Ambil', sisa=(sisa-1) WHERE kode='" + kode + "' AND sisa > 0";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
-        List<Matakuliah> listMk = new ArrayList<>();
         try {
             Statement stm = conn.createStatement();
             hasil = stm.executeUpdate(query);
+            if (hasil > 0) {
+                hasil = 1; // Set hasil menjadi 1 jika berhasil melakukan pengurangan
+            }
+            stm.close();
         } catch (SQLException ex) {
             Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return hasil;
+    }
+
+    public boolean cekMatkul(String kode) {
+        boolean sudahAmbil = false;
+        String query = "SELECT * FROM matakuliah WHERE kode='" + kode + "' AND status_awal='Ambil'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            if (rs.next()) {
+                sudahAmbil = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sudahAmbil;
+    }
+
+    public boolean cekSisa(String kode) {
+        boolean adaSisa = false;
+        String query = "SELECT * FROM matakuliah WHERE kode='" + kode + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            if (rs.next()) {
+                int sisa = rs.getInt("sisa");
+                if (sisa == 0) {
+                    adaSisa = false;
+                } else {
+                    adaSisa = true;
+                }
+            }
+            rs.close();
+            stm.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        conMan.logOff();
+        return adaSisa;
     }
 }

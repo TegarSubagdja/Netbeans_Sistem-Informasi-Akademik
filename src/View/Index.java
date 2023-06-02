@@ -44,11 +44,11 @@ public class Index extends javax.swing.JFrame {
         tampilMatakuliah();
         tampilDataMahasiswa();
         tampilIpk();
-        TampilHasilPerwalian();
         setupButtonUI();
         dataMahasiswa.setVisible(false);
         nilaiMahasiswa.setVisible(false);
         keuanganKuliah.setVisible(false);
+        Perwalian.setVisible(false);
         hasilPerwalian.setVisible(false);
         tableDark1.fixTable(jScrollPane1);
         tableDark1.fixTable(jScrollPane2);
@@ -60,7 +60,7 @@ public class Index extends javax.swing.JFrame {
 
     // Metode untuk mengatur tampilan dan perilaku tombol
     private void setupButtonUI() {
-        JButton[] btns = {jButton1, jButton2, jButton3, jButton4, jButton6, jButton5,jButton7};
+        JButton[] btns = {jButton1, jButton2, jButton3, jButton4, jButton6, jButton5, jButton7};
         for (JButton btn : btns) {
             btn.setBackground(new Color(33, 32, 36));
             btn.setUI(new BasicButtonUI());
@@ -1174,15 +1174,15 @@ public class Index extends javax.swing.JFrame {
 
         tableDark3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-
+                "Kode", "Matakuliah", "SKS", "Kelas", "Jenis", "Sisa", "Status Awal", "Hari", "Jam"
             }
         ));
         tableDark3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1214,10 +1214,10 @@ public class Index extends javax.swing.JFrame {
 
         tableDark4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null}
             },
             new String [] {
-
+                "Maksimal SKS", "SKS Diambil", "Jumlah Matakuliah", "Pembaruan Terakhir"
             }
         ));
         tableDark4.getTableHeader().setReorderingAllowed(false);
@@ -1234,7 +1234,7 @@ public class Index extends javax.swing.JFrame {
         jButton7.setBackground(new java.awt.Color(23, 23, 26));
         jButton7.setFont(new java.awt.Font("Artifakt Element Black", 0, 12)); // NOI18N
         jButton7.setForeground(new java.awt.Color(193, 195, 199));
-        jButton7.setText("Lihat Pengajuan");
+        jButton7.setText("Hasil Perwalian");
         jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton7MouseClicked(evt);
@@ -1638,8 +1638,6 @@ public class Index extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, field + " tidak boleh kosong!", "Peringatan", JOptionPane.WARNING_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Pembaruan " + field + " dibatalkan.", "Info", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -1678,18 +1676,6 @@ public class Index extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tableDark3.getModel();
         model.setRowCount(0);
 
-        model.addColumn("Kode");
-        model.addColumn("Matakuliah");
-        model.addColumn("SKS");
-        model.addColumn("Kelas");
-        model.addColumn("Jenis");
-        model.addColumn("Sisa");
-        model.addColumn("status_awal");
-        model.addColumn("BDATM");
-        model.addColumn("Approve Wali");
-        model.addColumn("Hari");
-        model.addColumn("Jam");
-
         for (Matakuliah n : listMk) {
             model.addRow(new Object[]{
                 n.getKode(),
@@ -1699,8 +1685,6 @@ public class Index extends javax.swing.JFrame {
                 n.getJenis(),
                 n.getSisa(),
                 n.getStatus_awal(),
-                n.getBdatm(),
-                n.getApprove_wali(),
                 n.getHari(),
                 n.getJam()
             });
@@ -1762,14 +1746,21 @@ public class Index extends javax.swing.JFrame {
     private void tambahMk(int sks, String kode) {
         ControllerMahasiswa crl = new ControllerMahasiswa(acc);
         Perwalian pw = crl.getPerwalian();
+        boolean sudahAmbil = crl.cekMatkul(kode);
+        boolean cekSisa = crl.cekSisa(kode);
         double maxSks = crl.maxSks();
-        int current_sks = pw.getSks();
-        int totSks = current_sks + sks;
-        if (totSks >= maxSks) {
+        int sksTerakhir = pw.getSks();
+        int totSks = sksTerakhir + sks;
+        if (totSks > maxSks) {
             JOptionPane.showMessageDialog(null, "SKS Melebihi Batas Boleh Ambil!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+        } else if (sudahAmbil) {
+            JOptionPane.showMessageDialog(null, "Mata Kuliah Telah Ditambahkan Sebelumnya", "Peringatan", JOptionPane.WARNING_MESSAGE);
+        } else if (!cekSisa) {
+            JOptionPane.showMessageDialog(null, "Sisa Kelas telah Habis", "Peringatan", JOptionPane.WARNING_MESSAGE);
         } else {
             crl.tambahMk(kode);
             crl.tambahSks(totSks);
+            JOptionPane.showMessageDialog(null, "Mata Kuliah berhasil ditambahkan!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -1778,25 +1769,10 @@ public class Index extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tableDark4.getModel();
         Perwalian pw = crl.getPerwalian();
         model.setRowCount(0);
-
-        model.addColumn("Maksimal SKS");
-        model.addColumn("SKS Diambil");
-        model.addColumn("Jumlah Mata Kuliah");
-        model.addColumn("Diajukan Tanggal");
-
-        model.addRow(new Object[]{
-            crl.maxSks(),
-            pw.getSks(),
-            pw.getMk(),
-            pw.getApprove_wali()
-        });
-    }
-
-    private void tampilSksAmbilUpdate() {
-        ControllerMahasiswa crl = new ControllerMahasiswa(acc);
-        DefaultTableModel model = (DefaultTableModel) tableDark4.getModel();
-        Perwalian pw = crl.getPerwalian();
-        model.setRowCount(0);
+        
+        jLabel50.setText(Double.toString(crl.maxSks()));
+        jLabel52.setText(Integer.toString(pw.getSks()));
+        jLabel56.setText(Integer.toString(pw.getMk()));
 
         model.addRow(new Object[]{
             crl.maxSks(),
@@ -1806,7 +1782,7 @@ public class Index extends javax.swing.JFrame {
         });
     }
 
-    private void TampilHasilPerwalian() {
+    private void tampilHasilPerwalian() {
         String status = "Ambil";
         ControllerMahasiswa crl = new ControllerMahasiswa(acc);
         List<Matakuliah> listMk = crl.getMatakuliah(status);
@@ -1836,6 +1812,7 @@ public class Index extends javax.swing.JFrame {
         JadwakMahasiswa.setVisible(false);
         Perwalian.setVisible(false);
         keuanganKuliah.setVisible(false);
+        hasilPerwalian.setVisible(false);
         dashboard.setVisible(false);
         hasilPerwalian.setVisible(false);
         dataMahasiswa.setVisible(true);
@@ -1848,6 +1825,7 @@ public class Index extends javax.swing.JFrame {
         Perwalian.setVisible(false);
         keuanganKuliah.setVisible(false);
         dataMahasiswa.setVisible(false);
+        hasilPerwalian.setVisible(false);
         dashboard.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -1857,6 +1835,7 @@ public class Index extends javax.swing.JFrame {
         JadwakMahasiswa.setVisible(false);
         Perwalian.setVisible(false);
         keuanganKuliah.setVisible(false);
+        hasilPerwalian.setVisible(false);
         dashboard.setVisible(false);
         nilaiMahasiswa.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -1868,6 +1847,7 @@ public class Index extends javax.swing.JFrame {
         dashboard.setVisible(false);
         Perwalian.setVisible(false);
         nilaiMahasiswa.setVisible(false);
+        hasilPerwalian.setVisible(false);
         keuanganKuliah.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -1877,9 +1857,6 @@ public class Index extends javax.swing.JFrame {
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
         // TODO add your handling code here:
-        String field = "Nim";
-        String value = jLabel23.getText();
-        updateData(field, value);
     }//GEN-LAST:event_jLabel23MouseClicked
 
     private void tableDark2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDark2MouseClicked
@@ -1900,6 +1877,7 @@ public class Index extends javax.swing.JFrame {
         dashboard.setVisible(false);
         nilaiMahasiswa.setVisible(false);
         keuanganKuliah.setVisible(false);
+        hasilPerwalian.setVisible(false);
         Perwalian.setVisible(false);
         JadwakMahasiswa.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
@@ -1917,30 +1895,18 @@ public class Index extends javax.swing.JFrame {
 
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
         // TODO add your handling code here:
-        String field = "Status";
-        String value = jLabel25.getText();
-        updateData(field, value);
     }//GEN-LAST:event_jLabel25MouseClicked
 
     private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked
         // TODO add your handling code here:
-        String field = "Dosen_Wali";
-        String value = jLabel26.getText();
-        updateData(field, value);
     }//GEN-LAST:event_jLabel26MouseClicked
 
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
         // TODO add your handling code here:
-        String field = "Semester_Aktif";
-        String value = jLabel27.getText();
-        updateData(field, value);
     }//GEN-LAST:event_jLabel27MouseClicked
 
     private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
         // TODO add your handling code here:
-        String field = "Batas_Studi";
-        String value = jLabel28.getText();
-        updateData(field, value);
     }//GEN-LAST:event_jLabel28MouseClicked
 
     private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
@@ -1959,9 +1925,6 @@ public class Index extends javax.swing.JFrame {
 
     private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
         // TODO add your handling code here:
-        String field = "Prodi";
-        String value = jLabel31.getText();
-        updateData(field, value);
     }//GEN-LAST:event_jLabel31MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
@@ -1991,6 +1954,7 @@ public class Index extends javax.swing.JFrame {
         nilaiMahasiswa.setVisible(false);
         keuanganKuliah.setVisible(false);
         JadwakMahasiswa.setVisible(false);
+        hasilPerwalian.setVisible(false);
         Perwalian.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -2001,12 +1965,10 @@ public class Index extends javax.swing.JFrame {
         int sks = (int) tableDark3.getValueAt(baris, 2);
         String kode = (String) tableDark3.getValueAt(baris, 0);
         if (confirmed) {
-            tambahMk(sks,kode);
-            JOptionPane.showMessageDialog(null, "Mata Kuliah berhasil ditambahkan!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "Mata Kuliah gagal ditambahkan.", "Info", JOptionPane.INFORMATION_MESSAGE);
+            tambahMk(sks, kode);
+            tampilMatakuliah();
+            tampilSksAmbil();
         }
-        tampilSksAmbilUpdate();
     }//GEN-LAST:event_tableDark3MouseClicked
 
     private void tableDark5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDark5MouseClicked
@@ -2022,6 +1984,7 @@ public class Index extends javax.swing.JFrame {
         JadwakMahasiswa.setVisible(false);
         Perwalian.setVisible(false);
         hasilPerwalian.setVisible(true);
+        tampilHasilPerwalian();
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

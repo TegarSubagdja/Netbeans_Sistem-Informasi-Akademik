@@ -55,7 +55,7 @@ public class Perwalian {
         return approve_wali;
     }
 
-    public void setApprove_wali(Date approve_wali) {
+    public void tanggal_update(Date approve_wali) {
         this.approve_wali = approve_wali;
     }
 }

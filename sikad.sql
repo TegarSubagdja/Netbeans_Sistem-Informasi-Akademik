@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `mahasiswa` (
 
 -- Dumping data for table sikad.mahasiswa: ~1 rows (approximately)
 INSERT INTO `mahasiswa` (`nim`, `nama`, `status`, `dosen_wali`, `semester_aktif`, `batas_studi`, `email`, `nomor`, `prodi`) VALUES
-	(152021169, 'Tegar Subagdja', 'Aktif', 'Jasman Pardede', '2023/2', '2030', 'kingtegar1510@gmail.com', '0329478237498237', 'Informatika');
+	(152021169, 'Tegar Subagdja', 'Aktif', 'Jasman Pardede', '2023/2', '2030', 'kingtegar1510@example.com', '081546517025', 'Informatika');
 
 -- Dumping structure for table sikad.matakuliah
 CREATE TABLE IF NOT EXISTS `matakuliah` (
@@ -87,28 +87,28 @@ CREATE TABLE IF NOT EXISTS `matakuliah` (
 
 -- Dumping data for table sikad.matakuliah: ~22 rows (approximately)
 INSERT INTO `matakuliah` (`kode`, `matakuliah`, `sks`, `kelas`, `jenis`, `sisa`, `status_awal`, `bdatm`, `approve_wali`, `hari`, `jam`) VALUES
-	('IFA-201', 'ALJABAR LINEAR', 3, 'AA', 'Mata Kuliah A', 10, 'Batal', 'BDATM', 'Approve', 'Senin', '08:00-10:00'),
-	('IFA-202', 'PEMROGRAMAN LANJUT', 3, 'AA', 'Mata Kuliah A', 8, 'Batal', 'BDATM', 'Approve', 'Selasa', '10:00-12:00'),
-	('IFA-203', 'PEMROGRAMAN WEB LANJUT', 3, 'CC', 'Mata Kuliah B', 5, 'Batal', 'BDATM', 'Approve', 'Rabu', '13:00-15:00'),
-	('IFA-204', 'SISTEM OPERASI', 3, 'AA', 'Mata Kuliah B', 7, 'Batal', 'BDATM', 'Approve', 'Kamis', '15:00-17:00'),
-	('IFA-205', 'KECERDASAN BUATAN', 3, 'AA', 'Mata Kuliah A', 6, 'Batal', 'BDATM', 'Approve', 'Jumat', '08:00-10:00'),
-	('IFA-206', 'PEMROGRAMAN MOBILE', 3, 'AA', 'Mata Kuliah B', 4, 'Batal', 'BDATM', 'Approve', 'Senin', '13:00-15:00'),
-	('IFA-301', 'BASIS DATA LANJUT', 3, 'CC', 'Mata Kuliah A', 3, 'Batal', 'BDATM', 'Approve', 'Selasa', '10:00-12:00'),
-	('IFA-302', 'JARINGAN KOMPUTER', 3, 'DD', 'Mata Kuliah B', 2, 'Batal', 'BDATM', 'Approve', 'Rabu', '15:00-17:00'),
-	('IFA-303', 'ANALISIS DAN DESAIN SISTEM', 3, 'BB', 'Mata Kuliah A', 1, 'Batal', 'BDATM', 'Approve', 'Kamis', '08:00-10:00'),
-	('IFA-304', 'PEMROGRAMAN PARALEL', 3, 'BB', 'Mata Kuliah B', 0, 'Batal', 'BDATM', 'Approve', 'Jumat', '13:00-15:00'),
-	('IFA-305', 'KEAMANAN KOMPUTER', 3, 'BB', 'Mata Kuliah A', 9, 'Batal', 'BDATM', 'Approve', 'Senin', '10:00-12:00'),
-	('IFA-306', 'PENGENALAN BIG DATA', 3, 'BB', 'Mata Kuliah B', 8, 'Batal', 'BDATM', 'Approve', 'Selasa', '15:00-17:00'),
-	('IFA-401', 'SISTEM INFORMASI', 3, 'BB', 'Mata Kuliah A', 7, 'Batal', 'BDATM', 'Approve', 'Rabu', '08:00-10:00'),
-	('IFA-402', 'PEMROGRAMAN GAME', 3, 'CC', 'Mata Kuliah B', 6, 'Batal', 'BDATM', 'Approve', 'Kamis', '13:00-15:00'),
-	('IFA-403', 'DATA MINING', 3, 'CC', 'Mata Kuliah A', 5, 'Batal', 'BDATM', 'Approve', 'Jumat', '10:00-12:00'),
-	('IFA-404', 'SISTEM CERDAS', 3, 'AA', 'Mata Kuliah B', 4, 'Batal', 'BDATM', 'Approve', 'Senin', '15:00-17:00'),
-	('IFA-405', 'PROYEK AKHIR', 6, 'AA', 'Mata Kuliah A', 3, 'Batal', 'BDATM', 'Approve', 'Selasa', '08:00-12:00'),
+	('IFA-201', 'ALJABAR LINEAR', 3, 'AA', 'Mata Kuliah A', 9, 'Ambil', 'BDATM', 'Approve', 'Senin', '08:00-10:00'),
+	('IFA-202', 'PEMROGRAMAN LANJUT', 3, 'AA', 'Mata Kuliah A', 9, 'Ambil', 'BDATM', 'Approve', 'Selasa', '10:00-12:00'),
+	('IFA-203', 'PEMROGRAMAN WEB LANJUT', 3, 'CC', 'Mata Kuliah B', 9, 'Ambil', 'BDATM', 'Approve', 'Rabu', '13:00-15:00'),
+	('IFA-204', 'SISTEM OPERASI', 3, 'AA', 'Mata Kuliah B', 10, 'Batal', 'BDATM', 'Approve', 'Kamis', '15:00-17:00'),
+	('IFA-205', 'KECERDASAN BUATAN', 3, 'AA', 'Mata Kuliah A', 10, 'Batal', 'BDATM', 'Approve', 'Jumat', '08:00-10:00'),
+	('IFA-206', 'PEMROGRAMAN MOBILE', 3, 'AA', 'Mata Kuliah B', 10, 'Batal', 'BDATM', 'Approve', 'Senin', '13:00-15:00'),
+	('IFA-301', 'BASIS DATA LANJUT', 3, 'CC', 'Mata Kuliah A', 10, 'Batal', 'BDATM', 'Approve', 'Selasa', '10:00-12:00'),
+	('IFA-302', 'JARINGAN KOMPUTER', 3, 'DD', 'Mata Kuliah B', 10, 'Batal', 'BDATM', 'Approve', 'Rabu', '15:00-17:00'),
+	('IFA-303', 'ANALISIS DAN DESAIN SISTEM', 3, 'BB', 'Mata Kuliah A', 10, 'Ambil', 'BDATM', 'Approve', 'Kamis', '08:00-10:00'),
+	('IFA-304', 'PEMROGRAMAN PARALEL', 3, 'BB', 'Mata Kuliah B', 10, 'Ambil', 'BDATM', 'Approve', 'Jumat', '13:00-15:00'),
+	('IFA-305', 'KEAMANAN KOMPUTER', 3, 'BB', 'Mata Kuliah A', 10, 'Batal', 'BDATM', 'Approve', 'Senin', '10:00-12:00'),
+	('IFA-306', 'PENGENALAN BIG DATA', 3, 'BB', 'Mata Kuliah B', 10, 'Batal', 'BDATM', 'Approve', 'Selasa', '15:00-17:00'),
+	('IFA-401', 'SISTEM INFORMASI', 3, 'BB', 'Mata Kuliah A', 10, 'Batal', 'BDATM', 'Approve', 'Rabu', '08:00-10:00'),
+	('IFA-402', 'PEMROGRAMAN GAME', 3, 'CC', 'Mata Kuliah B', 10, 'Batal', 'BDATM', 'Approve', 'Kamis', '13:00-15:00'),
+	('IFA-403', 'DATA MINING', 3, 'CC', 'Mata Kuliah A', 10, 'Batal', 'BDATM', 'Approve', 'Jumat', '10:00-12:00'),
+	('IFA-404', 'SISTEM CERDAS', 3, 'AA', 'Mata Kuliah B', 10, 'Batal', 'BDATM', 'Approve', 'Senin', '15:00-17:00'),
+	('IFA-405', 'PROYEK AKHIR', 6, 'AA', 'Mata Kuliah A', 10, 'Batal', 'BDATM', 'Approve', 'Selasa', '08:00-12:00'),
 	('IFA-501', 'PEMROGRAMAN WEB DASAR', 3, 'AA', 'Mata Kuliah A', 10, 'Batal', 'BDATM', 'Approve', 'Rabu', '10:00-12:00'),
-	('IFA-502', 'PEMROGRAMAN DASAR', 3, 'EE', 'Mata Kuliah B', 8, 'Batal', 'BDATM', 'Approve', 'Kamis', '13:00-15:00'),
-	('IFA-503', 'STATISTIKA', 3, 'EE', 'Mata Kuliah A', 5, 'Batal', 'BDATM', 'Approve', 'Jumat', '08:00-10:00'),
-	('IFA-504', 'ALGORITMA DAN STRUKTUR DATA', 3, 'EE', 'Mata Kuliah B', 7, 'Batal', 'BDATM', 'Approve', 'Senin', '15:00-17:00'),
-	('IFA-505', 'PEMROGRAMAN VISUAL', 3, 'BB', 'Mata Kuliah A', 6, 'Batal', 'BDATM', 'Approve', 'Selasa', '10:00-12:00');
+	('IFA-502', 'PEMROGRAMAN DASAR', 3, 'EE', 'Mata Kuliah B', 10, 'Batal', 'BDATM', 'Approve', 'Kamis', '13:00-15:00'),
+	('IFA-503', 'STATISTIKA', 3, 'EE', 'Mata Kuliah A', 10, 'Batal', 'BDATM', 'Approve', 'Jumat', '08:00-10:00'),
+	('IFA-504', 'ALGORITMA DAN STRUKTUR DATA', 3, 'EE', 'Mata Kuliah B', 9, 'Ambil', 'BDATM', 'Approve', 'Senin', '15:00-17:00'),
+	('IFA-505', 'PEMROGRAMAN VISUAL', 3, 'BB', 'Mata Kuliah A', 10, 'Batal', 'BDATM', 'Approve', 'Selasa', '10:00-12:00');
 
 -- Dumping structure for table sikad.nilai_mhs
 CREATE TABLE IF NOT EXISTS `nilai_mhs` (
@@ -149,14 +149,14 @@ CREATE TABLE IF NOT EXISTS `perwalian_mhs` (
   `nim` int(11) NOT NULL,
   `sks` int(11) DEFAULT NULL,
   `mk` int(11) DEFAULT NULL,
-  `approve_wali` date DEFAULT NULL,
+  `tanggal_update` date DEFAULT NULL,
   PRIMARY KEY (`nim`),
   CONSTRAINT `perwalian` FOREIGN KEY (`nim`) REFERENCES `mahasiswa` (`nim`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table sikad.perwalian_mhs: ~1 rows (approximately)
-INSERT INTO `perwalian_mhs` (`nim`, `sks`, `mk`, `approve_wali`) VALUES
-	(152021169, 9, 3, '2023-05-30');
+INSERT INTO `perwalian_mhs` (`nim`, `sks`, `mk`, `tanggal_update`) VALUES
+	(152021169, 12, 4, '2023-06-02');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
