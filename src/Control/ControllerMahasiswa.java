@@ -201,10 +201,10 @@ public class ControllerMahasiswa {
                 ku.setUkv(rs.getInt("ukv"));
                 ku.setTanggalJatuhTempoPembayaran(rs.getTimestamp("tanggal_jatuh_tempo_pembayaran"));
                 ku.setTanggalJatuhTempoPerwalian(rs.getTimestamp("tanggal_jatuh_tempo_perwalian"));
-                ku.setLunas(rs.getBoolean("lunas")); // Tambahkan field untuk status pembayaran (lunas)
+                ku.setLunas(rs.getBoolean("lunas")); 
             }
         } catch (SQLException ex) {
-            
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
 
