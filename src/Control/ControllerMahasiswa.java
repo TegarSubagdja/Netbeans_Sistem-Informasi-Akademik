@@ -56,7 +56,7 @@ public class ControllerMahasiswa {
                 acc.setPassword(rs.getString("password"));
             }
         } catch (SQLException ex) {
-            // Tangani kesalahan
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return acc;
@@ -82,6 +82,7 @@ public class ControllerMahasiswa {
                 mhs.setProdi(rs.getString("prodi"));
             }
         } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return mhs;
@@ -110,7 +111,6 @@ public class ControllerMahasiswa {
             Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
-        System.out.println(acc.getNim());
         return listn;
     }
 
@@ -124,6 +124,7 @@ public class ControllerMahasiswa {
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {
                 Matakuliah n = new Matakuliah(); // Memindahkan inisialisasi objek Nilai ke dalam perulangan while
+                n.setKode(rs.getString("kode"));
                 n.setMatakuliah(rs.getString("matakuliah"));
                 n.setSks(rs.getInt("sks"));
                 n.setKelas(rs.getString("kelas"));
@@ -137,6 +138,7 @@ public class ControllerMahasiswa {
                 listMk.add(n);
             }
         } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return listMk;
@@ -195,6 +197,7 @@ public class ControllerMahasiswa {
                 ku.setLunas(rs.getBoolean("lunas")); // Tambahkan field untuk status pembayaran (lunas)
             }
         } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
 
@@ -215,13 +218,10 @@ public class ControllerMahasiswa {
                 dendaPerwalian = (int) Math.round((ku.getDpp_wajib() + ku.getUkt() + ku.getUkv()) * 0.05);
             }
         }
-
         int totalDenda = dendaPembayaran + dendaPerwalian;
-
         ku.setTelat_perwalian(dendaPerwalian);
         ku.setTelat_pembayaran(dendaPembayaran);
         ku.setTotalDenda(totalDenda);
-
         return ku;
     }
 
@@ -243,9 +243,10 @@ public class ControllerMahasiswa {
             }
             if (totalSks > 0) {
                 ipk = totalNilaiSks / totalSks;
-                ipk = Math.ceil(ipk * 100) / 100; // Bulatkan IPK ke dua angka setelah koma (bulat atas)
+                ipk = Math.ceil(ipk * 100) / 100;
             }
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         DecimalFormat df = new DecimalFormat("#0.00");
@@ -274,7 +275,8 @@ public class ControllerMahasiswa {
                 ipk = totalNilaiSks / totalSks;
                 ipk = Math.ceil(ipk * 100) / 100; // Bulatkan IPK ke dua angka setelah koma (bulat atas)
             }
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (ipk <= 3.0) {
             return 20.0;
@@ -297,7 +299,8 @@ public class ControllerMahasiswa {
                 double sks = rs.getInt("sks");
                 totalSks += sks;
             }
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         return totalSks;
     }
@@ -317,7 +320,8 @@ public class ControllerMahasiswa {
                 double sks = rs.getInt("sks");
                 totalNilaiSks += bobot * sks;
             }
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         return totalNilaiSks;
     }
@@ -331,8 +335,8 @@ public class ControllerMahasiswa {
         try {
             stm = conn.createStatement();
             hasil = stm.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return hasil;
@@ -351,7 +355,8 @@ public class ControllerMahasiswa {
                 pw.setMk(rs.getInt("mk"));
                 pw.setApprove_wali(rs.getDate("approve_wali"));
             }
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         return pw;
     }
@@ -364,23 +369,26 @@ public class ControllerMahasiswa {
         try {
             Statement stm = conn.createStatement();
             hasil = stm.executeUpdate(query);
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         updateKeuangan();
         return hasil;
     }
 
     public int tambahMk(String kode) {
-        String query = "UPDATE perwalian_mhs SET status='Ambil' WHERE kode='" + kode + "'";
+        int hasil = 0;
+        String query = "UPDATE matakuliah SET status_awal='Ambil' WHERE kode='" + kode + "'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         List<Matakuliah> listMk = new ArrayList<>();
         try {
             Statement stm = conn.createStatement();
-            ResultSet rs = stm.executeQuery(query);
+            hasil = stm.executeUpdate(query);
         } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
-        return 0;
+        return hasil;
     }
 }
