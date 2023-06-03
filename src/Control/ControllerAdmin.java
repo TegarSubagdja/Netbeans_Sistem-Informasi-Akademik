@@ -6,6 +6,7 @@ package Control;
 
 import Model.Akun;
 import Model.ConnectionManager;
+import Model.Keuangan;
 import Model.Mahasiswa;
 import Model.Matakuliah;
 import Model.Nilai;
@@ -14,8 +15,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,10 +30,8 @@ import javax.swing.JOptionPane;
 public class ControllerAdmin {
 
     private Akun acc;
-    private int nim;
 
-    public ControllerAdmin(int acc) {
-        this.nim = acc;
+    public ControllerAdmin() {
     }
 
     public ControllerAdmin(Akun acc) {
@@ -70,7 +71,7 @@ public class ControllerAdmin {
                 + "', status='" + mhs.getStatus() + "', dosen_wali='" + mhs.getDosen_wali()
                 + "', semester_aktif='" + mhs.getSemester_aktif() + "', batas_studi='" + mhs.getBatas_studi()
                 + "', email='" + mhs.getEmail() + "', nomor='" + mhs.getNomor() + "', prodi='" + mhs.getProdi()
-                + "' WHERE nim=" + nim;
+                + "' WHERE nim=" + mhs.getNim();
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         try {
@@ -109,6 +110,7 @@ public class ControllerAdmin {
             JOptionPane.showMessageDialog(null, "Data mahasiswa berhasil dihapus!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menghapus data mahasiswa!", "Error", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
     }
@@ -161,18 +163,7 @@ public class ControllerAdmin {
     }
 
     public void hapusMatakuliah(Matakuliah mk) {
-        String query = "DELETE FROM matakuliah WHERE kode='" + mk.getKode() + "'";
-        ConnectionManager conMan = new ConnectionManager();
-        Connection conn = conMan.logOn();
-        try {
-            Statement stm = conn.createStatement();
-            stm.executeUpdate(query);
-            JOptionPane.showMessageDialog(null, "Matakuliah berhasil dihapus!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
-        } catch (SQLException ex) {
-            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menghapus matakuliah!", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        conMan.logOff();
+
     }
 
     public void updateMatakuliah(Matakuliah mk) {
@@ -189,5 +180,127 @@ public class ControllerAdmin {
             JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat memperbarui data matakuliah!", "Error", JOptionPane.ERROR_MESSAGE);
         }
         conMan.logOff();
+    }
+
+    public Keuangan getKeuangan() {
+        String query = "SELECT * FROM Keuangan_mhs";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        Keuangan ku = new Keuangan();
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                ku.setDpp_wajib(rs.getInt("dpp_wajib"));
+                ku.setUkt(rs.getInt("ukt"));
+                ku.setBiaya(rs.getInt("biayaSks"));
+                ku.setTotalKewajiban(rs.getInt("total"));
+                ku.setDenda(rs.getDouble("denda"));
+                ku.setTanggalJatuhTempoPerwalian(rs.getDate("tanggal_jatuh_tempo_perwalian"));
+                ku.setTanggalJatuhTempoPembayaran(rs.getDate("tanggal_jatuh_tempo_pembayaran"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        conMan.logOff();
+        return ku;
+    }
+
+    public void updateKeuangan(Keuangan ku) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedPerwalian = dateFormat.format(ku.getTanggalJatuhTempoPerwalian());
+        String formattedPembayaran = dateFormat.format(ku.getTanggalJatuhTempoPembayaran());
+
+        String query = "UPDATE Keuangan_mhs SET dpp_wajib = " + ku.getDpp_wajib() + ", ukt = " + ku.getUkt()
+                + ", biayaSks = " + ku.getBiaya() + ", denda = " + ku.getDenda()
+                + ", tanggal_jatuh_tempo_perwalian = '" + formattedPerwalian
+                + "', tanggal_jatuh_tempo_pembayaran = '" + formattedPembayaran + "'";
+
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate(query);
+            JOptionPane.showMessageDialog(null, "Data keuangan berhasil diperbarui!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat memperbarui data keuangan!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        conMan.logOff();
+    }
+
+    public void tambahAkun(Mahasiswa mhs) {
+        Random random = new Random();
+        int passwordLength = 3;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < passwordLength; i++) {
+            int digit = random.nextInt(10); // Menghasilkan digit acak antara 0 hingga 9
+            sb.append(digit);
+        }
+        String query = "INSERT INTO akun_mhs (nim, username, password) VALUES ('" + mhs.getNim() + "','" + mhs.getNama() + "','" + sb.toString() + "')";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate(query);
+            JOptionPane.showMessageDialog(null, "Data akun berhasil ditambahkan!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menambahkan data akun!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        conMan.logOff();
+    }
+
+    public void updateAkun(Akun acc) {
+        String query = "UPDATE akun_mhs SET username='" + acc.getUsername() + "', password='" + acc.getPassword() + "' WHERE nim='" + acc.getNim() + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate(query);
+            JOptionPane.showMessageDialog(null, "Data matakuliah berhasil diperbarui!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat memperbarui data matakuliah!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        conMan.logOff();
+    }
+
+    public void hapusAkun(int nim) {
+        String query = "DELETE FROM Akun_mhs WHERE nim='" + nim + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate(query);
+            JOptionPane.showMessageDialog(null, "Matakuliah berhasil dihapus!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menghapus matakuliah!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        conMan.logOff();
+    }
+
+    public List<Akun> getAkun() {
+        String query = "SELECT * FROM Akun_mhs";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        List<Akun> listAcc = new ArrayList<>();
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                Akun acc = new Akun();
+                acc.setNim(rs.getInt("nim"));
+                acc.setUsername(rs.getString("username"));
+                acc.setPassword(rs.getString("password"));
+                listAcc.add(acc);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        conMan.logOff();
+        return listAcc;
     }
 }

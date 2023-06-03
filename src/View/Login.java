@@ -1,5 +1,6 @@
 package View;
 
+import Control.ControllerLogin;
 import Control.ControllerMahasiswa;
 import Model.Akun;
 import java.awt.Color;
@@ -15,11 +16,11 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         setupButtonUI();
     }
-    
+
     private void setupButtonUI() {
         JButton[] btns = {jButton1};
         for (JButton btn : btns) {
-            btn.setBackground(new Color(51,51,51));
+            btn.setBackground(new Color(51, 51, 51));
             btn.setUI(new BasicButtonUI());
             btn.addMouseListener(new MouseInputListener() {
                 @Override
@@ -33,7 +34,7 @@ public class Login extends javax.swing.JFrame {
 
                 @Override
                 public void mouseReleased(MouseEvent e) {
-                    btn.setBackground(new Color(51,51,51));
+                    btn.setBackground(new Color(51, 51, 51));
                 }
 
                 @Override
@@ -43,7 +44,7 @@ public class Login extends javax.swing.JFrame {
 
                 @Override
                 public void mouseExited(MouseEvent e) {
-                    btn.setBackground(new Color(51,51,51));
+                    btn.setBackground(new Color(51, 51, 51));
                 }
 
                 @Override
@@ -246,12 +247,16 @@ public class Login extends javax.swing.JFrame {
         username = UsernameField.getText();
         char[] passwordChars = PasswordField.getPassword();
         password = new String(passwordChars);
-        ControllerMahasiswa crl = new ControllerMahasiswa();
+        ControllerLogin crl = new ControllerLogin();
         Akun acc = crl.checkLogin(username, password);
-        if (acc != null) {
+        if (username.equals("admin") && password.equals("admin")) {
+            Admin admin = new Admin(acc);
+            admin.setVisible(true);
+            this.dispose();
+        } else if (acc != null) {
             Index idx = new Index(acc);
             idx.setVisible(true);
-            this.setVisible(false);
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Password atau sandi tidak ditemukan.", "Login Error", JOptionPane.ERROR_MESSAGE);
         }

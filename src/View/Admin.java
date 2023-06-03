@@ -40,6 +40,10 @@ public class Admin extends javax.swing.JFrame {
     private Akun acc;
 
     public Admin() {
+    }
+    
+    public Admin(Akun acc) {
+        this.acc = acc;
         initComponents();
         setupButtonUI();
         setupClickButton();
@@ -47,30 +51,22 @@ public class Admin extends javax.swing.JFrame {
         daftarMahasiswa.setVisible(false);
         keuanganKuliah.setVisible(false);
         daftarMatakuliah.setVisible(false);
+        daftarAkun.setVisible(false);
         tableDark3.fixTable1(jScrollPane7);
         tableDark3.fixTable1(jScrollPane4);
         tableDark3.fixTable1(jScrollPane3);
+        tableDark3.fixTable1(jScrollPane6);
     }
 
-    public Admin(Akun acc) {
-        this.acc = acc;
-        initComponents();
-        setupButtonUI();
-        setupClickButton();
-        daftarMahasiswa.setVisible(false);
-        keuanganKuliah.setVisible(false);
-        daftarMatakuliah.setVisible(false);
-        tableDark3.fixTable1(jScrollPane3);
-        tableDark3.fixTable1(jScrollPane4);
-    }
-    
-    private void refreshData(){
+    private void refreshData() {
         tampilDataMahasiswa();
         tampilMatakuliah();
+        tampilKeuangan();
+        tampilAkun();
     }
 
     private void setupClickButton() {
-        JButton[] btns = {jButton7, jButton8, jButton9, jButton10, jButton11, jButton12, jButton13, jButton14};
+        JButton[] btns = {jButton7, jButton8, jButton9, jButton10,jButton11,  jButton12, jButton13, jButton14 ,jButton16};
         for (JButton btn : btns) {
             btn.setBackground(new Color(51, 51, 51));
             btn.setUI(new BasicButtonUI());
@@ -167,8 +163,8 @@ public class Admin extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         PanelContent = new javax.swing.JPanel();
         dashboard = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -177,6 +173,7 @@ public class Admin extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         daftarMahasiswa = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -216,6 +213,7 @@ public class Admin extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
         daftarMatakuliah = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -275,22 +273,36 @@ public class Admin extends javax.swing.JFrame {
         jLabel36 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
         jPanel55 = new javax.swing.JPanel();
-        totalDenda = new javax.swing.JLabel();
+        persentaseDenda = new javax.swing.JLabel();
         jPanel44 = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
-        hariPerwalian = new javax.swing.JTextField();
-        tahunPerwalian = new javax.swing.JTextField();
-        bulanPerwalian = new javax.swing.JTextField();
-        hariPembayaran = new javax.swing.JTextField();
-        tahunPembayaran = new javax.swing.JTextField();
-        bulanPembayaran = new javax.swing.JTextField();
-        jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        tempoPerwalian = new javax.swing.JTextField();
+        tempoPembayaran = new javax.swing.JTextField();
         JadwakMahasiswa = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jLabel13 = new javax.swing.JLabel();
+        daftarAkun = new javax.swing.JPanel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tableDark5 = new View.Table.TableDark();
+        jumlahAkun = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jPanel15 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        username = new javax.swing.JTextField();
+        nimAkun = new javax.swing.JTextField();
+        jPanel74 = new javax.swing.JPanel();
+        jLabel93 = new javax.swing.JLabel();
+        jPanel78 = new javax.swing.JPanel();
+        jLabel97 = new javax.swing.JLabel();
+        password = new javax.swing.JTextField();
+        jButton16 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 500));
@@ -347,17 +359,6 @@ public class Admin extends javax.swing.JFrame {
         });
         sidePanel.add(jButton2);
 
-        jButton4.setBackground(new java.awt.Color(33, 32, 36));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icons8_online_payment_20px_4.png"))); // NOI18N
-        jButton4.setBorder(null);
-        jButton4.setPreferredSize(new java.awt.Dimension(40, 40));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        sidePanel.add(jButton4);
-
         jButton3.setBackground(new java.awt.Color(33, 32, 36));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icons8_event_accepted_tentatively_20px.png"))); // NOI18N
         jButton3.setBorder(null);
@@ -373,6 +374,17 @@ public class Admin extends javax.swing.JFrame {
             }
         });
         sidePanel.add(jButton3);
+
+        jButton4.setBackground(new java.awt.Color(33, 32, 36));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icons8_online_payment_20px_4.png"))); // NOI18N
+        jButton4.setBorder(null);
+        jButton4.setPreferredSize(new java.awt.Dimension(40, 40));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton4);
 
         jPanel1.add(sidePanel, java.awt.BorderLayout.WEST);
 
@@ -431,36 +443,52 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Varian-Logo-Itenas2-09-768x195.png"))); // NOI18N
 
+        jLabel1.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icons8_close_20px.png"))); // NOI18N
+        jLabel1.setText("Logout");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout dashboardLayout = new javax.swing.GroupLayout(dashboard);
         dashboard.setLayout(dashboardLayout);
         dashboardLayout.setHorizontalGroup(
             dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dashboardLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dashboardLayout.createSequentialGroup()
+                .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(dashboardLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
+                    .addGroup(dashboardLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
                         .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
                             .addGroup(dashboardLayout.createSequentialGroup()
-                                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(2, 2, 2)
+                                .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addGroup(dashboardLayout.createSequentialGroup()
+                                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addGap(192, 192, 192))
         );
         dashboardLayout.setVerticalGroup(
             dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dashboardLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(34, 34, 34)
                 .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -715,11 +743,26 @@ public class Admin extends javax.swing.JFrame {
         });
         daftarMahasiswa.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 90, -1));
 
+        jButton11.setForeground(new java.awt.Color(193, 195, 199));
+        jButton11.setText("Lihat Akun");
+        jButton11.setPreferredSize(new java.awt.Dimension(30, 30));
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
+        daftarMahasiswa.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 120, -1));
+
         PanelContent.add(daftarMahasiswa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
         daftarMahasiswa.getAccessibleContext().setAccessibleName("");
 
         daftarMatakuliah.setBackground(new java.awt.Color(23, 23, 26));
         daftarMatakuliah.setPreferredSize(new java.awt.Dimension(1000, 500));
+        daftarMatakuliah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                daftarMatakuliahMouseClicked(evt);
+            }
+        });
         daftarMatakuliah.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 36)); // NOI18N
@@ -954,7 +997,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(193, 195, 199));
         jLabel16.setText("Denda");
         jLabel16.setIconTextGap(0);
-        keuanganKuliah.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 282, -1, -1));
+        keuanganKuliah.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
         jLabel37.setForeground(new java.awt.Color(193, 195, 199));
         jLabel37.setText("Sistem Informasi Akademik");
@@ -971,7 +1014,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel43.setPreferredSize(new java.awt.Dimension(130, 29));
         ukt1.add(jLabel43);
 
-        keuanganKuliah.add(ukt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 212, 152, -1));
+        keuanganKuliah.add(ukt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 152, -1));
 
         ukv1.setBackground(new java.awt.Color(33, 32, 36));
         ukv1.setForeground(new java.awt.Color(193, 195, 199));
@@ -984,7 +1027,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel44.setPreferredSize(new java.awt.Dimension(140, 29));
         ukv1.add(jLabel44);
 
-        keuanganKuliah.add(ukv1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 247, 152, -1));
+        keuanganKuliah.add(ukv1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 152, -1));
 
         dpp.setBackground(new java.awt.Color(33, 32, 36));
         dpp.setForeground(new java.awt.Color(193, 195, 199));
@@ -997,7 +1040,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel46.setPreferredSize(new java.awt.Dimension(130, 29));
         dpp.add(jLabel46);
 
-        keuanganKuliah.add(dpp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 177, 152, -1));
+        keuanganKuliah.add(dpp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 152, -1));
 
         jPanel42.setBackground(new java.awt.Color(33, 32, 36));
         jPanel42.setForeground(new java.awt.Color(193, 195, 199));
@@ -1009,7 +1052,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel54.setPreferredSize(new java.awt.Dimension(130, 29));
         jPanel42.add(jLabel54);
 
-        keuanganKuliah.add(jPanel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 306, 152, -1));
+        keuanganKuliah.add(jPanel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 152, -1));
 
         jPanel45.setBackground(new java.awt.Color(33, 32, 36));
         jPanel45.setForeground(new java.awt.Color(193, 195, 199));
@@ -1021,7 +1064,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel55.setPreferredSize(new java.awt.Dimension(130, 29));
         jPanel45.add(jLabel55);
 
-        keuanganKuliah.add(jPanel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 342, 152, -1));
+        keuanganKuliah.add(jPanel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 152, -1));
 
         jPanel49.setBackground(new java.awt.Color(33, 32, 36));
         jPanel49.setForeground(new java.awt.Color(193, 195, 199));
@@ -1038,7 +1081,7 @@ public class Admin extends javax.swing.JFrame {
         });
         jPanel49.add(ukt);
 
-        keuanganKuliah.add(jPanel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 212, 218, 29));
+        keuanganKuliah.add(jPanel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 300, 29));
 
         jPanel50.setBackground(new java.awt.Color(33, 32, 36));
         jPanel50.setForeground(new java.awt.Color(193, 195, 199));
@@ -1055,7 +1098,7 @@ public class Admin extends javax.swing.JFrame {
         });
         jPanel50.add(biayaSks);
 
-        keuanganKuliah.add(jPanel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 247, 218, 29));
+        keuanganKuliah.add(jPanel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 300, 29));
 
         jPanel51.setBackground(new java.awt.Color(33, 32, 36));
         jPanel51.setForeground(new java.awt.Color(193, 195, 199));
@@ -1072,7 +1115,7 @@ public class Admin extends javax.swing.JFrame {
         });
         jPanel51.add(dpp_wajib);
 
-        keuanganKuliah.add(jPanel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 177, 218, 29));
+        keuanganKuliah.add(jPanel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 300, 29));
 
         jLabel35.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 36)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(193, 195, 199));
@@ -1085,31 +1128,31 @@ public class Admin extends javax.swing.JFrame {
         jLabel36.setForeground(new java.awt.Color(193, 195, 199));
         jLabel36.setText("Kewajiban");
         jLabel36.setIconTextGap(0);
-        keuanganKuliah.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 153, -1, -1));
+        keuanganKuliah.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         jLabel58.setBackground(new java.awt.Color(33, 32, 36));
         jLabel58.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 14)); // NOI18N
         jLabel58.setForeground(new java.awt.Color(193, 195, 199));
         jLabel58.setText("Total Kewajiban");
         jLabel58.setIconTextGap(0);
-        keuanganKuliah.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 378, -1, -1));
+        keuanganKuliah.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
         jPanel55.setBackground(new java.awt.Color(33, 32, 36));
         jPanel55.setForeground(new java.awt.Color(193, 195, 199));
         jPanel55.setPreferredSize(new java.awt.Dimension(630, 30));
         jPanel55.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
-        totalDenda.setForeground(new java.awt.Color(193, 195, 199));
-        totalDenda.setText("NIM");
-        totalDenda.setPreferredSize(new java.awt.Dimension(200, 29));
-        totalDenda.addMouseListener(new java.awt.event.MouseAdapter() {
+        persentaseDenda.setForeground(new java.awt.Color(193, 195, 199));
+        persentaseDenda.setText("NIM");
+        persentaseDenda.setPreferredSize(new java.awt.Dimension(200, 29));
+        persentaseDenda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                totalDendaMouseClicked(evt);
+                persentaseDendaMouseClicked(evt);
             }
         });
-        jPanel55.add(totalDenda);
+        jPanel55.add(persentaseDenda);
 
-        keuanganKuliah.add(jPanel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 402, 218, -1));
+        keuanganKuliah.add(jPanel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, 300, -1));
 
         jPanel44.setBackground(new java.awt.Color(33, 32, 36));
         jPanel44.setForeground(new java.awt.Color(193, 195, 199));
@@ -1121,110 +1164,25 @@ public class Admin extends javax.swing.JFrame {
         jLabel60.setPreferredSize(new java.awt.Dimension(130, 29));
         jPanel44.add(jLabel60);
 
-        keuanganKuliah.add(jPanel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 402, 152, -1));
+        keuanganKuliah.add(jPanel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 152, -1));
 
-        hariPerwalian.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        hariPerwalian.setForeground(new java.awt.Color(102, 102, 102));
-        hariPerwalian.setText("hari");
-        hariPerwalian.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                hariPerwalianMouseClicked(evt);
-            }
-        });
-        hariPerwalian.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hariPerwalianActionPerformed(evt);
-            }
-        });
-        keuanganKuliah.add(hariPerwalian, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 304, 50, 30));
-
-        tahunPerwalian.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tahunPerwalian.setForeground(new java.awt.Color(102, 102, 102));
-        tahunPerwalian.setText("tahun");
-        tahunPerwalian.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tahunPerwalianMouseClicked(evt);
-            }
-        });
-        tahunPerwalian.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tahunPerwalianActionPerformed(evt);
-            }
-        });
-        keuanganKuliah.add(tahunPerwalian, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 304, 50, 30));
-
-        bulanPerwalian.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bulanPerwalian.setForeground(new java.awt.Color(102, 102, 102));
-        bulanPerwalian.setText("bulan");
-        bulanPerwalian.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bulanPerwalianMouseClicked(evt);
-            }
-        });
-        bulanPerwalian.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bulanPerwalianActionPerformed(evt);
-            }
-        });
-        keuanganKuliah.add(bulanPerwalian, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 304, 50, 30));
-
-        hariPembayaran.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        hariPembayaran.setForeground(new java.awt.Color(102, 102, 102));
-        hariPembayaran.setText("hari");
-        hariPembayaran.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                hariPembayaranMouseClicked(evt);
-            }
-        });
-        hariPembayaran.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hariPembayaranActionPerformed(evt);
-            }
-        });
-        keuanganKuliah.add(hariPembayaran, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 344, 50, 30));
-
-        tahunPembayaran.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tahunPembayaran.setForeground(new java.awt.Color(102, 102, 102));
-        tahunPembayaran.setText("tahun");
-        tahunPembayaran.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tahunPembayaranMouseClicked(evt);
-            }
-        });
-        tahunPembayaran.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tahunPembayaranActionPerformed(evt);
-            }
-        });
-        keuanganKuliah.add(tahunPembayaran, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 344, 50, 30));
-
-        bulanPembayaran.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bulanPembayaran.setForeground(new java.awt.Color(102, 102, 102));
-        bulanPembayaran.setText("bulan");
-        bulanPembayaran.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bulanPembayaranMouseClicked(evt);
-            }
-        });
-        bulanPembayaran.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bulanPembayaranActionPerformed(evt);
-            }
-        });
-        keuanganKuliah.add(bulanPembayaran, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 344, 50, 30));
-
-        jButton11.setText("Batal");
-        jButton11.setPreferredSize(new java.awt.Dimension(30, 30));
-        keuanganKuliah.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 60, -1));
-
-        jButton12.setText("Simpan");
+        jButton12.setForeground(new java.awt.Color(193, 195, 199));
+        jButton12.setText("Update");
         jButton12.setPreferredSize(new java.awt.Dimension(30, 30));
         jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton12MouseClicked(evt);
             }
         });
-        keuanganKuliah.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, 70, -1));
+        keuanganKuliah.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 140, -1));
+
+        tempoPerwalian.setText("jTextField1");
+        tempoPerwalian.setPreferredSize(new java.awt.Dimension(56, 29));
+        keuanganKuliah.add(tempoPerwalian, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 300, 30));
+
+        tempoPembayaran.setText("jTextField1");
+        tempoPembayaran.setPreferredSize(new java.awt.Dimension(56, 29));
+        keuanganKuliah.add(tempoPembayaran, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 300, 30));
 
         PanelContent.add(keuanganKuliah, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
         keuanganKuliah.getAccessibleContext().setAccessibleName("");
@@ -1272,6 +1230,131 @@ public class Admin extends javax.swing.JFrame {
 
         PanelContent.add(JadwakMahasiswa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
+        daftarAkun.setBackground(new java.awt.Color(23, 23, 26));
+        daftarAkun.setPreferredSize(new java.awt.Dimension(1000, 500));
+        daftarAkun.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel48.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 36)); // NOI18N
+        jLabel48.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel48.setText("Hasil Perwalian");
+        jLabel48.setIconTextGap(0);
+        daftarAkun.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 48, -1, 38));
+
+        jLabel49.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel49.setText("Sistem Informasi Akademik");
+        daftarAkun.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 92, -1, -1));
+
+        tableDark5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nim", "Username", "Password"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableDark5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableDark5MouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(tableDark5);
+
+        daftarAkun.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 199, 400, 120));
+
+        jumlahAkun.setForeground(new java.awt.Color(193, 195, 199));
+        jumlahAkun.setText("jLabel6");
+        daftarAkun.add(jumlahAkun, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 165, 80, -1));
+
+        jLabel51.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jLabel51.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel51.setText("Jumlah Akun :");
+        daftarAkun.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 163, -1, -1));
+
+        jPanel14.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel14.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel14.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel23.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel23.setText("Username");
+        jLabel23.setPreferredSize(new java.awt.Dimension(80, 29));
+        jPanel14.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, -1, -1));
+
+        daftarAkun.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 104, -1));
+
+        jPanel15.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel15.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel15.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel24.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel24.setText("Nim");
+        jLabel24.setPreferredSize(new java.awt.Dimension(40, 29));
+        jPanel15.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, 90, -1));
+
+        daftarAkun.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 104, -1));
+
+        username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        username.setForeground(new java.awt.Color(102, 102, 102));
+        daftarAkun.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 290, 30));
+
+        nimAkun.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nimAkun.setForeground(new java.awt.Color(102, 102, 102));
+        daftarAkun.add(nimAkun, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 290, 30));
+
+        jPanel74.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel74.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel74.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel74.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel93.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel93.setText("Password");
+        jLabel93.setPreferredSize(new java.awt.Dimension(90, 29));
+        jPanel74.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, -1, -1));
+
+        jPanel78.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel78.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel78.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
+
+        jLabel97.setText("Nama Mahasiswa");
+        jLabel97.setPreferredSize(new java.awt.Dimension(90, 29));
+        jPanel78.add(jLabel97);
+
+        jPanel74.add(jPanel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 29, -1, -1));
+
+        daftarAkun.add(jPanel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 104, -1));
+
+        password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        password.setForeground(new java.awt.Color(102, 102, 102));
+        daftarAkun.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 290, 30));
+
+        jButton16.setForeground(new java.awt.Color(193, 195, 199));
+        jButton16.setText("Update");
+        jButton16.setPreferredSize(new java.awt.Dimension(30, 30));
+        jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton16MouseClicked(evt);
+            }
+        });
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+        daftarAkun.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, 110, -1));
+
+        PanelContent.add(daftarAkun, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
+
         jPanel1.add(PanelContent, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -1280,7 +1363,7 @@ public class Admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tampilDataMahasiswa() {
-        ControllerAdmin crl = new ControllerAdmin(152021169);
+        ControllerAdmin crl = new ControllerAdmin(acc);
         List<Mahasiswa> listm = crl.getMahasiswa();
         DefaultTableModel model = (DefaultTableModel) daftarMahasiswaTable.getModel();
         model.setRowCount(0);
@@ -1315,26 +1398,8 @@ public class Admin extends javax.swing.JFrame {
         }
     }
 
-    private String formatTanggalPerwalian() {
-        String hari = hariPerwalian.getText();
-        String bulan = bulanPerwalian.getText();
-        String tahun = tahunPerwalian.getText();
-        String tanggalString = tahun + "-" + bulan + "-" + hari;
-        System.out.println("Tanggal yang diinputkan: " + tanggalString);
-        return tanggalString;
-    }
-
-    private String formatTanggalPembayaran() {
-        String hari = hariPerwalian.getText();
-        String bulan = bulanPerwalian.getText();
-        String tahun = tahunPerwalian.getText();
-        String tanggalString = tahun + "-" + bulan + "-" + hari;
-        System.out.println("Tanggal yang diinputkan: " + tanggalString);
-        return tanggalString;
-    }
-    
     private void tampilMatakuliah() {
-        ControllerAdmin crl = new ControllerAdmin(152021169);
+        ControllerAdmin crl = new ControllerAdmin(acc);
         List<Matakuliah> listMk = crl.getMatakuliah();
         DefaultTableModel model = (DefaultTableModel) tableDark3.getModel();
         model.setRowCount(0);
@@ -1352,11 +1417,41 @@ public class Admin extends javax.swing.JFrame {
             });
         }
     }
+    
+    private void tampilAkun(){
+        int jumlah = 0;
+        ControllerAdmin crl = new ControllerAdmin();
+        List<Akun> listAcc = crl.getAkun();
+        DefaultTableModel model = (DefaultTableModel) tableDark5.getModel();
+        model.setRowCount(0);
+        jumlah = listAcc.size();
+        jumlahAkun.setText(Integer.toString(jumlah));
+
+        for (Akun acc : listAcc) {
+            model.addRow(new Object[]{
+                acc.getNim(),
+                acc.getUsername(),
+                acc.getPassword()
+            });
+        }
+    }
+
+    private void tampilKeuangan() {
+        ControllerAdmin crl = new ControllerAdmin();
+        Keuangan ku = crl.getKeuangan();
+        dpp_wajib.setText(Integer.toString(ku.getDpp_wajib()));
+        ukt.setText(Integer.toString(ku.getUkt()));
+        biayaSks.setText(Integer.toString(ku.getBiaya()));
+        tempoPerwalian.setText(ku.getTanggalJatuhTempoPerwalian().toString());
+        tempoPembayaran.setText(ku.getTanggalJatuhTempoPembayaran().toString());
+        persentaseDenda.setText(Double.toString(ku.getDenda()));
+    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         JadwakMahasiswa.setVisible(false);
         daftarMatakuliah.setVisible(false);
+        daftarAkun.setVisible(false);
         keuanganKuliah.setVisible(false);
         dashboard.setVisible(false);
         daftarMahasiswa.setVisible(true);
@@ -1368,6 +1463,7 @@ public class Admin extends javax.swing.JFrame {
         daftarMatakuliah.setVisible(false);
         keuanganKuliah.setVisible(false);
         daftarMahasiswa.setVisible(false);
+        daftarAkun.setVisible(false);
         dashboard.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -1376,6 +1472,7 @@ public class Admin extends javax.swing.JFrame {
         daftarMahasiswa.setVisible(false);
         dashboard.setVisible(false);
         keuanganKuliah.setVisible(false);
+        daftarAkun.setVisible(false);
         JadwakMahasiswa.setVisible(false);
         daftarMatakuliah.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -1384,6 +1481,7 @@ public class Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         daftarMahasiswa.setVisible(false);
         JadwakMahasiswa.setVisible(false);
+        daftarAkun.setVisible(false);
         dashboard.setVisible(false);
         daftarMatakuliah.setVisible(false);
         keuanganKuliah.setVisible(true);
@@ -1404,7 +1502,7 @@ public class Admin extends javax.swing.JFrame {
         String sisa = (String) tableDark3.getValueAt(baris, 5);
         String hari = (String) tableDark3.getValueAt(baris, 6);
         String jam = (String) tableDark3.getValueAt(baris, 7);
-        
+
         this.kode.setText(kode);
         this.matakuliah.setText(matakuliah);
         this.jumlahSks.setText(Integer.toString(sks));
@@ -1472,65 +1570,40 @@ public class Admin extends javax.swing.JFrame {
         updateData(field, value, biayaSks);
     }//GEN-LAST:event_biayaSksMouseClicked
 
-    private void totalDendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_totalDendaMouseClicked
+    private void persentaseDendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_persentaseDendaMouseClicked
         // TODO add your handling code here:
         String field = "Nama";
-        String value = totalDenda.getText();
-        updateData(field, value, totalDenda);
-    }//GEN-LAST:event_totalDendaMouseClicked
-
-    private void hariPerwalianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hariPerwalianActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hariPerwalianActionPerformed
-
-    private void tahunPerwalianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tahunPerwalianActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tahunPerwalianActionPerformed
-
-    private void bulanPerwalianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bulanPerwalianActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bulanPerwalianActionPerformed
-
-    private void hariPembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hariPembayaranActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hariPembayaranActionPerformed
-
-    private void tahunPembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tahunPembayaranActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tahunPembayaranActionPerformed
-
-    private void bulanPembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bulanPembayaranActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bulanPembayaranActionPerformed
-
-    private void hariPerwalianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hariPerwalianMouseClicked
-        // TODO add your handling code here:
-        if (hariPerwalian.getText().equals("hari")) {
-            hariPerwalian.setText("");
-        }
-    }//GEN-LAST:event_hariPerwalianMouseClicked
-
-    private void bulanPerwalianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bulanPerwalianMouseClicked
-        // TODO add your handling code here:
-        if (bulanPerwalian.getText().equals("bulan")) {
-            bulanPerwalian.setText("");
-        }
-    }//GEN-LAST:event_bulanPerwalianMouseClicked
-
-    private void tahunPerwalianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tahunPerwalianMouseClicked
-        // TODO add your handling code here:
-        if (tahunPerwalian.getText().equals("tahun")) {
-            tahunPerwalian.setText("");
-        }
-    }//GEN-LAST:event_tahunPerwalianMouseClicked
+        String value = persentaseDenda.getText();
+        updateData(field, value, persentaseDenda);
+    }//GEN-LAST:event_persentaseDendaMouseClicked
 
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
         // TODO add your handling code here:
-        String dpp_wajib = this.dpp_wajib.getText();
-        String ukt = this.ukt.getText();
-        String biayaSks = this.biayaSks.getText();
-        String tanggalPerwalian = formatTanggalPerwalian();
-        String tannggalPembayaran = formatTanggalPembayaran();
+        ControllerAdmin crl = new ControllerAdmin(acc);
+        int dpp_wajib = Integer.parseInt(this.dpp_wajib.getText());
+        int ukt = Integer.parseInt(this.ukt.getText());
+        int biayaSks = Integer.parseInt(this.biayaSks.getText());
+        Date tempoPerwalian = null;
+        Date tempoPembayaran = null;
+        double denda = Double.parseDouble(persentaseDenda.getText());
+
+        Keuangan ku = new Keuangan();
+        ku.setDpp_wajib(dpp_wajib);
+        ku.setUkt(ukt);
+        ku.setUkv(ukt);
+        ku.setBiaya(biayaSks);
+        ku.setDenda(denda);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            tempoPerwalian = dateFormat.parse(this.tempoPerwalian.getText());
+            tempoPembayaran = dateFormat.parse(this.tempoPembayaran.getText());
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        ku.setTanggalJatuhTempoPerwalian(tempoPerwalian);
+        ku.setTanggalJatuhTempoPembayaran(tempoPembayaran);
+        crl.updateKeuangan(ku);
+        refreshData();
     }//GEN-LAST:event_jButton12MouseClicked
 
     private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
@@ -1543,12 +1616,13 @@ public class Admin extends javax.swing.JFrame {
         dashboard.setVisible(false);
         keuanganKuliah.setVisible(false);
         daftarMatakuliah.setVisible(false);
+        daftarAkun.setVisible(false);
         JadwakMahasiswa.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         // TODO add your handling code here:
-        ControllerAdmin crl = new ControllerAdmin(152021169);
+        ControllerAdmin crl = new ControllerAdmin(acc);
         Mahasiswa mhs = new Mahasiswa();
 
         int nim = Integer.parseInt(this.nim.getText());
@@ -1570,13 +1644,14 @@ public class Admin extends javax.swing.JFrame {
         mhs.setEmail(email);
         mhs.setNomor(nomor);
         mhs.setProdi(prodi);
-        
         crl.tambahMahasiswa(mhs);
+        crl.tambahAkun(mhs);
+        refreshData();
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
         // TODO add your handling code here:
-        ControllerAdmin crl = new ControllerAdmin(152021169);
+        ControllerAdmin crl = new ControllerAdmin(acc);
         Mahasiswa mhs = new Mahasiswa();
 
         int nim = Integer.parseInt(this.nim.getText());
@@ -1598,8 +1673,8 @@ public class Admin extends javax.swing.JFrame {
         mhs.setEmail(email);
         mhs.setNomor(nomor);
         mhs.setProdi(prodi);
-        
         crl.updateMahasiswa(mhs);
+        refreshData();
     }//GEN-LAST:event_jButton13MouseClicked
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
@@ -1608,7 +1683,7 @@ public class Admin extends javax.swing.JFrame {
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         // TODO add your handling code here:
-        ControllerAdmin crl = new ControllerAdmin(152021169);
+        ControllerAdmin crl = new ControllerAdmin(acc);
         Mahasiswa mhs = new Mahasiswa();
 
         int nim = Integer.parseInt(this.nim.getText());
@@ -1630,34 +1705,13 @@ public class Admin extends javax.swing.JFrame {
         mhs.setEmail(email);
         mhs.setNomor(nomor);
         mhs.setProdi(prodi);
-        
         crl.hapusMahasiswa(mhs);
+        refreshData();
     }//GEN-LAST:event_jButton8MouseClicked
-
-    private void hariPembayaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hariPembayaranMouseClicked
-        // TODO add your handling code here:
-        if (hariPembayaran.getText().equals("hari")) {
-            hariPembayaran.setText("");
-        }
-    }//GEN-LAST:event_hariPembayaranMouseClicked
-
-    private void bulanPembayaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bulanPembayaranMouseClicked
-        // TODO add your handling code here:
-        if (bulanPembayaran.getText().equals("bulan")) {
-            bulanPembayaran.setText("");
-        }
-    }//GEN-LAST:event_bulanPembayaranMouseClicked
-
-    private void tahunPembayaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tahunPembayaranMouseClicked
-        // TODO add your handling code here:
-        if (tahunPembayaran.getText().equals("tahun")) {
-            tahunPembayaran.setText("");
-        }
-    }//GEN-LAST:event_tahunPembayaranMouseClicked
 
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
         // TODO add your handling code here:
-        ControllerAdmin crl = new ControllerAdmin(152021169);
+        ControllerAdmin crl = new ControllerAdmin(acc);
         Matakuliah mk = new Matakuliah();
         mk.setKode(this.kode.getText());
         mk.setMatakuliah(this.matakuliah.getText());
@@ -1668,11 +1722,12 @@ public class Admin extends javax.swing.JFrame {
         mk.setHari(this.hari.getText());
         mk.setJam(this.jam.getText());
         crl.tambahMatakuliah(mk);
+        refreshData();
     }//GEN-LAST:event_jButton9MouseClicked
 
     private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
         // TODO add your handling code here:
-        ControllerAdmin crl = new ControllerAdmin(152021169);
+        ControllerAdmin crl = new ControllerAdmin(acc);
         Matakuliah mk = new Matakuliah();
         mk.setKode(this.kode.getText());
         mk.setMatakuliah(this.matakuliah.getText());
@@ -1683,11 +1738,12 @@ public class Admin extends javax.swing.JFrame {
         mk.setHari(this.hari.getText());
         mk.setJam(this.jam.getText());
         crl.hapusMatakuliah(mk);
+        refreshData();
     }//GEN-LAST:event_jButton10MouseClicked
 
     private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
         // TODO add your handling code here:
-        ControllerAdmin crl = new ControllerAdmin(152021169);
+        ControllerAdmin crl = new ControllerAdmin(acc);
         Matakuliah mk = new Matakuliah();
         mk.setKode(this.kode.getText());
         mk.setMatakuliah(this.matakuliah.getText());
@@ -1698,11 +1754,62 @@ public class Admin extends javax.swing.JFrame {
         mk.setHari(this.hari.getText());
         mk.setJam(this.jam.getText());
         crl.updateMatakuliah(mk);
+        refreshData();
     }//GEN-LAST:event_jButton14MouseClicked
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void tableDark5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDark5MouseClicked
+        // TODO add your handling code here:
+        int baris = tableDark5.rowAtPoint(evt.getPoint());
+        int nim = (int) tableDark5.getValueAt(baris, 0);
+        String username = (String) tableDark5.getValueAt(baris, 1);
+        String password = (String) tableDark5.getValueAt(baris, 2);
+        nimAkun.setText(Integer.toString(nim));
+        this.username.setText(username);
+        this.password.setText(password);
+    }//GEN-LAST:event_tableDark5MouseClicked
+
+    private void daftarMatakuliahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarMatakuliahMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_daftarMatakuliahMouseClicked
+
+    private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
+        // TODO add your handling code here:
+        ControllerAdmin crl = new ControllerAdmin(acc);
+        Akun acc = new Akun();
+        int nim = Integer.parseInt(nimAkun.getText());
+        String username = this.username.getText();
+        String password = this.password.getText();
+        acc.setNim(nim);
+        acc.setUsername(username);
+        acc.setPassword(password);
+        crl.updateAkun(acc);
+        refreshData();
+    }//GEN-LAST:event_jButton16MouseClicked
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        Login login = new Login();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        // TODO add your handling code here:
+        daftarMahasiswa.setVisible(false);
+        JadwakMahasiswa.setVisible(false);
+        dashboard.setVisible(false);
+        daftarMatakuliah.setVisible(false);
+        keuanganKuliah.setVisible(false);
+        daftarAkun.setVisible(true);
+    }//GEN-LAST:event_jButton11MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1718,16 +1825,24 @@ public class Admin extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -1737,7 +1852,7 @@ public class Admin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Admin().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }
@@ -1747,8 +1862,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel PanelContent;
     private javax.swing.JTextField batasStudi;
     private javax.swing.JLabel biayaSks;
-    private javax.swing.JTextField bulanPembayaran;
-    private javax.swing.JTextField bulanPerwalian;
+    private javax.swing.JPanel daftarAkun;
     private javax.swing.JPanel daftarMahasiswa;
     private View.Table.TableDark daftarMahasiswaTable;
     private javax.swing.JPanel daftarMatakuliah;
@@ -1758,14 +1872,13 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel dpp_wajib;
     private javax.swing.JTextField email;
     private javax.swing.JTextField hari;
-    private javax.swing.JTextField hariPembayaran;
-    private javax.swing.JTextField hariPerwalian;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1773,6 +1886,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -1785,6 +1899,8 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
@@ -1794,7 +1910,10 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel58;
@@ -1812,14 +1931,18 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel90;
     private javax.swing.JLabel jLabel91;
     private javax.swing.JLabel jLabel92;
+    private javax.swing.JLabel jLabel93;
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
+    private javax.swing.JLabel jLabel97;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel42;
     private javax.swing.JPanel jPanel44;
@@ -1843,16 +1966,20 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel71;
     private javax.swing.JPanel jPanel72;
     private javax.swing.JPanel jPanel73;
+    private javax.swing.JPanel jPanel74;
     private javax.swing.JPanel jPanel75;
     private javax.swing.JPanel jPanel76;
     private javax.swing.JPanel jPanel77;
+    private javax.swing.JPanel jPanel78;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTextField jam;
     private javax.swing.JTextField jenis;
+    private javax.swing.JLabel jumlahAkun;
     private javax.swing.JTextField jumlahSks;
     private javax.swing.JTextField kapasitas;
     private javax.swing.JTextField kelas;
@@ -1861,18 +1988,22 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField matakuliah;
     private javax.swing.JTextField nama;
     private javax.swing.JTextField nim;
+    private javax.swing.JTextField nimAkun;
     private javax.swing.JTextField nomor;
+    private javax.swing.JTextField password;
+    private javax.swing.JLabel persentaseDenda;
     private javax.swing.JTextField programStudi;
     private javax.swing.JTextField semesterAktif;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JTextField status;
     private View.Table.TableDark tableDark3;
-    private javax.swing.JTextField tahunPembayaran;
-    private javax.swing.JTextField tahunPerwalian;
-    private javax.swing.JLabel totalDenda;
+    private View.Table.TableDark tableDark5;
+    private javax.swing.JTextField tempoPembayaran;
+    private javax.swing.JTextField tempoPerwalian;
     private javax.swing.JLabel ukt;
     private javax.swing.JPanel ukt1;
     private javax.swing.JPanel ukv1;
+    private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 
     public void setAcc(Akun acc) {
