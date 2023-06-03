@@ -35,7 +35,7 @@ INSERT INTO `akun_mhs` (`nim`, `username`, `password`) VALUES
 
 -- Dumping structure for table sikad.keuangan_mhs
 CREATE TABLE IF NOT EXISTS `keuangan_mhs` (
-  `nim` int(11) DEFAULT NULL,
+  `nim` int(11) NOT NULL,
   `dpp_wajib` int(11) DEFAULT NULL,
   `ukt` int(11) DEFAULT NULL,
   `biayaSks` int(11) DEFAULT NULL,
@@ -45,13 +45,14 @@ CREATE TABLE IF NOT EXISTS `keuangan_mhs` (
   `tanggal_jatuh_tempo_perwalian` date DEFAULT NULL,
   `lunas` enum('1','0') DEFAULT NULL,
   `denda` double DEFAULT NULL,
+  PRIMARY KEY (`nim`),
   KEY `nim` (`nim`) USING BTREE,
   CONSTRAINT `keuangan` FOREIGN KEY (`nim`) REFERENCES `mahasiswa` (`nim`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table sikad.keuangan_mhs: ~0 rows (approximately)
+-- Dumping data for table sikad.keuangan_mhs: ~1 rows (approximately)
 INSERT INTO `keuangan_mhs` (`nim`, `dpp_wajib`, `ukt`, `biayaSks`, `total`, `ukv`, `tanggal_jatuh_tempo_pembayaran`, `tanggal_jatuh_tempo_perwalian`, `lunas`, `denda`) VALUES
-	(152021169, 0, 2160000, 240000, 5616000, 2880000, '2023-05-28', '2023-05-28', '0', 0.05);
+	(152021169, 0, 2160000, 240000, 5544000, 2880000, '2023-05-28', '2023-05-28', '0', 0.05);
 
 -- Dumping structure for table sikad.mahasiswa
 CREATE TABLE IF NOT EXISTS `mahasiswa` (

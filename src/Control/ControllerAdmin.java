@@ -299,7 +299,7 @@ public class ControllerAdmin {
             }
         } catch (SQLException ex) {
             Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }   
         conMan.logOff();
         return listAcc;
     }

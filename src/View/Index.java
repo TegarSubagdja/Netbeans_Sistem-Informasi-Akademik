@@ -129,9 +129,6 @@ public class Index extends javax.swing.JFrame {
         dashboard = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         dataMahasiswa = new javax.swing.JPanel();
@@ -382,53 +379,8 @@ public class Index extends javax.swing.JFrame {
         jLabel4.setText("Sistem Informasi Akademik");
         dashboard.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 92, -1, -1));
 
-        jPanel8.setBackground(new java.awt.Color(33, 32, 36));
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 235, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 107, Short.MAX_VALUE)
-        );
-
-        dashboard.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 358, -1, -1));
-
-        jPanel9.setBackground(new java.awt.Color(33, 32, 36));
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 235, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 107, Short.MAX_VALUE)
-        );
-
-        dashboard.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 358, -1, -1));
-
-        jPanel10.setBackground(new java.awt.Color(33, 32, 36));
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 235, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 107, Short.MAX_VALUE)
-        );
-
-        dashboard.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(546, 358, -1, -1));
-
         jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Varian-Logo-Itenas2-09-768x195.png"))); // NOI18N
-        dashboard.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 125, -1, 199));
+        dashboard.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, 199));
 
         jLabel38.setForeground(new java.awt.Color(193, 195, 199));
         jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icons8_close_20px.png"))); // NOI18N
@@ -2132,7 +2084,6 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
@@ -2165,8 +2116,6 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel55;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
