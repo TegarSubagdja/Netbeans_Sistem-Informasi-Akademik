@@ -222,9 +222,15 @@ public class Index extends javax.swing.JFrame {
         telat_pembayaran = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jPanel43 = new javax.swing.JPanel();
-        jLabel69 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jPanel54 = new javax.swing.JPanel();
+        totalKewajiban = new javax.swing.JLabel();
+        jPanel46 = new javax.swing.JPanel();
+        jLabel59 = new javax.swing.JLabel();
+        jPanel55 = new javax.swing.JPanel();
+        totalDenda = new javax.swing.JLabel();
+        jPanel44 = new javax.swing.JPanel();
+        jLabel60 = new javax.swing.JLabel();
         hasilPerwalian = new javax.swing.JPanel();
         jLabel48 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
@@ -1424,19 +1430,51 @@ public class Index extends javax.swing.JFrame {
         jLabel36.setText("Kewajiban");
         jLabel36.setIconTextGap(0);
 
-        jLabel38.setBackground(new java.awt.Color(33, 32, 36));
-        jLabel38.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel38.setText("VA (Virtual Account)");
-        jLabel38.setIconTextGap(0);
+        jLabel58.setBackground(new java.awt.Color(33, 32, 36));
+        jLabel58.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 14)); // NOI18N
+        jLabel58.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel58.setText("Total Kewajiban");
+        jLabel58.setIconTextGap(0);
 
-        jPanel43.setBackground(new java.awt.Color(33, 32, 36));
-        jPanel43.setForeground(new java.awt.Color(193, 195, 199));
-        jPanel43.setPreferredSize(new java.awt.Dimension(100, 30));
-        jPanel43.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
+        jPanel54.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel54.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel54.setPreferredSize(new java.awt.Dimension(630, 30));
+        jPanel54.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
-        jLabel69.setPreferredSize(new java.awt.Dimension(95, 29));
-        jPanel43.add(jLabel69);
+        totalKewajiban.setForeground(new java.awt.Color(193, 195, 199));
+        totalKewajiban.setText("NIM");
+        totalKewajiban.setPreferredSize(new java.awt.Dimension(200, 29));
+        jPanel54.add(totalKewajiban);
+
+        jPanel46.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel46.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel46.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel46.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
+
+        jLabel59.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel59.setText("Total");
+        jLabel59.setPreferredSize(new java.awt.Dimension(130, 29));
+        jPanel46.add(jLabel59);
+
+        jPanel55.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel55.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel55.setPreferredSize(new java.awt.Dimension(630, 30));
+        jPanel55.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
+
+        totalDenda.setForeground(new java.awt.Color(193, 195, 199));
+        totalDenda.setText("NIM");
+        totalDenda.setPreferredSize(new java.awt.Dimension(200, 29));
+        jPanel55.add(totalDenda);
+
+        jPanel44.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel44.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel44.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel44.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
+
+        jLabel60.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel60.setText("Total Denda");
+        jLabel60.setPreferredSize(new java.awt.Dimension(130, 29));
+        jPanel44.add(jLabel60);
 
         javax.swing.GroupLayout keuanganKuliahLayout = new javax.swing.GroupLayout(keuanganKuliah);
         keuanganKuliah.setLayout(keuanganKuliahLayout);
@@ -1445,33 +1483,45 @@ public class Index extends javax.swing.JFrame {
             .addGroup(keuanganKuliahLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(keuanganKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel35)
-                    .addGroup(keuanganKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel38)
-                        .addComponent(jLabel36)
-                        .addComponent(jLabel16)
+                    .addGroup(keuanganKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(keuanganKuliahLayout.createSequentialGroup()
-                            .addGroup(keuanganKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jPanel42, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                                .addComponent(jPanel45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(keuanganKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel52, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(jPanel53, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                        .addComponent(jLabel37)
-                        .addComponent(jPanel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, keuanganKuliahLayout.createSequentialGroup()
-                            .addGroup(keuanganKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(ukt1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                                .addComponent(ukv1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(dpp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(6, 6, 6)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, keuanganKuliahLayout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addGroup(keuanganKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(ukt1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                                        .addComponent(dpp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(ukv1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(keuanganKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jPanel49, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jPanel51, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jPanel50, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(keuanganKuliahLayout.createSequentialGroup()
+                                    .addGroup(keuanganKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jPanel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jPanel45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jPanel46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jPanel44, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(keuanganKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jPanel52, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jPanel53, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jPanel54, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jPanel55, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                            .addGap(578, 578, 578))
+                        .addGroup(keuanganKuliahLayout.createSequentialGroup()
                             .addGroup(keuanganKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel50, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(keuanganKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPanel49, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
-                                    .addComponent(jPanel51, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))))
-                .addContainerGap(220, Short.MAX_VALUE))
+                                .addComponent(jLabel16)
+                                .addComponent(jLabel37)
+                                .addComponent(jLabel58))
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(keuanganKuliahLayout.createSequentialGroup()
+                            .addComponent(jLabel36)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(keuanganKuliahLayout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addGap(248, 248, 248))))
         );
         keuanganKuliahLayout.setVerticalGroup(
             keuanganKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1507,10 +1557,18 @@ public class Index extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel38)
+                .addComponent(jLabel58)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(115, 115, 115))
+                .addGroup(keuanganKuliahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(keuanganKuliahLayout.createSequentialGroup()
+                        .addComponent(jPanel44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(keuanganKuliahLayout.createSequentialGroup()
+                        .addComponent(jPanel55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(175, 175, 175))
         );
 
         PanelContent.add(keuanganKuliah, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
@@ -1719,6 +1777,8 @@ public class Index extends javax.swing.JFrame {
         ukv.setText(Double.toString(ku.getUkv()));
         telat_pembayaran.setText(Integer.toString(ku.getTelat_pembayaran()));
         telat_perwalian.setText(Integer.toString(ku.getTelat_perwalian()));
+        totalDenda.setText(Integer.toString(ku.getTotalDenda()));
+        totalKewajiban.setText(Double.toString(ku.totalKewajiban()));
     }
 
     public void hitungKeuangan() {
@@ -2106,7 +2166,6 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
@@ -2128,8 +2187,10 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel69;
+    private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2154,14 +2215,17 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel42;
-    private javax.swing.JPanel jPanel43;
+    private javax.swing.JPanel jPanel44;
     private javax.swing.JPanel jPanel45;
+    private javax.swing.JPanel jPanel46;
     private javax.swing.JPanel jPanel49;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel50;
     private javax.swing.JPanel jPanel51;
     private javax.swing.JPanel jPanel52;
     private javax.swing.JPanel jPanel53;
+    private javax.swing.JPanel jPanel54;
+    private javax.swing.JPanel jPanel55;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -2182,6 +2246,8 @@ public class Index extends javax.swing.JFrame {
     private View.Table.TableDark tableDark5;
     private javax.swing.JLabel telat_pembayaran;
     private javax.swing.JLabel telat_perwalian;
+    private javax.swing.JLabel totalDenda;
+    private javax.swing.JLabel totalKewajiban;
     private javax.swing.JLabel ukt;
     private javax.swing.JPanel ukt1;
     private javax.swing.JLabel ukv;

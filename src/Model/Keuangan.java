@@ -107,4 +107,9 @@ public class Keuangan {
     public void setTotalDenda(int totalDenda) {
         this.totalDenda = totalDenda;
     }
+    
+    public double totalKewajiban(){
+        double total = ukt + ukv + totalDenda;
+        return total;
+    }
 }
