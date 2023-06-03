@@ -43,7 +43,7 @@ public class Admin extends javax.swing.JFrame {
         initComponents();
         setupButtonUI();
         setupClickButton();
-        tampilDataMahasiswa();
+        refreshData();
         daftarMahasiswa.setVisible(false);
         keuanganKuliah.setVisible(false);
         daftarMatakuliah.setVisible(false);
@@ -63,9 +63,14 @@ public class Admin extends javax.swing.JFrame {
         tableDark3.fixTable1(jScrollPane3);
         tableDark3.fixTable1(jScrollPane4);
     }
+    
+    private void refreshData(){
+        tampilDataMahasiswa();
+        tampilMatakuliah();
+    }
 
     private void setupClickButton() {
-        JButton[] btns = {jButton7, jButton8, jButton9, jButton10, jButton11, jButton12, jButton13};
+        JButton[] btns = {jButton7, jButton8, jButton9, jButton10, jButton11, jButton12, jButton13, jButton14};
         for (JButton btn : btns) {
             btn.setBackground(new Color(51, 51, 51));
             btn.setUI(new BasicButtonUI());
@@ -156,7 +161,6 @@ public class Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         sidePanel = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -227,11 +231,11 @@ public class Admin extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
-        dosenWali1 = new javax.swing.JTextField();
-        nim1 = new javax.swing.JTextField();
-        nama1 = new javax.swing.JTextField();
-        semesterAktif1 = new javax.swing.JTextField();
-        status1 = new javax.swing.JTextField();
+        kelas = new javax.swing.JTextField();
+        kode = new javax.swing.JTextField();
+        matakuliah = new javax.swing.JTextField();
+        jenis = new javax.swing.JTextField();
+        jumlahSks = new javax.swing.JTextField();
         jPanel72 = new javax.swing.JPanel();
         jLabel91 = new javax.swing.JLabel();
         jPanel73 = new javax.swing.JPanel();
@@ -240,13 +244,14 @@ public class Admin extends javax.swing.JFrame {
         jLabel94 = new javax.swing.JLabel();
         jPanel76 = new javax.swing.JPanel();
         jLabel95 = new javax.swing.JLabel();
-        batasStudi1 = new javax.swing.JTextField();
-        email1 = new javax.swing.JTextField();
-        nomor1 = new javax.swing.JTextField();
+        kapasitas = new javax.swing.JTextField();
+        hari = new javax.swing.JTextField();
+        jam = new javax.swing.JTextField();
         jPanel77 = new javax.swing.JPanel();
         jLabel96 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
         keuanganKuliah = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
@@ -286,17 +291,6 @@ public class Admin extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jLabel13 = new javax.swing.JLabel();
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 500));
@@ -740,15 +734,15 @@ public class Admin extends javax.swing.JFrame {
 
         tableDark3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Kode", "Matakuliah", "SKS", "Kelas", "Jenis", "Sisa", "Status Awal", "Hari", "Jam"
+                "Kode", "Matakuliah", "SKS", "Kelas", "Jenis", "Sisa", "Hari", "Jam"
             }
         ));
         tableDark3.setPreferredSize(new java.awt.Dimension(700, 180));
@@ -819,25 +813,25 @@ public class Admin extends javax.swing.JFrame {
 
         daftarMatakuliah.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 104, -1));
 
-        dosenWali1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        dosenWali1.setForeground(new java.awt.Color(102, 102, 102));
-        daftarMatakuliah.add(dosenWali1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 220, 30));
+        kelas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        kelas.setForeground(new java.awt.Color(102, 102, 102));
+        daftarMatakuliah.add(kelas, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 220, 30));
 
-        nim1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nim1.setForeground(new java.awt.Color(102, 102, 102));
-        daftarMatakuliah.add(nim1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 220, 30));
+        kode.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        kode.setForeground(new java.awt.Color(102, 102, 102));
+        daftarMatakuliah.add(kode, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 220, 30));
 
-        nama1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nama1.setForeground(new java.awt.Color(102, 102, 102));
-        daftarMatakuliah.add(nama1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 220, 30));
+        matakuliah.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        matakuliah.setForeground(new java.awt.Color(102, 102, 102));
+        daftarMatakuliah.add(matakuliah, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 220, 30));
 
-        semesterAktif1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        semesterAktif1.setForeground(new java.awt.Color(102, 102, 102));
-        daftarMatakuliah.add(semesterAktif1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 220, 30));
+        jenis.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jenis.setForeground(new java.awt.Color(102, 102, 102));
+        daftarMatakuliah.add(jenis, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 220, 30));
 
-        status1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        status1.setForeground(new java.awt.Color(102, 102, 102));
-        daftarMatakuliah.add(status1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 220, 30));
+        jumlahSks.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jumlahSks.setForeground(new java.awt.Color(102, 102, 102));
+        daftarMatakuliah.add(jumlahSks, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 220, 30));
 
         jPanel72.setBackground(new java.awt.Color(33, 32, 36));
         jPanel72.setForeground(new java.awt.Color(193, 195, 199));
@@ -885,17 +879,17 @@ public class Admin extends javax.swing.JFrame {
 
         daftarMatakuliah.add(jPanel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 104, -1));
 
-        batasStudi1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        batasStudi1.setForeground(new java.awt.Color(102, 102, 102));
-        daftarMatakuliah.add(batasStudi1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 220, 30));
+        kapasitas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        kapasitas.setForeground(new java.awt.Color(102, 102, 102));
+        daftarMatakuliah.add(kapasitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 220, 30));
 
-        email1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        email1.setForeground(new java.awt.Color(102, 102, 102));
-        daftarMatakuliah.add(email1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 220, 30));
+        hari.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        hari.setForeground(new java.awt.Color(102, 102, 102));
+        daftarMatakuliah.add(hari, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 220, 30));
 
-        nomor1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nomor1.setForeground(new java.awt.Color(102, 102, 102));
-        daftarMatakuliah.add(nomor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 220, 30));
+        jam.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jam.setForeground(new java.awt.Color(102, 102, 102));
+        daftarMatakuliah.add(jam, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 220, 30));
 
         jPanel77.setBackground(new java.awt.Color(33, 32, 36));
         jPanel77.setForeground(new java.awt.Color(193, 195, 199));
@@ -912,17 +906,42 @@ public class Admin extends javax.swing.JFrame {
         jButton9.setForeground(new java.awt.Color(193, 195, 199));
         jButton9.setText("Tambah");
         jButton9.setPreferredSize(new java.awt.Dimension(30, 30));
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
-        daftarMatakuliah.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 90, -1));
+        daftarMatakuliah.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 450, 90, -1));
 
         jButton10.setForeground(new java.awt.Color(193, 195, 199));
-        jButton10.setText("Bersihkan");
+        jButton10.setText("Hapus");
         jButton10.setPreferredSize(new java.awt.Dimension(30, 30));
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
         daftarMatakuliah.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 120, -1));
+
+        jButton14.setForeground(new java.awt.Color(193, 195, 199));
+        jButton14.setText("Update");
+        jButton14.setPreferredSize(new java.awt.Dimension(30, 30));
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton14MouseClicked(evt);
+            }
+        });
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+        daftarMatakuliah.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, 100, -1));
 
         PanelContent.add(daftarMatakuliah, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
@@ -1313,6 +1332,26 @@ public class Admin extends javax.swing.JFrame {
         System.out.println("Tanggal yang diinputkan: " + tanggalString);
         return tanggalString;
     }
+    
+    private void tampilMatakuliah() {
+        ControllerAdmin crl = new ControllerAdmin(152021169);
+        List<Matakuliah> listMk = crl.getMatakuliah();
+        DefaultTableModel model = (DefaultTableModel) tableDark3.getModel();
+        model.setRowCount(0);
+
+        for (Matakuliah n : listMk) {
+            model.addRow(new Object[]{
+                n.getKode(),
+                n.getMatakuliah(),
+                n.getSks(),
+                n.getKelas(),
+                n.getJenis(),
+                n.getSisa(),
+                n.getHari(),
+                n.getJam()
+            });
+        }
+    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -1356,6 +1395,24 @@ public class Admin extends javax.swing.JFrame {
 
     private void tableDark3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDark3MouseClicked
         // TODO add your handling code here:
+        int baris = tableDark3.rowAtPoint(evt.getPoint());
+        String kode = (String) tableDark3.getValueAt(baris, 0);
+        String matakuliah = (String) tableDark3.getValueAt(baris, 1);
+        int sks = (int) tableDark3.getValueAt(baris, 2);
+        String kelas = (String) tableDark3.getValueAt(baris, 3);
+        String jenis = (String) tableDark3.getValueAt(baris, 4);
+        String sisa = (String) tableDark3.getValueAt(baris, 5);
+        String hari = (String) tableDark3.getValueAt(baris, 6);
+        String jam = (String) tableDark3.getValueAt(baris, 7);
+        
+        this.kode.setText(kode);
+        this.matakuliah.setText(matakuliah);
+        this.jumlahSks.setText(Integer.toString(sks));
+        this.kelas.setText(kelas);
+        this.jenis.setText(jenis);
+        this.kapasitas.setText(sisa);
+        this.hari.setText(hari);
+        this.jam.setText(jam);
     }//GEN-LAST:event_tableDark3MouseClicked
 
     private void daftarMahasiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarMahasiswaMouseClicked
@@ -1598,6 +1655,55 @@ public class Admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tahunPembayaranMouseClicked
 
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        // TODO add your handling code here:
+        ControllerAdmin crl = new ControllerAdmin(152021169);
+        Matakuliah mk = new Matakuliah();
+        mk.setKode(this.kode.getText());
+        mk.setMatakuliah(this.matakuliah.getText());
+        mk.setSks(Integer.parseInt(this.jumlahSks.getText()));
+        mk.setKelas(this.kelas.getText());
+        mk.setJenis(this.jenis.getText());
+        mk.setSisa(this.kapasitas.getText());
+        mk.setHari(this.hari.getText());
+        mk.setJam(this.jam.getText());
+        crl.tambahMatakuliah(mk);
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        // TODO add your handling code here:
+        ControllerAdmin crl = new ControllerAdmin(152021169);
+        Matakuliah mk = new Matakuliah();
+        mk.setKode(this.kode.getText());
+        mk.setMatakuliah(this.matakuliah.getText());
+        mk.setSks(Integer.parseInt(this.jumlahSks.getText()));
+        mk.setKelas(this.kelas.getText());
+        mk.setJenis(this.jenis.getText());
+        mk.setSisa(this.kapasitas.getText());
+        mk.setHari(this.hari.getText());
+        mk.setJam(this.jam.getText());
+        crl.hapusMatakuliah(mk);
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
+        // TODO add your handling code here:
+        ControllerAdmin crl = new ControllerAdmin(152021169);
+        Matakuliah mk = new Matakuliah();
+        mk.setKode(this.kode.getText());
+        mk.setMatakuliah(this.matakuliah.getText());
+        mk.setSks(Integer.parseInt(this.jumlahSks.getText()));
+        mk.setKelas(this.kelas.getText());
+        mk.setJenis(this.jenis.getText());
+        mk.setSisa(this.kapasitas.getText());
+        mk.setHari(this.hari.getText());
+        mk.setJam(this.jam.getText());
+        crl.updateMatakuliah(mk);
+    }//GEN-LAST:event_jButton14MouseClicked
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton14ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1640,7 +1746,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel JadwakMahasiswa;
     private javax.swing.JPanel PanelContent;
     private javax.swing.JTextField batasStudi;
-    private javax.swing.JTextField batasStudi1;
     private javax.swing.JLabel biayaSks;
     private javax.swing.JTextField bulanPembayaran;
     private javax.swing.JTextField bulanPerwalian;
@@ -1649,11 +1754,10 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel daftarMatakuliah;
     private javax.swing.JPanel dashboard;
     private javax.swing.JTextField dosenWali;
-    private javax.swing.JTextField dosenWali1;
     private javax.swing.JPanel dpp;
     private javax.swing.JLabel dpp_wajib;
     private javax.swing.JTextField email;
-    private javax.swing.JTextField email1;
+    private javax.swing.JTextField hari;
     private javax.swing.JTextField hariPembayaran;
     private javax.swing.JTextField hariPerwalian;
     private javax.swing.JButton jButton1;
@@ -1661,6 +1765,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1715,7 +1820,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel42;
     private javax.swing.JPanel jPanel44;
@@ -1747,19 +1851,21 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTextField jam;
+    private javax.swing.JTextField jenis;
+    private javax.swing.JTextField jumlahSks;
+    private javax.swing.JTextField kapasitas;
+    private javax.swing.JTextField kelas;
     private javax.swing.JPanel keuanganKuliah;
+    private javax.swing.JTextField kode;
+    private javax.swing.JTextField matakuliah;
     private javax.swing.JTextField nama;
-    private javax.swing.JTextField nama1;
     private javax.swing.JTextField nim;
-    private javax.swing.JTextField nim1;
     private javax.swing.JTextField nomor;
-    private javax.swing.JTextField nomor1;
     private javax.swing.JTextField programStudi;
     private javax.swing.JTextField semesterAktif;
-    private javax.swing.JTextField semesterAktif1;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JTextField status;
-    private javax.swing.JTextField status1;
     private View.Table.TableDark tableDark3;
     private javax.swing.JTextField tahunPembayaran;
     private javax.swing.JTextField tahunPerwalian;
