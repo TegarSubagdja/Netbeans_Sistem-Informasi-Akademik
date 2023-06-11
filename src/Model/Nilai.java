@@ -9,6 +9,8 @@ package Model;
  * @author kingt
  */
 public class Nilai {
+
+    private int nim;
     private String kode;
     private String mataKuliah;
     private String sks;
@@ -20,7 +22,8 @@ public class Nilai {
     public Nilai() {
     }
 
-    public Nilai(String kode, String mataKuliah, String sks, String semester, String nilai, String bobot, String nk) {
+    public Nilai(int nim, String kode, String mataKuliah, String sks, String semester, String nilai, String bobot, String nk) {
+        this.nim = nim;
         this.kode = kode;
         this.mataKuliah = mataKuliah;
         this.sks = sks;
@@ -28,6 +31,14 @@ public class Nilai {
         this.nilai = nilai;
         this.bobot = bobot;
         this.nk = nk;
+    }
+
+    public int getNim() {
+        return nim;
+    }
+
+    public void setNim(int nim) {
+        this.nim = nim;
     }
 
     public String getKode() {
@@ -85,6 +96,4 @@ public class Nilai {
     public void setNk(String nk) {
         this.nk = nk;
     }
-
-    
 }

@@ -25,17 +25,17 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author kingt
  */
-public class Index extends javax.swing.JFrame {
+public class Index_Mahasiswa extends javax.swing.JFrame {
 
     /**
      * Creates new form Percobaan
      */
     private Akun acc;
 
-    public Index() {
+    public Index_Mahasiswa() {
     }
 
-    public Index(Akun acc) {
+    public Index_Mahasiswa(Akun acc) {
         this.acc = acc;
         initComponents();
         refreshData();
@@ -126,11 +126,6 @@ public class Index extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         PanelContent = new javax.swing.JPanel();
-        dashboard = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
         dataMahasiswa = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -172,6 +167,11 @@ public class Index extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
+        dashboard = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
         nilaiMahasiswa = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -365,46 +365,19 @@ public class Index extends javax.swing.JFrame {
         PanelContent.setMinimumSize(new java.awt.Dimension(0, 0));
         PanelContent.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        dashboard.setBackground(new java.awt.Color(23, 23, 26));
-        dashboard.setPreferredSize(new java.awt.Dimension(1000, 500));
-        dashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel3.setText("Dashboard");
-        jLabel3.setIconTextGap(0);
-        dashboard.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 48, -1, 38));
-
-        jLabel4.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel4.setText("Sistem Informasi Akademik");
-        dashboard.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 92, -1, -1));
-
-        jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Varian-Logo-Itenas2-09-768x195.png"))); // NOI18N
-        dashboard.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, 199));
-
-        jLabel38.setForeground(new java.awt.Color(193, 195, 199));
-        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icons8_close_20px.png"))); // NOI18N
-        jLabel38.setText("Logout");
-        jLabel38.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel38MouseClicked(evt);
-            }
-        });
-        dashboard.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, -1, -1));
-
-        PanelContent.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
-        dashboard.getAccessibleContext().setAccessibleName("");
-
         dataMahasiswa.setBackground(new java.awt.Color(23, 23, 26));
         dataMahasiswa.setPreferredSize(new java.awt.Dimension(900, 500));
+        dataMahasiswa.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(193, 195, 199));
         jLabel9.setText("Data Mahasiswa");
         jLabel9.setIconTextGap(0);
+        dataMahasiswa.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 48, -1, 38));
 
         jLabel10.setForeground(new java.awt.Color(193, 195, 199));
         jLabel10.setText("Sistem Informasi Akademik");
+        dataMahasiswa.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 92, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(33, 32, 36));
         jPanel5.setForeground(new java.awt.Color(193, 195, 199));
@@ -427,6 +400,8 @@ public class Index extends javax.swing.JFrame {
             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        dataMahasiswa.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 141, 104, -1));
+
         jPanel6.setBackground(new java.awt.Color(33, 32, 36));
         jPanel6.setForeground(new java.awt.Color(193, 195, 199));
         jPanel6.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -448,6 +423,8 @@ public class Index extends javax.swing.JFrame {
             .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        dataMahasiswa.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 213, 104, -1));
+
         jPanel7.setBackground(new java.awt.Color(33, 32, 36));
         jPanel7.setForeground(new java.awt.Color(193, 195, 199));
         jPanel7.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -468,6 +445,8 @@ public class Index extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        dataMahasiswa.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 249, 104, -1));
 
         jPanel11.setBackground(new java.awt.Color(33, 32, 36));
         jPanel11.setForeground(new java.awt.Color(193, 195, 199));
@@ -503,6 +482,8 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        dataMahasiswa.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 177, 104, -1));
+
         jPanel12.setBackground(new java.awt.Color(33, 32, 36));
         jPanel12.setForeground(new java.awt.Color(193, 195, 199));
         jPanel12.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -523,6 +504,8 @@ public class Index extends javax.swing.JFrame {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        dataMahasiswa.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 285, 104, -1));
 
         jPanel13.setBackground(new java.awt.Color(33, 32, 36));
         jPanel13.setForeground(new java.awt.Color(193, 195, 199));
@@ -545,6 +528,8 @@ public class Index extends javax.swing.JFrame {
             .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        dataMahasiswa.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 321, 104, -1));
+
         jPanel27.setBackground(new java.awt.Color(33, 32, 36));
         jPanel27.setForeground(new java.awt.Color(193, 195, 199));
         jPanel27.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -565,6 +550,8 @@ public class Index extends javax.swing.JFrame {
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        dataMahasiswa.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 357, 104, -1));
 
         jPanel28.setBackground(new java.awt.Color(33, 32, 36));
         jPanel28.setForeground(new java.awt.Color(193, 195, 199));
@@ -587,6 +574,8 @@ public class Index extends javax.swing.JFrame {
             .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        dataMahasiswa.add(jPanel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 393, 104, -1));
+
         jPanel29.setBackground(new java.awt.Color(33, 32, 36));
         jPanel29.setForeground(new java.awt.Color(193, 195, 199));
         jPanel29.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -608,6 +597,8 @@ public class Index extends javax.swing.JFrame {
             .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        dataMahasiswa.add(jPanel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 429, 104, -1));
+
         jPanel14.setBackground(new java.awt.Color(33, 32, 36));
         jPanel14.setForeground(new java.awt.Color(193, 195, 199));
         jPanel14.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -628,12 +619,14 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        dataMahasiswa.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 141, 660, -1));
 
         jPanel15.setBackground(new java.awt.Color(33, 32, 36));
         jPanel15.setForeground(new java.awt.Color(193, 195, 199));
@@ -655,12 +648,14 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        dataMahasiswa.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 177, 660, -1));
 
         jPanel16.setBackground(new java.awt.Color(33, 32, 36));
         jPanel16.setForeground(new java.awt.Color(193, 195, 199));
@@ -682,12 +677,14 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        dataMahasiswa.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 213, 660, -1));
 
         jPanel17.setBackground(new java.awt.Color(33, 32, 36));
         jPanel17.setForeground(new java.awt.Color(193, 195, 199));
@@ -709,12 +706,14 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        dataMahasiswa.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 249, 660, -1));
 
         jPanel18.setBackground(new java.awt.Color(33, 32, 36));
         jPanel18.setForeground(new java.awt.Color(193, 195, 199));
@@ -736,12 +735,14 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        dataMahasiswa.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 285, 660, -1));
 
         jPanel19.setBackground(new java.awt.Color(33, 32, 36));
         jPanel19.setForeground(new java.awt.Color(193, 195, 199));
@@ -763,12 +764,14 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        dataMahasiswa.add(jPanel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 321, 660, -1));
 
         jPanel20.setBackground(new java.awt.Color(33, 32, 36));
         jPanel20.setForeground(new java.awt.Color(193, 195, 199));
@@ -790,12 +793,14 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        dataMahasiswa.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 357, 660, -1));
 
         jPanel21.setBackground(new java.awt.Color(33, 32, 36));
         jPanel21.setForeground(new java.awt.Color(193, 195, 199));
@@ -817,12 +822,14 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        dataMahasiswa.add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 393, 660, -1));
 
         jPanel22.setBackground(new java.awt.Color(33, 32, 36));
         jPanel22.setForeground(new java.awt.Color(193, 195, 199));
@@ -844,117 +851,76 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel22Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        javax.swing.GroupLayout dataMahasiswaLayout = new javax.swing.GroupLayout(dataMahasiswa);
-        dataMahasiswa.setLayout(dataMahasiswaLayout);
-        dataMahasiswaLayout.setHorizontalGroup(
-            dataMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dataMahasiswaLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(dataMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addGroup(dataMahasiswaLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(dataMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(dataMahasiswaLayout.createSequentialGroup()
-                                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE))
-                            .addGroup(dataMahasiswaLayout.createSequentialGroup()
-                                .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE))
-                            .addGroup(dataMahasiswaLayout.createSequentialGroup()
-                                .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE))
-                            .addGroup(dataMahasiswaLayout.createSequentialGroup()
-                                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE))
-                            .addGroup(dataMahasiswaLayout.createSequentialGroup()
-                                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE))
-                            .addGroup(dataMahasiswaLayout.createSequentialGroup()
-                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE))
-                            .addGroup(dataMahasiswaLayout.createSequentialGroup()
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE))
-                            .addGroup(dataMahasiswaLayout.createSequentialGroup()
-                                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE))
-                            .addGroup(dataMahasiswaLayout.createSequentialGroup()
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel10))))
-                .addContainerGap(41, Short.MAX_VALUE))
-        );
-
-        dataMahasiswaLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jPanel14, jPanel15, jPanel16, jPanel17, jPanel18, jPanel19, jPanel20, jPanel21, jPanel22});
-
-        dataMahasiswaLayout.setVerticalGroup(
-            dataMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dataMahasiswaLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(dataMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(dataMahasiswaLayout.createSequentialGroup()
-                        .addGroup(dataMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(dataMahasiswaLayout.createSequentialGroup()
-                                .addGroup(dataMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(dataMahasiswaLayout.createSequentialGroup()
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(34, 34, 34)
-                                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(dataMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(dataMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(dataMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(dataMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(dataMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(dataMahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
-        );
+        dataMahasiswa.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 429, 660, -1));
 
         PanelContent.add(dataMahasiswa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
         dataMahasiswa.getAccessibleContext().setAccessibleName("");
+
+        dashboard.setBackground(new java.awt.Color(23, 23, 26));
+        dashboard.setPreferredSize(new java.awt.Dimension(1000, 500));
+
+        jLabel3.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel3.setText("Dashboard");
+        jLabel3.setIconTextGap(0);
+
+        jLabel4.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel4.setText("Sistem Informasi Akademik");
+
+        jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Varian-Logo-Itenas2-09-768x195.png"))); // NOI18N
+
+        jLabel38.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icons8_close_20px.png"))); // NOI18N
+        jLabel38.setText("Logout");
+        jLabel38.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel38MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dashboardLayout = new javax.swing.GroupLayout(dashboard);
+        dashboard.setLayout(dashboardLayout);
+        dashboardLayout.setHorizontalGroup(
+            dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dashboardLayout.createSequentialGroup()
+                .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dashboardLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel4))
+                    .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(dashboardLayout.createSequentialGroup()
+                            .addGap(38, 38, 38)
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel38))
+                        .addGroup(dashboardLayout.createSequentialGroup()
+                            .addGap(40, 40, 40)
+                            .addComponent(jLabel47))))
+                .addGap(192, 192, 192))
+        );
+        dashboardLayout.setVerticalGroup(
+            dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dashboardLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel38))
+                .addGap(6, 6, 6)
+                .addComponent(jLabel4)
+                .addGap(63, 63, 63)
+                .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        PanelContent.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
+        dashboard.getAccessibleContext().setAccessibleName("");
 
         nilaiMahasiswa.setBackground(new java.awt.Color(23, 23, 26));
         nilaiMahasiswa.setPreferredSize(new java.awt.Dimension(1000, 500));
@@ -1193,6 +1159,7 @@ public class Index extends javax.swing.JFrame {
         jButton7.setFont(new java.awt.Font("Artifakt Element Black", 0, 12)); // NOI18N
         jButton7.setForeground(new java.awt.Color(193, 195, 199));
         jButton7.setText("Hasil Perwalian");
+        jButton7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton7.setPreferredSize(new java.awt.Dimension(126, 30));
         jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1968,6 +1935,7 @@ public class Index extends javax.swing.JFrame {
     private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
         // TODO add your handling code here:
         Login login = new Login();
+        login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel38MouseClicked
 
@@ -1988,14 +1956,16 @@ public class Index extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Index.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Index_Mahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Index.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Index_Mahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Index.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Index_Mahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Index.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Index_Mahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

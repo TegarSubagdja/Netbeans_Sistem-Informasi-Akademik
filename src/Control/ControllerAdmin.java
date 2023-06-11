@@ -10,7 +10,7 @@ import Model.Keuangan;
 import Model.Mahasiswa;
 import Model.Matakuliah;
 import Model.Nilai;
-import View.Index;
+import View.Index_Mahasiswa;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -60,7 +60,7 @@ public class ControllerAdmin {
                 listm.add(mhs);
             }
         } catch (Exception ex) {
-            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return listm;
@@ -78,7 +78,7 @@ public class ControllerAdmin {
             Statement stm = conn.createStatement();
             stm.executeUpdate(query);
         } catch (SQLException ex) {
-            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
     }
@@ -110,7 +110,7 @@ public class ControllerAdmin {
             JOptionPane.showMessageDialog(null, "Data mahasiswa berhasil dihapus!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menghapus data mahasiswa!", "Error", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
     }
@@ -139,7 +139,7 @@ public class ControllerAdmin {
                 listMk.add(m);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return listMk;
@@ -200,7 +200,7 @@ public class ControllerAdmin {
                 ku.setTanggalJatuhTempoPembayaran(rs.getDate("tanggal_jatuh_tempo_pembayaran"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         }
         conMan.logOff();
         return ku;
@@ -223,7 +223,7 @@ public class ControllerAdmin {
             stm.executeUpdate(query);
             JOptionPane.showMessageDialog(null, "Data keuangan berhasil diperbarui!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException ex) {
-            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat memperbarui data keuangan!", "Error", JOptionPane.ERROR_MESSAGE);
         }
         conMan.logOff();
@@ -253,7 +253,7 @@ public class ControllerAdmin {
     }
 
     public void updateAkun(Akun acc) {
-        String query = "UPDATE akun_mhs SET username='" + acc.getUsername() + "', password='" + acc.getPassword() + "' WHERE nim='" + acc.getNim() + "'";
+        String query = "UPDATE akun_mhs SET username='" + acc.getUsername() + "', password='" + acc.getPassword() + "' WHERE nim='" + acc.getId() + "'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         try {
@@ -261,7 +261,7 @@ public class ControllerAdmin {
             stm.executeUpdate(query);
             JOptionPane.showMessageDialog(null, "Data matakuliah berhasil diperbarui!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException ex) {
-            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat memperbarui data matakuliah!", "Error", JOptionPane.ERROR_MESSAGE);
         }
         conMan.logOff();
@@ -276,7 +276,7 @@ public class ControllerAdmin {
             stm.executeUpdate(query);
             JOptionPane.showMessageDialog(null, "Matakuliah berhasil dihapus!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException ex) {
-            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menghapus matakuliah!", "Error", JOptionPane.ERROR_MESSAGE);
         }
         conMan.logOff();
@@ -292,13 +292,13 @@ public class ControllerAdmin {
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {
                 Akun acc = new Akun();
-                acc.setNim(rs.getInt("nim"));
+                acc.setId(rs.getInt("nim"));
                 acc.setUsername(rs.getString("username"));
                 acc.setPassword(rs.getString("password"));
                 listAcc.add(acc);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         }   
         conMan.logOff();
         return listAcc;

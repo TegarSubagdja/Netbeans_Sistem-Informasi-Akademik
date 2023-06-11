@@ -222,15 +222,22 @@ public class Login extends javax.swing.JFrame {
         char[] passwordChars = PasswordField.getPassword();
         password = new String(passwordChars);
         ControllerLogin crl = new ControllerLogin();
-        Akun acc = crl.checkLogin(username, password);
-        if (username.equals("admin") && password.equals("admin")) {
-            Admin admin = new Admin(acc);
-            admin.setVisible(true);
-            this.dispose();
-        } else if (acc != null) {
-            Index idx = new Index(acc);
-            idx.setVisible(true);
-            this.dispose();
+        Akun acc = crl.VerifikasiLogin(username, password);
+
+        if (acc != null) {
+            if (acc.getJenis().equals("Mahasiswa")) {
+                Index_Mahasiswa idm = new Index_Mahasiswa(acc);
+                idm.setVisible(true);
+                this.dispose();
+            } else if (acc.getJenis().equals("Dosen")) {
+                Index_Dosen ids = new Index_Dosen(acc);
+                ids.setVisible(true);
+                this.dispose();
+            } else if (acc.getJenis().equals("Admin")) {
+                Index_Admin ida = new Index_Admin(acc);
+                ida.setVisible(true);
+                this.dispose();
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Password atau sandi tidak ditemukan.", "Login Error", JOptionPane.ERROR_MESSAGE);
         }

@@ -21,17 +21,34 @@ USE `sikad`;
 
 -- Dumping structure for table sikad.akun_mhs
 CREATE TABLE IF NOT EXISTS `akun_mhs` (
-  `nim` int(11) NOT NULL,
+  `nim` int(11) NOT NULL DEFAULT 1,
+  `jenis` varchar(50) DEFAULT NULL,
   `username` varchar(50) NOT NULL DEFAULT '0',
   `password` varchar(50) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`nim`),
-  CONSTRAINT `FK_akun_mhs_mahasiswa` FOREIGN KEY (`nim`) REFERENCES `mahasiswa` (`nim`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`nim`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table sikad.akun_mhs: ~2 rows (approximately)
-INSERT INTO `akun_mhs` (`nim`, `username`, `password`) VALUES
-	(152021169, 'Tegar', '123'),
-	(152021170, 'Faishal', '1234');
+-- Dumping data for table sikad.akun_mhs: ~4 rows (approximately)
+INSERT INTO `akun_mhs` (`nim`, `jenis`, `username`, `password`) VALUES
+	(2023, 'Admin', 'Admin', '123'),
+	(152021169, 'Mahasiswa', 'Tegar', '123'),
+	(152021170, 'Mahasiswa', 'Faishal', '123'),
+	(415068801, 'Dosen', 'Yusuf', '123');
+
+-- Dumping structure for table sikad.dosen
+CREATE TABLE IF NOT EXISTS `dosen` (
+  `nid` int(11) NOT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  `nomor` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `alamat` varchar(50) DEFAULT NULL,
+  `prodi` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`nid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table sikad.dosen: ~1 rows (approximately)
+INSERT INTO `dosen` (`nid`, `nama`, `nomor`, `email`, `alamat`, `prodi`) VALUES
+	(415068801, 'Yusup Miftahuddin, S.Kom., M.T.', '081546517020', 'yusufm@itenas.ac.id', 'Jl. Mawar Unjani Bandung', 'Informatika');
 
 -- Dumping structure for table sikad.keuangan_mhs
 CREATE TABLE IF NOT EXISTS `keuangan_mhs` (
@@ -68,10 +85,10 @@ CREATE TABLE IF NOT EXISTS `mahasiswa` (
   PRIMARY KEY (`nim`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table sikad.mahasiswa: ~1 rows (approximately)
+-- Dumping data for table sikad.mahasiswa: ~2 rows (approximately)
 INSERT INTO `mahasiswa` (`nim`, `nama`, `status`, `dosen_wali`, `semester_aktif`, `batas_studi`, `email`, `nomor`, `prodi`) VALUES
-	(152021169, 'Tegar Subagdjaa', 'Aktif', 'Jasman Pardede', '2023/2', '2030', 'kingtegar1510@gmail.com', '081546517020', 'Informatika'),
-	(152021170, 'Faishal', 'Aktif', 'Jasman Pardede', '2023/2', '2030', 'kingtegar1510@gmail.com', '081546517020', 'Informatika');
+	(152021169, 'Tegar Subagdja', 'Aktif', 'Jasman Pardede, Dr., S.Si., M.T.', '2023/2', '2030', 'kingtegar1510@gmail.com', '081546517020', 'Informatika'),
+	(152021170, 'Faishal', 'Aktif', 'Jasman Pardede, Dr., S.Si., M.T.', '2023/2', '2030', 'kingtegar1510@gmail.com', '081546517020', 'Informatika');
 
 -- Dumping structure for table sikad.matakuliah
 CREATE TABLE IF NOT EXISTS `matakuliah` (
@@ -89,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `matakuliah` (
   PRIMARY KEY (`kode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table sikad.matakuliah: ~23 rows (approximately)
+-- Dumping data for table sikad.matakuliah: ~22 rows (approximately)
 INSERT INTO `matakuliah` (`kode`, `matakuliah`, `sks`, `kelas`, `jenis`, `sisa`, `status_awal`, `bdatm`, `approve_wali`, `hari`, `jam`) VALUES
 	('IFA-2010', 'PEMROGRAMAN DASAR', 3, 'AA', 'Mata Kuliah A', 239, 'Batal', 'Batal', NULL, 'Selasa', '10:00-12:00'),
 	('IFA-202', 'PEMROGRAMAN LANJUT', 3, 'AA', 'Mata Kuliah A', 240, 'Batal', 'BDATM', 'Approve', 'Selasa', '10:00-12:00'),
@@ -130,23 +147,23 @@ CREATE TABLE IF NOT EXISTS `nilai_mhs` (
 
 -- Dumping data for table sikad.nilai_mhs: ~17 rows (approximately)
 INSERT INTO `nilai_mhs` (`nim`, `kode`, `matakuliah`, `sks`, `semester`, `nilai`, `bobot`, `nk`) VALUES
-	(152021169, 'IFA-201', 'ALJABAR LINEAR', '3', '2021/1', 'A', '4.00', '12.00'),
-	(152021169, 'IFA-202', 'PEMROGRAMAN LANJUT', '3', '2021/1', 'AB', '3.50', '10.50'),
-	(152021169, 'IFA-203', 'PEMROGRAMAN WEB LANJUT', '3', '2021/1', 'B', '3.00', '9.00'),
-	(152021169, 'IFA-204', 'SISTEM OPERASI', '3', '2021/2', 'A', '4.00', '12.00'),
-	(152021169, 'IFA-205', 'KECERDASAN BUATAN', '3', '2021/2', 'B', '3.00', '9.00'),
-	(152021169, 'IFA-206', 'PEMROGRAMAN MOBILE', '3', '2021/2', 'A', '4.00', '12.00'),
-	(152021169, 'IFA-301', 'BASIS DATA LANJUT', '3', '2022/1', 'A', '4.00', '12.00'),
-	(152021169, 'IFA-302', 'JARINGAN KOMPUTER', '3', '2022/1', 'B', '3.00', '9.00'),
-	(152021169, 'IFA-303', 'ANALISIS DAN DESAIN SISTEM', '3', '2022/1', 'AB', '3.50', '10.50'),
-	(152021169, 'IFA-304', 'PEMROGRAMAN PARALEL', '3', '2022/2', 'B', '3.00', '9.00'),
-	(152021169, 'IFA-305', 'KEAMANAN KOMPUTER', '3', '2022/2', 'A', '4.00', '12.00'),
-	(152021169, 'IFA-306', 'PENGENALAN BIG DATA', '3', '2022/2', 'AB', '3.50', '10.50'),
-	(152021169, 'IFA-401', 'SISTEM INFORMASI', '3', '2022/2', 'B', '3.00', '9.00'),
-	(152021169, 'IFA-402', 'PEMROGRAMAN GAME', '3', '2023/1', 'A', '4.00', '12.00'),
-	(152021169, 'IFA-403', 'DATA MINING', '3', '2023/1', 'AB', '3.50', '10.50'),
-	(152021169, 'IFA-404', 'SISTEM CERDAS', '3', '2023/1', 'B', '3.00', '9.00'),
-	(152021169, 'IFA-405', 'PROYEK AKHIR', '6', '2023/2', 'A', '4.00', '24.00');
+	(152021169, 'IFA-201', 'ALJABAR LINEAR', '3', '2021/1', 'A', '4.0', '12.0'),
+	(152021169, 'IFA-202', 'PEMROGRAMAN LANJUT', '3', '2021/1', 'A', '4.0', '12.0'),
+	(152021169, 'IFA-203', 'PEMROGRAMAN WEB LANJUT', '3', '2021/1', 'A', '4.0', '12.0'),
+	(152021169, 'IFA-204', 'SISTEM OPERASI', '3', '2021/2', 'B', '3.0', '9.0'),
+	(152021169, 'IFA-205', 'KECERDASAN BUATAN', '3', '2021/2', 'A', '4.0', '12.0'),
+	(152021169, 'IFA-206', 'PEMROGRAMAN MOBILE', '3', '2021/2', 'A', '4.0', '12.0'),
+	(152021169, 'IFA-301', 'BASIS DATA LANJUT', '3', '2022/1', 'A', '4.0', '12.0'),
+	(152021169, 'IFA-302', 'JARINGAN KOMPUTER', '3', '2022/1', 'A', '4.0', '12.0'),
+	(152021169, 'IFA-303', 'ANALISIS DAN DESAIN SISTEM', '3', '2022/1', 'A', '4.0', '12.0'),
+	(152021169, 'IFA-304', 'PEMROGRAMAN PARALEL', '3', '2022/2', 'A', '4.0', '12.0'),
+	(152021169, 'IFA-305', 'KEAMANAN KOMPUTER', '3', '2022/2', 'A', '4.0', '12.0'),
+	(152021169, 'IFA-306', 'PENGENALAN BIG DATA', '3', '2022/2', 'A', '4.0', '12.0'),
+	(152021169, 'IFA-401', 'SISTEM INFORMASI', '3', '2022/2', 'A', '4.0', '12.0'),
+	(152021169, 'IFA-402', 'PEMROGRAMAN GAME', '3', '2023/1', 'A', '4.0', '12.0'),
+	(152021169, 'IFA-403', 'DATA MINING', '3', '2023/1', 'A', '4.0', '12.0'),
+	(152021169, 'IFA-404', 'SISTEM CERDAS', '3', '2023/1', 'A', '4.0', '12.0'),
+	(152021169, 'IFA-405', 'PROYEK AKHIR', '6', '2023/2', 'A', '4.0', '12.0');
 
 -- Dumping structure for table sikad.perwalian_mhs
 CREATE TABLE IF NOT EXISTS `perwalian_mhs` (

@@ -27,17 +27,17 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author kingt
  */
-public class Admin extends javax.swing.JFrame {
+public class Index_Admin extends javax.swing.JFrame {
 
     /**
      * Creates new form Percobaan
      */
     private Akun acc;
 
-    public Admin() {
+    public Index_Admin() {
     }
     
-    public Admin(Akun acc) {
+    public Index_Admin(Akun acc) {
         this.acc = acc;
         initComponents();
         setupButtonUI();
@@ -396,6 +396,7 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Varian-Logo-Itenas2-09-768x195.png"))); // NOI18N
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(193, 195, 199));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icons8_close_20px.png"))); // NOI18N
         jLabel1.setText("Logout");
@@ -410,28 +411,26 @@ public class Admin extends javax.swing.JFrame {
         dashboardLayout.setHorizontalGroup(
             dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dashboardLayout.createSequentialGroup()
-                .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(38, 38, 38)
+                .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dashboardLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1))
                     .addGroup(dashboardLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addGap(2, 2, 2)
                         .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(dashboardLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(192, 192, 192))
         );
         dashboardLayout.setVerticalGroup(
             dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dashboardLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addGroup(dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
@@ -1371,7 +1370,7 @@ public class Admin extends javax.swing.JFrame {
 
         for (Akun acc : listAcc) {
             model.addRow(new Object[]{
-                acc.getNim(),
+                acc.getId(),
                 acc.getUsername(),
                 acc.getPassword()
             });
@@ -1725,7 +1724,7 @@ public class Admin extends javax.swing.JFrame {
         int nim = Integer.parseInt(nimAkun.getText());
         String username = this.username.getText();
         String password = this.password.getText();
-        acc.setNim(nim);
+        acc.setId(nim);
         acc.setUsername(username);
         acc.setPassword(password);
         crl.updateAkun(acc);
@@ -1771,21 +1770,25 @@ public class Admin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Admin.class
+            java.util.logging.Logger.getLogger(Index_Admin.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Admin.class
+            java.util.logging.Logger.getLogger(Index_Admin.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Admin.class
+            java.util.logging.Logger.getLogger(Index_Admin.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Admin.class
+            java.util.logging.Logger.getLogger(Index_Admin.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
