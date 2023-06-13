@@ -1208,10 +1208,9 @@ public class Index_Dosen extends javax.swing.JFrame {
         int nim = Integer.parseInt(nimAkun.getText());
         String username = this.username.getText();
         String password = this.password.getText();
-        acc.setId(nim);
         acc.setUsername(username);
         acc.setPassword(password);
-        crl.updateAkun(acc);
+        crl.updateAkun(acc, nim);
         refreshData();
     }//GEN-LAST:event_jButton16MouseClicked
 
@@ -1227,6 +1226,8 @@ public class Index_Dosen extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
+        daftarNilaiMatakuliah.setVisible(false);
+        daftarMatakuliahDosen.setVisible(true);
     }//GEN-LAST:event_jLabel2MouseClicked
 
     /**

@@ -6,6 +6,7 @@ package Control;
 
 import Model.Akun;
 import Model.ConnectionManager;
+import Model.Dosen;
 import Model.Keuangan;
 import Model.Mahasiswa;
 import Model.Matakuliah;
@@ -72,6 +73,22 @@ public class ControllerAdmin {
                 + "', semester_aktif='" + mhs.getSemester_aktif() + "', batas_studi='" + mhs.getBatas_studi()
                 + "', email='" + mhs.getEmail() + "', nomor='" + mhs.getNomor() + "', prodi='" + mhs.getProdi()
                 + "' WHERE nim=" + mhs.getNim();
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate(query);
+            JOptionPane.showMessageDialog(null, "Data mahasiswa berhasil diperbarui!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Data mahasiswa gagal ditambahkan!", "Sukses", JOptionPane.WARNING_MESSAGE);
+            Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        conMan.logOff();
+    }
+    
+    public void updateDosen(Dosen ds) {
+        String query = "UPDATE Dosen SET nid='"+ds.getNid()+"', nama='"+ds.getNama()+"', nomor='"+ds.getNomor()+
+                "', email='"+ds.getEmail()+"', alamat='"+ds.getAlamat()+"', prodi='"+ds.getProdi()+"' WHERE nid='" + ds.getNid() + "'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         try {
@@ -234,7 +251,7 @@ public class ControllerAdmin {
         int passwordLength = 3;
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < passwordLength; i++) {
-            int digit = random.nextInt(10); // Menghasilkan digit acak antara 0 hingga 9
+            int digit = random.nextInt(10);
             sb.append(digit);
         }
         String query = "INSERT INTO akun_mhs (nim, username, password) VALUES ('" + mhs.getNim() + "','" + mhs.getNama() + "','" + sb.toString() + "')";
@@ -252,14 +269,14 @@ public class ControllerAdmin {
         conMan.logOff();
     }
 
-    public void updateAkun(Akun acc) {
-        String query = "UPDATE akun_mhs SET username='" + acc.getUsername() + "', password='" + acc.getPassword() + "' WHERE nim='" + acc.getId() + "'";
+    public void updateAkun(Akun acc, int nim) {
+        String query = "UPDATE akun_mhs SET nim='" + nim + "', username='" + acc.getUsername() + "', password='" + acc.getPassword() + "' WHERE nim='" + acc.getId() + "'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         try {
             Statement stm = conn.createStatement();
             stm.executeUpdate(query);
-            JOptionPane.showMessageDialog(null, "Data matakuliah berhasil diperbarui!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Akun berhasil diperbarui!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException ex) {
             Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat memperbarui data matakuliah!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -274,7 +291,7 @@ public class ControllerAdmin {
         try {
             Statement stm = conn.createStatement();
             stm.executeUpdate(query);
-            JOptionPane.showMessageDialog(null, "Matakuliah berhasil dihapus!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Akun berhasil dihapus!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException ex) {
             Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menghapus matakuliah!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -282,8 +299,8 @@ public class ControllerAdmin {
         conMan.logOff();
     }
 
-    public List<Akun> getAkun() {
-        String query = "SELECT * FROM Akun_mhs";
+    public List<Akun> getAkun(String jenis) {
+        String query = "SELECT * FROM Akun_mhs WHERE jenis='" + jenis + "'";
         ConnectionManager conMan = new ConnectionManager();
         Connection conn = conMan.logOn();
         List<Akun> listAcc = new ArrayList<>();
@@ -299,8 +316,94 @@ public class ControllerAdmin {
             }
         } catch (SQLException ex) {
             Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+        }
         conMan.logOff();
         return listAcc;
+    }
+
+    public void deleteAkun(Mahasiswa mhs) {
+        String query = "DELETE FROM Akun_mhs WHERE nim='" + mhs.getNim() + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate(query);
+            JOptionPane.showMessageDialog(null, "Akun berhasil dihapus!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menghapus Akun!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        conMan.logOff();
+    }
+
+    public List<Dosen> getDosen() {
+        String query = "SELECT * FROM Dosen";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        List<Dosen> listd = new ArrayList<>();
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                Dosen ds = new Dosen();
+                ds.setNid(rs.getInt("nid"));
+                ds.setNama(rs.getString("nama"));
+                ds.setNomor(rs.getString("nomor"));
+                ds.setEmail(rs.getString("email"));
+                ds.setAlamat(rs.getString("alamat"));
+                ds.setProdi(rs.getString("prodi"));
+                listd.add(ds);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        conMan.logOff();
+        return listd;
+    }
+
+    public void tambahDosen(Dosen ds) {
+        String query = "INSERT INTO Dosen (nid, nama, nomor, email, alamat, prodi) VALUES ('"
+                + ds.getNid() + "', '" + ds.getNama() + "', '" + ds.getNomor() + "', '" + ds.getEmail() + "', '"
+                + ds.getAlamat() + "', '" + ds.getProdi() + "')";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate(query);
+            JOptionPane.showMessageDialog(null, "Data Dosen berhasil ditambahkan!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menambahkan data Dosen!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        conMan.logOff();
+    }
+
+    public void tambahAkunDosen(Akun ds) {
+        String query = "INSERT INTO Akun_mhs (nim, jenis, username, password) VALUES ('"
+                + ds.getId() + "', 'Dosen', '" + ds.getUsername() + "', '" + ds.getPassword() + "')";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate(query);
+            JOptionPane.showMessageDialog(null, "Data Dosen berhasil ditambahkan!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menambahkan data Dosen!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        conMan.logOff();
+    }
+
+    public void tambahAkunMhs(Akun ds) {
+        String query = "INSERT INTO Akun_mhs (nim, jenis, username, password) VALUES ('"
+                + ds.getId() + "', 'Dosen', '" + ds.getUsername() + "', '" + ds.getPassword() + "')";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        try {
+            Statement stm = conn.createStatement();
+            stm.executeUpdate(query);
+            JOptionPane.showMessageDialog(null, "Data Dosen berhasil ditambahkan!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menambahkan data Dosen!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        conMan.logOff();
     }
 }

@@ -5,8 +5,10 @@
 package View;
 
 import Control.ControllerAdmin;
+import Control.ControllerDosen;
 import javax.swing.JOptionPane;
 import Model.Akun;
+import Model.Dosen;
 import Model.Keuangan;
 import Model.Mahasiswa;
 import Model.Matakuliah;
@@ -36,7 +38,7 @@ public class Index_Admin extends javax.swing.JFrame {
 
     public Index_Admin() {
     }
-    
+
     public Index_Admin(Akun acc) {
         this.acc = acc;
         initComponents();
@@ -46,22 +48,29 @@ public class Index_Admin extends javax.swing.JFrame {
         daftarMahasiswa.setVisible(false);
         keuanganKuliah.setVisible(false);
         daftarMatakuliah.setVisible(false);
-        daftarAkun.setVisible(false);
+        daftarDosen.setVisible(false);
+        daftarAkunMhs.setVisible(false);
+        daftarAkunDosen.setVisible(false);
         tableDark3.fixTable1(jScrollPane7);
         tableDark3.fixTable1(jScrollPane4);
         tableDark3.fixTable1(jScrollPane3);
         tableDark3.fixTable1(jScrollPane6);
+        tableDark3.fixTable1(jScrollPane8);
+        tableDark3.fixTable1(jScrollPane9);
     }
 
     private void refreshData() {
+        tampilDosen();
         tampilDataMahasiswa();
         tampilMatakuliah();
         tampilKeuangan();
-        tampilAkun();
+        tampilAkunDosen();
+        tampilAkunMhs();
     }
 
     private void setupClickButton() {
-        JButton[] btns = {jButton7, jButton8, jButton9, jButton10,jButton11,  jButton12, jButton13, jButton14 ,jButton16};
+        JButton[] btns = {jButton7, jButton8, jButton9, jButton10, jButton11, jButton12, jButton13,
+            jButton14, jButton16, jButton15, jButton16, jButton17, jButton18, jButton19, jButton20};
         for (JButton btn : btns) {
             btn.setBackground(new Color(51, 51, 51));
             btn.setUI(new BasicButtonUI());
@@ -103,7 +112,7 @@ public class Index_Admin extends javax.swing.JFrame {
 
     // Metode untuk mengatur tampilan dan perilaku tombol
     private void setupButtonUI() {
-        JButton[] btns = {jButton1, jButton2, jButton3, jButton4, jButton6};
+        JButton[] btns = {jButton1, jButton2, jButton3, jButton4, jButton5, jButton6};
         for (JButton btn : btns) {
             btn.setBackground(new Color(33, 32, 36));
             btn.setUI(new BasicButtonUI());
@@ -157,6 +166,7 @@ public class Index_Admin extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -206,6 +216,35 @@ public class Index_Admin extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
+        daftarDosen = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        daftarDosenTable = new View.Table.TableDark();
+        jPanel79 = new javax.swing.JPanel();
+        jLabel98 = new javax.swing.JLabel();
+        jPanel80 = new javax.swing.JPanel();
+        jLabel99 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        emailDosen = new javax.swing.JTextField();
+        nid = new javax.swing.JTextField();
+        namaDosen = new javax.swing.JTextField();
+        alamatDosen = new javax.swing.JTextField();
+        nomorDosen = new javax.swing.JTextField();
+        jPanel85 = new javax.swing.JPanel();
+        jLabel104 = new javax.swing.JLabel();
+        prodiDosen = new javax.swing.JTextField();
+        jPanel86 = new javax.swing.JPanel();
+        jLabel105 = new javax.swing.JLabel();
+        jButton15 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
         daftarMatakuliah = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -276,7 +315,7 @@ public class Index_Admin extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jLabel13 = new javax.swing.JLabel();
-        daftarAkun = new javax.swing.JPanel();
+        daftarAkunMhs = new javax.swing.JPanel();
         jLabel48 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -288,13 +327,34 @@ public class Index_Admin extends javax.swing.JFrame {
         jPanel15 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
-        nimAkun = new javax.swing.JTextField();
+        nidAkun = new javax.swing.JTextField();
         jPanel74 = new javax.swing.JPanel();
         jLabel93 = new javax.swing.JLabel();
         jPanel78 = new javax.swing.JPanel();
         jLabel97 = new javax.swing.JLabel();
         password = new javax.swing.JTextField();
         jButton16 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
+        daftarAkunDosen = new javax.swing.JPanel();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        tableDark6 = new View.Table.TableDark();
+        jumlahAkun1 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jPanel17 = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        username1 = new javax.swing.JTextField();
+        nidAkun1 = new javax.swing.JTextField();
+        jPanel81 = new javax.swing.JPanel();
+        jLabel100 = new javax.swing.JLabel();
+        jPanel82 = new javax.swing.JPanel();
+        jLabel101 = new javax.swing.JLabel();
+        password1 = new javax.swing.JTextField();
+        jButton21 = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 500));
@@ -340,6 +400,17 @@ public class Index_Admin extends javax.swing.JFrame {
         });
         sidePanel.add(jButton1);
 
+        jButton5.setBackground(new java.awt.Color(33, 32, 36));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icons8_registration_20px.png"))); // NOI18N
+        jButton5.setBorder(null);
+        jButton5.setPreferredSize(new java.awt.Dimension(40, 40));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton5);
+
         jButton2.setBackground(new java.awt.Color(33, 32, 36));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icons8_Document_20px.png"))); // NOI18N
         jButton2.setBorder(null);
@@ -358,6 +429,11 @@ public class Index_Admin extends javax.swing.JFrame {
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
         jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -477,6 +553,11 @@ public class Index_Admin extends javax.swing.JFrame {
             }
         });
         jScrollPane7.setViewportView(daftarMahasiswaTable);
+        if (daftarMahasiswaTable.getColumnModel().getColumnCount() > 0) {
+            daftarMahasiswaTable.getColumnModel().getColumn(6).setHeaderValue("Email");
+            daftarMahasiswaTable.getColumnModel().getColumn(7).setHeaderValue("Nomor");
+            daftarMahasiswaTable.getColumnModel().getColumn(8).setHeaderValue("Program Studi");
+        }
 
         daftarMahasiswa.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 670, 155));
 
@@ -696,6 +777,203 @@ public class Index_Admin extends javax.swing.JFrame {
 
         PanelContent.add(daftarMahasiswa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
         daftarMahasiswa.getAccessibleContext().setAccessibleName("");
+
+        daftarDosen.setBackground(new java.awt.Color(23, 23, 26));
+        daftarDosen.setPreferredSize(new java.awt.Dimension(900, 500));
+        daftarDosen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                daftarDosenMouseClicked(evt);
+            }
+        });
+        daftarDosen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 36)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel11.setText("Daftar Dosen");
+        jLabel11.setIconTextGap(0);
+        daftarDosen.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 48, -1, 38));
+
+        jLabel25.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel25.setText("Sistem Informasi Akademik");
+        daftarDosen.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 92, -1, -1));
+
+        daftarDosenTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "NID", "Nama", "Nomor", "Email", "Alamat", "Prodi"
+            }
+        ));
+        daftarDosenTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                daftarDosenTableMouseClicked(evt);
+            }
+        });
+        jScrollPane8.setViewportView(daftarDosenTable);
+
+        daftarDosen.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 670, 155));
+
+        jPanel79.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel79.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel79.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel79.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel98.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel98.setText("Nama Dosen");
+        jLabel98.setPreferredSize(new java.awt.Dimension(90, 29));
+        jPanel79.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, -1, -1));
+
+        jPanel80.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel80.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel80.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
+
+        jLabel99.setText("Nama Mahasiswa");
+        jLabel99.setPreferredSize(new java.awt.Dimension(90, 29));
+        jPanel80.add(jLabel99);
+
+        jPanel79.add(jPanel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 29, -1, -1));
+
+        daftarDosen.add(jPanel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 104, -1));
+
+        jPanel8.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel8.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel8.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel26.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel26.setText("Email");
+        jLabel26.setPreferredSize(new java.awt.Dimension(80, 29));
+        jPanel8.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, -1, -1));
+
+        daftarDosen.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, 104, -1));
+
+        jPanel9.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel9.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel9.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel27.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel27.setText("Nomor");
+        jLabel27.setPreferredSize(new java.awt.Dimension(40, 29));
+        jPanel9.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, -1, -1));
+
+        daftarDosen.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 104, -1));
+
+        jPanel10.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel10.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel10.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel28.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel28.setText("NID");
+        jLabel28.setPreferredSize(new java.awt.Dimension(40, 29));
+        jPanel10.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, -1, -1));
+
+        daftarDosen.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 104, -1));
+
+        emailDosen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        emailDosen.setForeground(new java.awt.Color(102, 102, 102));
+        daftarDosen.add(emailDosen, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 220, 30));
+
+        nid.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nid.setForeground(new java.awt.Color(102, 102, 102));
+        daftarDosen.add(nid, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 220, 30));
+
+        namaDosen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        namaDosen.setForeground(new java.awt.Color(102, 102, 102));
+        daftarDosen.add(namaDosen, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 220, 30));
+
+        alamatDosen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        alamatDosen.setForeground(new java.awt.Color(102, 102, 102));
+        daftarDosen.add(alamatDosen, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 220, 30));
+
+        nomorDosen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nomorDosen.setForeground(new java.awt.Color(102, 102, 102));
+        daftarDosen.add(nomorDosen, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 220, 30));
+
+        jPanel85.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel85.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel85.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel85.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel104.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel104.setText("Prodi");
+        jLabel104.setPreferredSize(new java.awt.Dimension(40, 29));
+        jPanel85.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, 80, -1));
+
+        daftarDosen.add(jPanel85, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 104, -1));
+
+        prodiDosen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        prodiDosen.setForeground(new java.awt.Color(102, 102, 102));
+        daftarDosen.add(prodiDosen, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 220, 30));
+
+        jPanel86.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel86.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel86.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel86.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel105.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel105.setText("Alamat");
+        jLabel105.setPreferredSize(new java.awt.Dimension(80, 29));
+        jPanel86.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, -1, -1));
+
+        daftarDosen.add(jPanel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 104, -1));
+
+        jButton15.setForeground(new java.awt.Color(193, 195, 199));
+        jButton15.setText("Tambah");
+        jButton15.setPreferredSize(new java.awt.Dimension(30, 30));
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton15MouseClicked(evt);
+            }
+        });
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+        daftarDosen.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, 100, -1));
+
+        jButton17.setForeground(new java.awt.Color(193, 195, 199));
+        jButton17.setText("Hapus");
+        jButton17.setPreferredSize(new java.awt.Dimension(30, 30));
+        jButton17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton17MouseClicked(evt);
+            }
+        });
+        daftarDosen.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, 120, -1));
+
+        jButton18.setForeground(new java.awt.Color(193, 195, 199));
+        jButton18.setText("Update");
+        jButton18.setPreferredSize(new java.awt.Dimension(30, 30));
+        jButton18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton18MouseClicked(evt);
+            }
+        });
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
+        daftarDosen.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 90, -1));
+
+        jButton19.setForeground(new java.awt.Color(193, 195, 199));
+        jButton19.setText("Lihat Akun");
+        jButton19.setPreferredSize(new java.awt.Dimension(30, 30));
+        jButton19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton19MouseClicked(evt);
+            }
+        });
+        daftarDosen.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 120, -1));
+
+        PanelContent.add(daftarDosen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
         daftarMatakuliah.setBackground(new java.awt.Color(23, 23, 26));
         daftarMatakuliah.setPreferredSize(new java.awt.Dimension(1000, 500));
@@ -1171,19 +1449,19 @@ public class Index_Admin extends javax.swing.JFrame {
 
         PanelContent.add(JadwakMahasiswa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
-        daftarAkun.setBackground(new java.awt.Color(23, 23, 26));
-        daftarAkun.setPreferredSize(new java.awt.Dimension(1000, 500));
-        daftarAkun.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        daftarAkunMhs.setBackground(new java.awt.Color(23, 23, 26));
+        daftarAkunMhs.setPreferredSize(new java.awt.Dimension(1000, 500));
+        daftarAkunMhs.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel48.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 36)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(193, 195, 199));
         jLabel48.setText("Daftar Akun");
         jLabel48.setIconTextGap(0);
-        daftarAkun.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 48, -1, 38));
+        daftarAkunMhs.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 48, -1, 38));
 
         jLabel49.setForeground(new java.awt.Color(193, 195, 199));
         jLabel49.setText("Sistem Informasi Akademik");
-        daftarAkun.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 92, -1, -1));
+        daftarAkunMhs.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 92, -1, -1));
 
         tableDark5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1210,16 +1488,16 @@ public class Index_Admin extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(tableDark5);
 
-        daftarAkun.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 199, 400, 120));
+        daftarAkunMhs.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 199, 400, 120));
 
         jumlahAkun.setForeground(new java.awt.Color(193, 195, 199));
         jumlahAkun.setText("jLabel6");
-        daftarAkun.add(jumlahAkun, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 165, 80, -1));
+        daftarAkunMhs.add(jumlahAkun, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 165, 80, -1));
 
         jLabel51.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel51.setForeground(new java.awt.Color(193, 195, 199));
         jLabel51.setText("Jumlah Akun :");
-        daftarAkun.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 163, -1, -1));
+        daftarAkunMhs.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 163, -1, -1));
 
         jPanel14.setBackground(new java.awt.Color(33, 32, 36));
         jPanel14.setForeground(new java.awt.Color(193, 195, 199));
@@ -1231,7 +1509,7 @@ public class Index_Admin extends javax.swing.JFrame {
         jLabel23.setPreferredSize(new java.awt.Dimension(80, 29));
         jPanel14.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, -1, -1));
 
-        daftarAkun.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 104, -1));
+        daftarAkunMhs.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 104, -1));
 
         jPanel15.setBackground(new java.awt.Color(33, 32, 36));
         jPanel15.setForeground(new java.awt.Color(193, 195, 199));
@@ -1243,15 +1521,15 @@ public class Index_Admin extends javax.swing.JFrame {
         jLabel24.setPreferredSize(new java.awt.Dimension(40, 29));
         jPanel15.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, 90, -1));
 
-        daftarAkun.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 104, -1));
+        daftarAkunMhs.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 104, -1));
 
         username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         username.setForeground(new java.awt.Color(102, 102, 102));
-        daftarAkun.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 290, 30));
+        daftarAkunMhs.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 290, 30));
 
-        nimAkun.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nimAkun.setForeground(new java.awt.Color(102, 102, 102));
-        daftarAkun.add(nimAkun, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 290, 30));
+        nidAkun.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nidAkun.setForeground(new java.awt.Color(102, 102, 102));
+        daftarAkunMhs.add(nidAkun, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 290, 30));
 
         jPanel74.setBackground(new java.awt.Color(33, 32, 36));
         jPanel74.setForeground(new java.awt.Color(193, 195, 199));
@@ -1273,11 +1551,11 @@ public class Index_Admin extends javax.swing.JFrame {
 
         jPanel74.add(jPanel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 29, -1, -1));
 
-        daftarAkun.add(jPanel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 104, -1));
+        daftarAkunMhs.add(jPanel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 104, -1));
 
         password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         password.setForeground(new java.awt.Color(102, 102, 102));
-        daftarAkun.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 290, 30));
+        daftarAkunMhs.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 290, 30));
 
         jButton16.setForeground(new java.awt.Color(193, 195, 199));
         jButton16.setText("Update");
@@ -1292,9 +1570,164 @@ public class Index_Admin extends javax.swing.JFrame {
                 jButton16ActionPerformed(evt);
             }
         });
-        daftarAkun.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, 110, -1));
+        daftarAkunMhs.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, 110, -1));
 
-        PanelContent.add(daftarAkun, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
+        jButton20.setForeground(new java.awt.Color(193, 195, 199));
+        jButton20.setText("Tambah");
+        jButton20.setPreferredSize(new java.awt.Dimension(30, 30));
+        jButton20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton20MouseClicked(evt);
+            }
+        });
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
+        daftarAkunMhs.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, 110, -1));
+
+        PanelContent.add(daftarAkunMhs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
+
+        daftarAkunDosen.setBackground(new java.awt.Color(23, 23, 26));
+        daftarAkunDosen.setPreferredSize(new java.awt.Dimension(1000, 500));
+        daftarAkunDosen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel50.setFont(new java.awt.Font("Fira Sans ExtraBold", 0, 36)); // NOI18N
+        jLabel50.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel50.setText("Daftar Akun");
+        jLabel50.setIconTextGap(0);
+        daftarAkunDosen.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 48, -1, 38));
+
+        jLabel52.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel52.setText("Sistem Informasi Akademik");
+        daftarAkunDosen.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 92, -1, -1));
+
+        tableDark6.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nim", "Username", "Password"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableDark6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableDark6MouseClicked(evt);
+            }
+        });
+        jScrollPane9.setViewportView(tableDark6);
+
+        daftarAkunDosen.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 199, 400, 120));
+
+        jumlahAkun1.setForeground(new java.awt.Color(193, 195, 199));
+        jumlahAkun1.setText("jLabel6");
+        daftarAkunDosen.add(jumlahAkun1, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 165, 80, -1));
+
+        jLabel53.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel53.setText("Jumlah Akun :");
+        daftarAkunDosen.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 163, -1, -1));
+
+        jPanel16.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel16.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel16.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel29.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel29.setText("Username");
+        jLabel29.setPreferredSize(new java.awt.Dimension(80, 29));
+        jPanel16.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, -1, -1));
+
+        daftarAkunDosen.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 104, -1));
+
+        jPanel17.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel17.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel17.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel30.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel30.setText("Nim");
+        jLabel30.setPreferredSize(new java.awt.Dimension(40, 29));
+        jPanel17.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, 90, -1));
+
+        daftarAkunDosen.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 104, -1));
+
+        username1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        username1.setForeground(new java.awt.Color(102, 102, 102));
+        daftarAkunDosen.add(username1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 290, 30));
+
+        nidAkun1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nidAkun1.setForeground(new java.awt.Color(102, 102, 102));
+        daftarAkunDosen.add(nidAkun1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 290, 30));
+
+        jPanel81.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel81.setForeground(new java.awt.Color(193, 195, 199));
+        jPanel81.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel81.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel100.setForeground(new java.awt.Color(193, 195, 199));
+        jLabel100.setText("Password");
+        jLabel100.setPreferredSize(new java.awt.Dimension(90, 29));
+        jPanel81.add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, -1, -1));
+
+        jPanel82.setBackground(new java.awt.Color(33, 32, 36));
+        jPanel82.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel82.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
+
+        jLabel101.setText("Nama Mahasiswa");
+        jLabel101.setPreferredSize(new java.awt.Dimension(90, 29));
+        jPanel82.add(jLabel101);
+
+        jPanel81.add(jPanel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 29, -1, -1));
+
+        daftarAkunDosen.add(jPanel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 104, -1));
+
+        password1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        password1.setForeground(new java.awt.Color(102, 102, 102));
+        daftarAkunDosen.add(password1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 290, 30));
+
+        jButton21.setForeground(new java.awt.Color(193, 195, 199));
+        jButton21.setText("Update");
+        jButton21.setPreferredSize(new java.awt.Dimension(30, 30));
+        jButton21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton21MouseClicked(evt);
+            }
+        });
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
+        daftarAkunDosen.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, 110, -1));
+
+        jButton22.setForeground(new java.awt.Color(193, 195, 199));
+        jButton22.setText("Tambah");
+        jButton22.setPreferredSize(new java.awt.Dimension(30, 30));
+        jButton22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton22MouseClicked(evt);
+            }
+        });
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
+        daftarAkunDosen.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, 110, -1));
+
+        PanelContent.add(daftarAkunDosen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
         jPanel1.add(PanelContent, java.awt.BorderLayout.CENTER);
 
@@ -1358,11 +1791,11 @@ public class Index_Admin extends javax.swing.JFrame {
             });
         }
     }
-    
-    private void tampilAkun(){
+
+    private void tampilAkunMhs() {
         int jumlah = 0;
         ControllerAdmin crl = new ControllerAdmin();
-        List<Akun> listAcc = crl.getAkun();
+        List<Akun> listAcc = crl.getAkun("Mahasiswa");
         DefaultTableModel model = (DefaultTableModel) tableDark5.getModel();
         model.setRowCount(0);
         jumlah = listAcc.size();
@@ -1373,6 +1806,42 @@ public class Index_Admin extends javax.swing.JFrame {
                 acc.getId(),
                 acc.getUsername(),
                 acc.getPassword()
+            });
+        }
+    }
+    
+    private void tampilAkunDosen() {
+        int jumlah = 0;
+        ControllerAdmin crl = new ControllerAdmin();
+        List<Akun> listAcc = crl.getAkun("Dosen");
+        DefaultTableModel model = (DefaultTableModel) tableDark6.getModel();
+        model.setRowCount(0);
+        jumlah = listAcc.size();
+        jumlahAkun.setText(Integer.toString(jumlah));
+
+        for (Akun acc : listAcc) {
+            model.addRow(new Object[]{
+                acc.getId(),
+                acc.getUsername(),
+                acc.getPassword()
+            });
+        }
+    }
+
+    private void tampilDosen() {
+        ControllerAdmin crl = new ControllerAdmin(acc);
+        List<Dosen> listd = crl.getDosen();
+        DefaultTableModel model = (DefaultTableModel) daftarDosenTable.getModel();
+        model.setRowCount(0);
+
+        for (Dosen n : listd) {
+            model.addRow(new Object[]{
+                n.getNid(),
+                n.getNama(),
+                n.getNomor(),
+                n.getEmail(),
+                n.getAlamat(),
+                n.getProdi()
             });
         }
     }
@@ -1392,9 +1861,11 @@ public class Index_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         JadwakMahasiswa.setVisible(false);
         daftarMatakuliah.setVisible(false);
-        daftarAkun.setVisible(false);
+        daftarAkunMhs.setVisible(false);
+        daftarAkunDosen.setVisible(false);
         keuanganKuliah.setVisible(false);
         dashboard.setVisible(false);
+        daftarDosen.setVisible(false);
         daftarMahasiswa.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -1404,7 +1875,8 @@ public class Index_Admin extends javax.swing.JFrame {
         daftarMatakuliah.setVisible(false);
         keuanganKuliah.setVisible(false);
         daftarMahasiswa.setVisible(false);
-        daftarAkun.setVisible(false);
+        daftarDosen.setVisible(false);
+        daftarAkunMhs.setVisible(false);
         dashboard.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -1413,7 +1885,8 @@ public class Index_Admin extends javax.swing.JFrame {
         daftarMahasiswa.setVisible(false);
         dashboard.setVisible(false);
         keuanganKuliah.setVisible(false);
-        daftarAkun.setVisible(false);
+        daftarAkunMhs.setVisible(false);
+        daftarAkunDosen.setVisible(false);
         JadwakMahasiswa.setVisible(false);
         daftarMatakuliah.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -1422,7 +1895,8 @@ public class Index_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         daftarMahasiswa.setVisible(false);
         JadwakMahasiswa.setVisible(false);
-        daftarAkun.setVisible(false);
+        daftarAkunMhs.setVisible(false);
+        daftarDosen.setVisible(false);
         dashboard.setVisible(false);
         daftarMatakuliah.setVisible(false);
         keuanganKuliah.setVisible(true);
@@ -1557,7 +2031,7 @@ public class Index_Admin extends javax.swing.JFrame {
         dashboard.setVisible(false);
         keuanganKuliah.setVisible(false);
         daftarMatakuliah.setVisible(false);
-        daftarAkun.setVisible(false);
+        daftarAkunMhs.setVisible(false);
         JadwakMahasiswa.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
 
@@ -1647,6 +2121,7 @@ public class Index_Admin extends javax.swing.JFrame {
         mhs.setNomor(nomor);
         mhs.setProdi(prodi);
         crl.hapusMahasiswa(mhs);
+        crl.deleteAkun(mhs);
         refreshData();
     }//GEN-LAST:event_jButton8MouseClicked
 
@@ -1708,7 +2183,7 @@ public class Index_Admin extends javax.swing.JFrame {
         int nim = (int) tableDark5.getValueAt(baris, 0);
         String username = (String) tableDark5.getValueAt(baris, 1);
         String password = (String) tableDark5.getValueAt(baris, 2);
-        nimAkun.setText(Integer.toString(nim));
+        nidAkun.setText(Integer.toString(nim));
         this.username.setText(username);
         this.password.setText(password);
     }//GEN-LAST:event_tableDark5MouseClicked
@@ -1719,15 +2194,17 @@ public class Index_Admin extends javax.swing.JFrame {
 
     private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
         // TODO add your handling code here:
+        int baris = tableDark6.rowAtPoint(evt.getPoint());
+        int realNim = (int) tableDark6.getValueAt(baris, 0);
         ControllerAdmin crl = new ControllerAdmin(acc);
         Akun acc = new Akun();
-        int nim = Integer.parseInt(nimAkun.getText());
+        int nim = Integer.parseInt(nidAkun.getText());
         String username = this.username.getText();
         String password = this.password.getText();
         acc.setId(nim);
         acc.setUsername(username);
         acc.setPassword(password);
-        crl.updateAkun(acc);
+        crl.updateAkun(acc,realNim);
         refreshData();
     }//GEN-LAST:event_jButton16MouseClicked
 
@@ -1749,8 +2226,199 @@ public class Index_Admin extends javax.swing.JFrame {
         dashboard.setVisible(false);
         daftarMatakuliah.setVisible(false);
         keuanganKuliah.setVisible(false);
-        daftarAkun.setVisible(true);
+        daftarAkunMhs.setVisible(true);
     }//GEN-LAST:event_jButton11MouseClicked
+
+    private void daftarDosenTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarDosenTableMouseClicked
+        // TODO add your handling code here:
+        int baris = daftarDosenTable.rowAtPoint(evt.getPoint());
+        int nid = (int) daftarDosenTable.getValueAt(baris, 0);
+        String nama = (String) daftarDosenTable.getValueAt(baris, 1);
+        String nomor = (String) daftarDosenTable.getValueAt(baris, 2);
+        String email = (String) daftarDosenTable.getValueAt(baris, 3);
+        String alamat = (String) daftarDosenTable.getValueAt(baris, 4);
+        String prodi = (String) daftarDosenTable.getValueAt(baris, 5);
+        this.nid.setText(Integer.toString(nid));
+        namaDosen.setText(nama);
+        nomorDosen.setText(nomor);
+        emailDosen.setText(email);
+        alamatDosen.setText(alamat);
+        prodiDosen.setText(prodi);
+    }//GEN-LAST:event_daftarDosenTableMouseClicked
+
+    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+        // TODO add your handling code here:
+        ControllerAdmin crl = new ControllerAdmin(acc);
+        Dosen ds = new Dosen();
+
+        int nid = Integer.parseInt(this.nid.getText());
+        String nama = namaDosen.getText();
+        String nomor = nomorDosen.getText();
+        String email = emailDosen.getText();
+        String alamat = alamatDosen.getText();
+        String prodi = prodiDosen.getText();
+
+        ds.setNid(nid);
+        ds.setNama(nama);
+        ds.setNomor(nomor);
+        ds.setEmail(email);
+        ds.setAlamat(alamat);
+        ds.setProdi(prodi);
+        crl.tambahDosen(ds);
+        refreshData();
+    }//GEN-LAST:event_jButton15MouseClicked
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseClicked
+        // TODO add your handling code here:
+        ControllerDosen crl = new ControllerDosen();
+        Dosen ds = new Dosen();
+        int nid = Integer.parseInt(this.nid.getText());
+        String nama = namaDosen.getText();
+        String nomor = nomorDosen.getText();
+        String email = emailDosen.getText();
+        String alamat = alamatDosen.getText();
+        String prodi = prodiDosen.getText();
+
+        ds.setNid(nid);
+        ds.setNama(nama);
+        ds.setNomor(nomor);
+        ds.setEmail(email);
+        ds.setAlamat(alamat);
+        ds.setProdi(prodi);
+        crl.hapusDosen(ds);
+        crl.hapusAkunDosen(ds);
+        refreshData();
+    }//GEN-LAST:event_jButton17MouseClicked
+
+    private void jButton18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseClicked
+        // TODO add your handling code here:
+        ControllerAdmin crl = new ControllerAdmin();
+        Dosen ds = new Dosen();
+        int nid = Integer.parseInt(this.nid.getText());
+        String nama = namaDosen.getText();
+        String nomor = nomorDosen.getText();
+        String email = emailDosen.getText();
+        String alamat = alamatDosen.getText();
+        String prodi = prodiDosen.getText();
+
+        ds.setNid(nid);
+        ds.setNama(nama);
+        ds.setNomor(nomor);
+        ds.setEmail(email);
+        ds.setAlamat(alamat);
+        ds.setProdi(prodi);
+        crl.updateDosen(ds);
+        refreshData();
+    }//GEN-LAST:event_jButton18MouseClicked
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseClicked
+        // TODO add your handling code here:
+        daftarDosen.setVisible(false);
+        daftarAkunDosen.setVisible(true);
+    }//GEN-LAST:event_jButton19MouseClicked
+
+    private void daftarDosenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarDosenMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_daftarDosenMouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        daftarMahasiswa.setVisible(false);
+        JadwakMahasiswa.setVisible(false);
+        dashboard.setVisible(false);
+        daftarMatakuliah.setVisible(false);
+        keuanganKuliah.setVisible(false);
+        daftarAkunMhs.setVisible(false);
+        daftarAkunDosen.setVisible(false);
+        daftarDosen.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseClicked
+        // TODO add your handling code here:
+        ControllerAdmin crl = new ControllerAdmin(acc);
+        Akun acc = new Akun();
+        int nid = Integer.parseInt(nidAkun.getText());
+        String username = this.username.getText();
+        String password = this.password.getText();
+        acc.setId(nid);
+        acc.setUsername(username);
+        acc.setPassword(password);
+        crl.tambahAkunDosen(acc);
+        refreshData();
+    }//GEN-LAST:event_jButton20MouseClicked
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void tableDark6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDark6MouseClicked
+        // TODO add your handling code here:
+        int baris = tableDark6.rowAtPoint(evt.getPoint());
+        int nim = (int) tableDark6.getValueAt(baris, 0);
+        String username = (String) tableDark6.getValueAt(baris, 1);
+        String password = (String) tableDark6.getValueAt(baris, 2);
+        nidAkun1.setText(Integer.toString(nim));
+        this.username1.setText(username);
+        this.password1.setText(password);
+    }//GEN-LAST:event_tableDark6MouseClicked
+
+    private void jButton21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton21MouseClicked
+        // TODO add your handling code here:
+        int baris = tableDark6.rowAtPoint(evt.getPoint());
+        int realNim = (int) tableDark6.getValueAt(baris, 0);
+        ControllerAdmin crl = new ControllerAdmin(acc);
+        Akun acc = new Akun();
+        int nim = Integer.parseInt(nidAkun1.getText());
+        String username = this.username1.getText();
+        String password = this.password1.getText();
+        acc.setId(nim);
+        acc.setUsername(username);
+        acc.setPassword(password);
+        crl.updateAkun(acc,realNim);
+        refreshData();
+    }//GEN-LAST:event_jButton21MouseClicked
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton22MouseClicked
+        // TODO add your handling code here:
+        ControllerAdmin crl = new ControllerAdmin(acc);
+        Akun acc = new Akun();
+        int nid = Integer.parseInt(nidAkun.getText());
+        String username = this.username.getText();
+        String password = this.password.getText();
+        acc.setId(nid);
+        acc.setUsername(username);
+        acc.setPassword(password);
+        crl.tambahAkunDosen(acc);
+        refreshData();
+    }//GEN-LAST:event_jButton22MouseClicked
+
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton22ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        daftarMahasiswa.setVisible(false);
+        dashboard.setVisible(false);
+        daftarMatakuliah.setVisible(false);
+        keuanganKuliah.setVisible(false);
+        daftarAkunMhs.setVisible(false);
+        daftarAkunDosen.setVisible(false);
+        daftarDosen.setVisible(false);
+        JadwakMahasiswa.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1805,9 +2473,13 @@ public class Index_Admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JadwakMahasiswa;
     private javax.swing.JPanel PanelContent;
+    private javax.swing.JTextField alamatDosen;
     private javax.swing.JTextField batasStudi;
     private javax.swing.JLabel biayaSks;
-    private javax.swing.JPanel daftarAkun;
+    private javax.swing.JPanel daftarAkunDosen;
+    private javax.swing.JPanel daftarAkunMhs;
+    private javax.swing.JPanel daftarDosen;
+    private View.Table.TableDark daftarDosenTable;
     private javax.swing.JPanel daftarMahasiswa;
     private View.Table.TableDark daftarMahasiswaTable;
     private javax.swing.JPanel daftarMatakuliah;
@@ -1816,6 +2488,7 @@ public class Index_Admin extends javax.swing.JFrame {
     private javax.swing.JPanel dpp;
     private javax.swing.JLabel dpp_wajib;
     private javax.swing.JTextField email;
+    private javax.swing.JTextField emailDosen;
     private javax.swing.JTextField hari;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -1823,16 +2496,29 @@ public class Index_Admin extends javax.swing.JFrame {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel100;
+    private javax.swing.JLabel jLabel101;
+    private javax.swing.JLabel jLabel104;
+    private javax.swing.JLabel jLabel105;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -1846,7 +2532,13 @@ public class Index_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
@@ -1858,7 +2550,10 @@ public class Index_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel58;
@@ -1881,12 +2576,17 @@ public class Index_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
+    private javax.swing.JLabel jLabel98;
+    private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel42;
     private javax.swing.JPanel jPanel44;
@@ -1915,13 +2615,24 @@ public class Index_Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel76;
     private javax.swing.JPanel jPanel77;
     private javax.swing.JPanel jPanel78;
+    private javax.swing.JPanel jPanel79;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel80;
+    private javax.swing.JPanel jPanel81;
+    private javax.swing.JPanel jPanel82;
+    private javax.swing.JPanel jPanel85;
+    private javax.swing.JPanel jPanel86;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextField jam;
     private javax.swing.JTextField jenis;
     private javax.swing.JLabel jumlahAkun;
+    private javax.swing.JLabel jumlahAkun1;
     private javax.swing.JTextField jumlahSks;
     private javax.swing.JTextField kapasitas;
     private javax.swing.JTextField kelas;
@@ -1929,23 +2640,31 @@ public class Index_Admin extends javax.swing.JFrame {
     private javax.swing.JTextField kode;
     private javax.swing.JTextField matakuliah;
     private javax.swing.JTextField nama;
+    private javax.swing.JTextField namaDosen;
+    private javax.swing.JTextField nid;
+    private javax.swing.JTextField nidAkun;
+    private javax.swing.JTextField nidAkun1;
     private javax.swing.JTextField nim;
-    private javax.swing.JTextField nimAkun;
     private javax.swing.JTextField nomor;
+    private javax.swing.JTextField nomorDosen;
     private javax.swing.JTextField password;
+    private javax.swing.JTextField password1;
     private javax.swing.JLabel persentaseDenda;
+    private javax.swing.JTextField prodiDosen;
     private javax.swing.JTextField programStudi;
     private javax.swing.JTextField semesterAktif;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JTextField status;
     private View.Table.TableDark tableDark3;
     private View.Table.TableDark tableDark5;
+    private View.Table.TableDark tableDark6;
     private javax.swing.JTextField tempoPembayaran;
     private javax.swing.JTextField tempoPerwalian;
     private javax.swing.JLabel ukt;
     private javax.swing.JPanel ukt1;
     private javax.swing.JPanel ukv1;
     private javax.swing.JTextField username;
+    private javax.swing.JTextField username1;
     // End of variables declaration//GEN-END:variables
 
     public void setAcc(Akun acc) {

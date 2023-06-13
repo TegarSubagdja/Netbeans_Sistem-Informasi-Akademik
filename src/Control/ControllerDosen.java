@@ -189,4 +189,32 @@ public class ControllerDosen {
         }
         conMan.logOff();
     }
+
+    public void hapusDosen(Dosen ds) {
+        String query = "DELETE FROM Dosen WHERE nid='" + ds.getNid() + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        Statement stm = null;
+        try {
+            stm = conn.createStatement();
+            stm.executeUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        conMan.logOff();
+    }
+
+    public void hapusAkunDosen(Dosen ds) {
+        String query = "DELETE FROM Dosen WHERE nid='" + ds.getNid() + "'";
+        ConnectionManager conMan = new ConnectionManager();
+        Connection conn = conMan.logOn();
+        Statement stm = null;
+        try {
+            stm = conn.createStatement();
+            stm.executeUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        conMan.logOff();
+    }
 }

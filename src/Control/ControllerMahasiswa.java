@@ -41,27 +41,6 @@ public class ControllerMahasiswa {
         this.acc = acc;
     }
 
-    public Akun checkLogin(String username, String password) {
-        String query = "SELECT * FROM login_mhs WHERE username='" + username + "' AND password='" + password + "'";
-        ConnectionManager conMan = new ConnectionManager();
-        Connection conn = conMan.logOn();
-        Akun acc = null; // Inisialisasi dengan null
-        try {
-            Statement stm = conn.createStatement();
-            ResultSet rs = stm.executeQuery(query);
-            if (rs.next()) {
-                acc = new Akun();
-                acc.setId(rs.getInt("nim"));
-                acc.setUsername(rs.getString("username"));
-                acc.setPassword(rs.getString("password"));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Index_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        conMan.logOff();
-        return acc;
-    }
-
     public Mahasiswa getMhs() {
         String query = "SELECT * FROM mahasiswa WHERE nim='" + acc.getId() + "'";
         ConnectionManager conMan = new ConnectionManager();
@@ -70,7 +49,7 @@ public class ControllerMahasiswa {
         try {
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(query);
-            while (rs.next()) {
+            if (rs.next()) {
                 mhs.setNim(rs.getInt("nim"));
                 mhs.setNama(rs.getString("nama"));
                 mhs.setStatus(rs.getString("status"));
@@ -228,6 +207,7 @@ public class ControllerMahasiswa {
                 dendaPerwalian = (int) Math.round((ku.getDpp_wajib() + ku.getUkt() + ku.getUkv()) * denda);
             }
         }
+        
         int totalDenda = dendaPembayaran + dendaPerwalian;
         ku.setTelat_perwalian(dendaPerwalian);
         ku.setTelat_pembayaran(dendaPembayaran);
